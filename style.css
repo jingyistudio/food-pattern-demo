@@ -1,0 +1,263 @@
+/* 米饭图案生成器 - 样式文件 */
+
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --muted: #e5e7eb;
+  --text: #111827;
+  --acc: #0ea5e9;
+  --soft: #f7f8fa;
+}
+
+/* 基础样式 */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* 布局 */
+.wrap {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 16px;
+  padding: 16px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 控制面板 */
+.controls {
+  background: var(--panel);
+  border: 1px solid var(--muted);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.06);
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+}
+
+/* 预览区域 */
+.preview {
+  background: var(--panel);
+  border: 1px solid var(--muted);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(17, 24, 39, 0.06);
+  position: sticky;
+  top: 16px;
+  height: calc(100vh - 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 标题样式 */
+h1 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 14px;
+  margin: 16px 0 8px;
+}
+
+h3 {
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+
+/* 网格布局 */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* 表单元素 */
+label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+small.cn {
+  display: block;
+  opacity: 0.6;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+input[type=range], select, input[type=number], input[type=color] {
+  width: 100%;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+input[type=file] {
+  width: 100%;
+  font-size: 12px;
+}
+
+input[type=checkbox] {
+  transform: translateY(1px);
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 10px 12px;
+  background: #111827;
+  color: #fff;
+  border: 1px solid #111827;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn.ghost {
+  background: #fff;
+  color: #111827;
+  border: 1px solid var(--muted);
+}
+
+.btn.ghost:hover {
+  background: var(--soft);
+}
+
+.btn.primary {
+  background: var(--acc);
+  border-color: var(--acc);
+}
+
+.btn.primary:hover {
+  background: #0284c7;
+}
+
+/* 提示和标签 */
+.hint {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  background: var(--soft);
+  border: 1px solid var(--muted);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* 图层折叠面板 */
+details.layer {
+  border: 1px dashed var(--muted);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+details.layer:hover {
+  border-color: var(--acc);
+}
+
+details.layer > summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  padding: 4px 0;
+}
+
+details.layer[open] {
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.06);
+}
+
+details.layer summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 画布样式 */
+canvas {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .controls {
+    max-height: none;
+    order: 2;
+  }
+  
+  .preview {
+    order: 1;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  .row, .row3 {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.controls, .preview {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 滚动条样式 */
+.controls::-webkit-scrollbar {
+  width: 6px;
+}
+
+.controls::-webkit-scrollbar-track {
+  background: var(--soft);
+  border-radius: 3px;
+}
+
+.controls::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+.controls::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}

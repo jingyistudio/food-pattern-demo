@@ -1,0 +1,32 @@
+{
+  "name": "rice-pattern-generator",
+  "version": "1.0.0",
+  "description": "烹饪图案生成器 - 一个基于HTML5 Canvas的交互式图案创作工具",
+  "main": "demo.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "pattern-generator",
+    "canvas",
+    "html5",
+    "cooking",
+    "rice",
+    "interactive"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/rice-pattern-generator.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}
