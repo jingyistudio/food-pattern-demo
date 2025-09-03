@@ -1606,8 +1606,26 @@
             };
             
             const img = new Image();
+            img.crossOrigin = 'anonymous'; // 解决跨域问题
             img.onload = () => {
                 window.patternState.staple.img = img;
+                genPositions(window.patternState.staple);
+                render();
+            };
+            img.onerror = () => {
+                console.error('图片加载失败:', stapleImages[selectedStaple]);
+                // 如果图片加载失败，创建一个简单的占位符
+                const canvas = document.createElement('canvas');
+                canvas.width = 100;
+                canvas.height = 100;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(0, 0, 100, 100);
+                ctx.fillStyle = '#333';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('图片', 50, 50);
+                window.patternState.staple.img = canvas;
                 genPositions(window.patternState.staple);
                 render();
             };
@@ -1628,8 +1646,26 @@
             window.patternState.ingredients = selectedIngredients.map((ingredient, index) => {
                 const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}`);
                 const img = new Image();
+                img.crossOrigin = 'anonymous'; // 解决跨域问题
                 img.onload = () => {
                     layer.img = img;
+                    genPositions(layer);
+                    render();
+                };
+                img.onerror = () => {
+                    console.error('图片加载失败:', ingredientImages[ingredient]);
+                    // 如果图片加载失败，创建一个简单的占位符
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 100;
+                    canvas.height = 100;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#f0f0f0';
+                    ctx.fillRect(0, 0, 100, 100);
+                    ctx.fillStyle = '#333';
+                    ctx.font = '12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('图片', 50, 50);
+                    layer.img = canvas;
                     genPositions(layer);
                     render();
                 };
@@ -2176,24 +2212,49 @@
             }
             
             try {
+                console.log('开始下载图案...');
+                
                 // 创建高分辨率canvas用于下载
                 const downloadCanvas = document.createElement('canvas');
                 downloadCanvas.width = window.patternState.W * 2;
                 downloadCanvas.height = window.patternState.H * 2;
                 const ctx = downloadCanvas.getContext('2d');
                 
+                console.log('Canvas尺寸:', downloadCanvas.width, 'x', downloadCanvas.height);
+                
                 // 渲染图案
                 const base = renderBaseTile();
                 const cooked = applyHeat(base);
                 
+                console.log('图案渲染完成');
+                
                 // 绘制到下载canvas
                 ctx.drawImage(cooked, 0, 0, downloadCanvas.width, downloadCanvas.height);
+                
+                console.log('图案绘制到下载canvas完成');
+                
+                // 检查canvas是否有内容
+                const imageData = ctx.getImageData(0, 0, downloadCanvas.width, downloadCanvas.height);
+                const hasContent = imageData.data.some(pixel => pixel !== 0);
+                
+                if (!hasContent) {
+                    console.warn('Canvas内容为空，可能图片未正确加载');
+                }
                 
                 // 创建下载链接
                 const link = document.createElement('a');
                 const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
                 link.download = `米饭图案-${timestamp}.png`;
-                link.href = downloadCanvas.toDataURL('image/png', 1.0);
+                
+                // 生成DataURL
+                const dataURL = downloadCanvas.toDataURL('image/png', 1.0);
+                console.log('DataURL生成成功，长度:', dataURL.length);
+                
+                if (dataURL === 'data:,') {
+                    throw new Error('Canvas内容为空，无法生成图片');
+                }
+                
+                link.href = dataURL;
                 
                 // 触发下载
                 document.body.appendChild(link);
@@ -2202,9 +2263,12 @@
                 
                 // 用户反馈
                 console.log('图案下载成功！');
+                alert('图案下载成功！');
+                
             } catch (error) {
                 console.error('下载失败:', error);
-                alert('下载失败，请重试！');
+                console.error('错误详情:', error.message);
+                alert(`下载失败: ${error.message}\n\n请确保：\n1. 使用HTTP服务器访问（不是直接打开文件）\n2. 图片资源正确加载\n3. 浏览器支持Canvas下载功能`);
             }
         }
         
