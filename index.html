@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烹饪图案生成器</title>
+    <title>Cooking Pattern Generator</title>
     <style>
         * {
             margin: 0;
@@ -14,12 +14,13 @@
         body {
             font-family: 'Helvetica', sans-serif;
             background: #FDFBF6;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
         
         .app-container {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 0;
@@ -62,29 +63,88 @@
             background: #4CAF50;
         }
         
+        /* 顶部导航组件样式 */
+        .top-navigation {
+            background: #FDFBF6;
+            padding: 45px 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 116px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-item {
+            width: 152px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 99px;
+            background: rgba(117, 117, 117, 0.50);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 700;
+            line-height: 36px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-text {
+            width: 112px;
+            height: 36px;
+            text-align: center;
+            color: rgba(117, 117, 117, 0.50);
+            font-size: 13px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+            line-height: 36px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item.active .nav-icon {
+            background: #FFA3C0;
+        }
+        
+        .nav-item.active .nav-text {
+            color: #FFA3C0;
+        }
+        
         .main-content {
             flex: 1;
             display: flex;
             align-items: flex-start;
             justify-content: center;
             padding: 20px 0;
-            overflow-y: auto;
+            min-height: calc(100vh - 140px);
             width: 100%;
             max-width: 100%;
         }
         
         .step-container {
             background: linear-gradient(135deg, #FEFDFB 0%, #FDFBF6 100%);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 95%;
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 1200px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
             text-align: center;
-            min-height: 500px;
+            min-height: calc(100vh - 200px);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 24px;
+            margin: 0 auto;
         }
         
         .step-title {
@@ -117,10 +177,10 @@
         }
         
         .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
         .staple-grid {
@@ -262,6 +322,746 @@
             font-family: 'Helvetica', sans-serif;
         }
         
+        /* Step 2-1 特殊样式 */
+        .step2-1-panel {
+            background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            position: relative;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 500px;
+        }
+        
+        .step2-1-header {
+            width: 100%;
+            max-width: 1161px;
+            padding: 0 410px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step2-1-title {
+            text-align: center;
+            color: #FE3474;
+            font-size: 1.8rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+            line-height: 36px;
+            margin: 0;
+        }
+        
+        .step2-1-subtitle {
+            text-align: center;
+            color: #9F8A60;
+            font-size: 18px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 0;
+        }
+        
+        .cooking-methods-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 22px;
+            width: 100%;
+            max-width: 1272px;
+            margin: 0 auto;
+        }
+        
+        .step2-1-card {
+            width: 321px;
+            height: 378px;
+            padding: 26px 39px;
+            background: rgba(254, 253, 251, 0.80);
+            border-radius: 16px;
+            outline: 2px rgba(237, 228, 212, 0.50) solid;
+            outline-offset: -2px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+            display: flex;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .step2-1-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
+        }
+        
+        .step2-1-card.selected {
+            border-color: #FE3474;
+            background: rgba(254, 52, 116, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
+        }
+        
+        .method-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .method-technique {
+            width: 100%;
+            flex: 1 1 0;
+            padding: 10px;
+            background: linear-gradient(180deg, #F9F4E7 0%, #FDFBF6 100%);
+            overflow: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            color: #FE3474;
+            font-size: 18px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+        }
+        
+        .step2-1-card .method-name {
+            width: 100%;
+            height: 28px;
+            text-align: center;
+            color: #FE3474;
+            font-size: 20px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 0;
+        }
+        
+        .step2-1-card .method-description {
+            width: 100%;
+            text-align: center;
+            color: #FE3474;
+            font-size: 11px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 0;
+        }
+        
+        .step2-1-navigation {
+            width: 623.99px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+        }
+        
+        /* Step 2-2 样式 */
+        .step2-2-panel {
+            background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            position: relative;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 500px;
+        }
+        
+        .step2-2-header {
+            width: 100%;
+            max-width: 1161px;
+            padding: 0 410px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step2-2-title {
+            text-align: center;
+            color: #FE3474;
+            font-size: 1.8rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+            line-height: 36px;
+            margin: 0;
+        }
+        
+        .step2-2-subtitle {
+            text-align: center;
+            color: #9F8A60;
+            font-size: 18px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 0;
+        }
+        
+        .product-selection-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+            justify-content: center;
+        }
+        
+        .product-card {
+            background: rgba(254, 253, 251, 0.80);
+            border: 2px solid rgba(237, 228, 212, 0.50);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            height: 120px;
+            width: 120px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .product-card:hover {
+            border-color: #FE3474;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
+        }
+        
+        .product-card:hover .material-dropdown {
+            display: flex;
+        }
+        
+        .product-card.selected {
+            border-color: #FE3474;
+            background: rgba(254, 52, 116, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
+        }
+        
+        /* 材质选择下拉菜单 */
+        .material-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 2px solid #FE3474;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            min-width: 160px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+        
+        .material-dropdown.show {
+            display: flex;
+        }
+        
+        .material-dropdown:hover {
+            display: flex;
+        }
+        
+        .material-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .material-option:last-child {
+            border-bottom: none;
+        }
+        
+        .material-option:hover {
+            background: rgba(254, 52, 116, 0.1);
+            color: #FE3474;
+        }
+        
+        .material-option.selected {
+            background: #FE3474;
+            color: white;
+        }
+        
+        .product-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .product-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-icon img {
+            transform: scale(1.1);
+        }
+        
+        .product-name {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #FE3474;
+            font-family: 'Helvetica', sans-serif;
+            line-height: 1.2;
+        }
+        
+        .step2-2-navigation {
+            width: 623.99px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+        }
+        
+        /* Step 3 样式 */
+        .step3-panel {
+            background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            position: relative;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 500px;
+        }
+        
+        .step3-header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step3-title {
+            text-align: center;
+            color: #FE3474;
+            font-size: 1.8rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+            line-height: 36px;
+            margin: 0;
+        }
+        
+        .confirmation-content {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 32px;
+        }
+        
+        .confirmation-section-main {
+            width: 352px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        
+        .confirmation-section-side {
+            width: 779.50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        
+        .confirmation-section-main .section-title,
+        .confirmation-section-side .section-title {
+            text-align: center;
+            color: #FE3474;
+            font-size: 1.4rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+            line-height: 36px;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .confirmation-card {
+            width: 100%;
+            padding: 26px 39px;
+            background: rgba(254, 253, 251, 0.80);
+            border-radius: 16px;
+            outline: 2px rgba(237, 228, 212, 0.50) solid;
+            outline-offset: -2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .main-card {
+            height: 200px;
+        }
+        
+        .confirmation-cards-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .side-card {
+            width: 238.50px;
+            height: 166px;
+            padding: 26px 39px;
+            background: rgba(254, 253, 251, 0.80);
+            border-radius: 16px;
+            outline: 2px rgba(237, 228, 212, 0.50) solid;
+            outline-offset: -2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .card-image {
+            width: 100%;
+            flex: 1 1 0;
+            background: linear-gradient(180deg, #F9F4E7 0%, #FDFBF6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .card-name {
+            width: 100%;
+            height: 28px;
+            text-align: center;
+            color: #FE3474;
+            font-size: 20px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 0;
+        }
+        
+        .additional-info {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-label {
+            color: #FE3474;
+            font-size: 18px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 600;
+        }
+        
+        .info-value {
+            color: #9F8A60;
+            font-size: 18px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+        }
+        
+        .step3-navigation {
+            width: 623.99px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .top-navigation {
+                gap: 60px;
+                padding: 30px 24px;
+            }
+            
+            .nav-item {
+                width: 120px;
+            }
+            
+            .nav-text {
+                width: 90px;
+                font-size: 11px;
+                line-height: 1.2;
+            }
+            
+            .step-container {
+                padding: 24px;
+                gap: 20px;
+            }
+            
+            .main-content-panel {
+                padding: 24px;
+                gap: 20px;
+            }
+            
+            .cooking-layout {
+                grid-template-columns: 280px 1fr;
+                gap: 20px;
+            }
+            
+            .cooking-methods-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .step2-1-card {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                min-height: 200px;
+            }
+            
+            .step2-1-header, .step2-2-header {
+                padding: 0 20px;
+            }
+            
+            .product-selection-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .ingredient-options {
+                max-width: 800px;
+                gap: 14px;
+            }
+            
+            /* Step 5 响应式 */
+            .step5-title {
+                font-size: 2.2rem;
+            }
+            
+            .pattern-showcase {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .pattern-image-large {
+                width: min(400px, 70vw);
+                height: min(400px, 70vw);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-navigation {
+                gap: 20px;
+                padding: 20px 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-item {
+                width: 80px;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .nav-text {
+                width: 80px;
+                font-size: 10px;
+                line-height: 1.2;
+            }
+            
+            .step-container {
+                padding: 20px;
+                gap: 16px;
+            }
+            
+            .main-content-panel {
+                padding: 20px;
+                gap: 16px;
+            }
+            
+            .cooking-layout {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .controls-panel {
+                height: auto;
+                max-height: 300px;
+                position: static;
+            }
+            
+            .step2-1-title, .step2-2-title, .step3-title {
+                font-size: 1.6rem;
+            }
+            
+            .step2-1-subtitle, .step2-2-subtitle {
+                font-size: 16px;
+            }
+            
+            .product-selection-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .ingredient-options {
+                max-width: 600px;
+                gap: 12px;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            
+            .step2-1-navigation, .step2-2-navigation, .step3-navigation {
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .step2-1-navigation .btn, .step2-2-navigation .btn, .step3-navigation .btn {
+                width: 100%;
+            }
+            
+            .confirmation-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .confirmation-section-main,
+            .confirmation-section-side {
+                width: 100%;
+            }
+            
+            .confirmation-cards-container {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .side-card {
+                width: calc(50% - 7.5px);
+                min-width: 150px;
+            }
+            
+            /* Step 5 响应式 */
+            .step5-title {
+                font-size: 2rem;
+            }
+            
+            .step5-subtitle {
+                font-size: 1rem;
+            }
+            
+            .pattern-showcase {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .pattern-image-large {
+                width: min(350px, 80vw);
+                height: min(350px, 80vw);
+                font-size: 1.5rem;
+            }
+            
+            .pattern-info-card {
+                padding: 24px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+            }
+            
+            .additional-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-selection-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .ingredient-options {
+                max-width: 400px;
+                gap: 10px;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+            }
+            
+            .step2-1-panel, .step2-2-panel {
+                padding: 15px;
+            }
+        }
+        
         /* Step 3: 确认食材 */
         .confirmation-grid {
             display: grid;
@@ -300,11 +1100,12 @@
         /* Step 4: 烹饪创作页面 */
         .cooking-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
-            min-height: 400px;
-            height: 100vh;
-            max-height: 100vh;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            min-height: calc(100vh - 300px);
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
         .controls-panel {
@@ -312,7 +1113,7 @@
             border-radius: 15px;
             padding: 20px;
             overflow-y: auto;
-            height: calc(100vh - 200px);
+            height: calc(100vh - 300px);
             position: sticky;
             top: 20px;
         }
@@ -555,19 +1356,20 @@
         
         .main-content-panel {
             background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
-            border-radius: 24px;
-            padding: 27px 0;
+            border-radius: 20px;
+            padding: 32px;
             margin: 0;
-            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
             position: relative;
             flex: 1 1 0;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            gap: 39px;
+            gap: 24px;
             width: 100%;
-            max-width: 95%;
+            max-width: 100%;
+            min-height: calc(100vh - 300px);
         }
         
         .section-header {
@@ -585,8 +1387,8 @@
         }
         
         .section-title {
-            font-size: 30px;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 600;
             color: #FE3474;
             margin-bottom: 0;
             font-family: 'Helvetica', sans-serif;
@@ -717,24 +1519,24 @@
         /* 配菜选项样式 - 固定2行3列布局 */
         .ingredient-options {
             width: 100%;
-            max-width: 95%;
+            max-width: 1000px;
             height: auto;
-            min-height: 400px;
+            min-height: 320px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
             margin: 0 auto;
             flex-shrink: 0;
-            padding: 0 20px;
+            padding: 0;
         }
         
         .ingredient-card {
             width: 100%;
-            height: 180px;
+            height: 140px;
             background: rgba(254, 253, 251, 0.80);
             border-radius: 16px;
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -743,7 +1545,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .ingredient-card:hover {
@@ -759,7 +1561,7 @@
         
         .ingredient-image {
             width: 100%;
-            flex: 1;
+            height: 80px;
             border-radius: 12px;
             overflow: hidden;
             background: linear-gradient(180deg, #F9F4E7 0%, #FDFBF6 100%);
@@ -767,8 +1569,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 8px;
-            min-height: 80px;
+            padding: 6px;
         }
         
         .ingredient-image img {
@@ -786,7 +1587,7 @@
         }
         
         .ingredient-name {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
             color: #FE3474;
             margin: 0;
@@ -874,30 +1675,182 @@
             max-height: 100%;
         }
         
-        /* Step 5: 成品预览 */
-        .final-preview {
+        /* Step 5: 成品预览样式 - 重新设计 */
+        .step5-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .step5-header {
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        
+        .step5-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #FE3474;
+            margin: 0 0 6px 0;
+            text-shadow: 0 2px 4px rgba(254, 52, 116, 0.1);
+        }
+        
+        .step5-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        .step5-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .pattern-showcase {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            align-items: start;
+            min-height: 400px;
+        }
+        
+        .pattern-main-display {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
         
-        .final-image {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            border-radius: 20px;
+        .pattern-image-large {
+            width: min(450px, 60vw);
+            height: min(450px, 60vw);
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.2);
         }
         
-        .final-actions {
+        .pattern-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, #FE3474, #ff6b9d);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(254, 52, 116, 0.4);
+            border: 2px solid white;
+        }
+        
+        .pattern-info-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(254, 52, 116, 0.15);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .info-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .info-header h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #FE3474, #ff6b9d);
+            border-radius: 2px;
+        }
+        
+        .info-content {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .info-content div {
+            margin-bottom: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             display: flex;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .info-content div:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .info-content strong {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .step5-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .action-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            min-width: 160px;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .action-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+        
+        .btn-text {
+            font-size: 1rem;
+            font-weight: 500;
         }
         
         /* 按钮样式 - 统一Step1风格 */
@@ -982,14 +1935,27 @@
 </head>
 <body>
     <div class="app-container">
-        <div class="header">
-            <div class="logo"></div>
-            <div class="step-indicator">
-                <div class="step-dot active" data-step="1"></div>
-                <div class="step-dot" data-step="2"></div>
-                <div class="step-dot" data-step="3"></div>
-                <div class="step-dot" data-step="4"></div>
-                <div class="step-dot" data-step="5"></div>
+        <!-- 顶部导航组件 -->
+        <div class="top-navigation">
+            <div class="nav-item" data-step="1">
+                <div class="nav-icon">1</div>
+                <div class="nav-text">Select Ingredients</div>
+            </div>
+            <div class="nav-item" data-step="2">
+                <div class="nav-icon">2</div>
+                <div class="nav-text">Cooking Method</div>
+            </div>
+            <div class="nav-item" data-step="3">
+                <div class="nav-icon">3</div>
+                <div class="nav-text">Confirm</div>
+            </div>
+            <div class="nav-item" data-step="4">
+                <div class="nav-icon">4</div>
+                <div class="nav-text">Cooking</div>
+            </div>
+            <div class="nav-item" data-step="5">
+                <div class="nav-icon">5</div>
+                <div class="nav-text">Preview</div>
             </div>
         </div>
         
@@ -997,247 +1963,258 @@
             <!-- Step 1-1: 选择主食 -->
             <div class="step active" id="step1-1">
                 <div class="step-container">
-                    <div class="step-progress">
-                        <div class="progress-indicator">
-                            <div class="progress-step active">1</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">2</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">3</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">4</div>
-                        </div>
-                        <div class="progress-text">第1步，共4步</div>
-                    </div>
-                    
-                    <h1 class="step-title">选择食材</h1>
-                    
                     <div class="main-content-panel">
                         <div class="section-header">
-                            <h2 class="section-title">选择主食材</h2>
-                            <p class="section-description">从下面选择一种主食材开始您的烹饪之旅</p>
+                            <h2 class="section-title">Select Main Ingredient</h2>
+                            <p class="section-description">Choose one main ingredient to start your cooking journey</p>
                         </div>
                         
                         <div class="staple-options">
                             <div class="staple-card" onclick="selectStaple('rice')">
                                 <div class="staple-image">
-                                    <img src="图片素材/米饭.png" alt="米饭" />
+                                    <img src="图片素材/米饭.png" alt="Rice" />
                                 </div>
                                 <div class="staple-info">
-                                    <h3 class="staple-name">米饭</h3>
+                                    <h3 class="staple-name">Rice</h3>
                                 </div>
                             </div>
                             
                             <div class="staple-card" onclick="selectStaple('noodles')">
                                 <div class="staple-image">
-                                    <img src="图片素材/面条.png" alt="面条" />
+                                    <img src="图片素材/面条.png" alt="Noodles" />
                                 </div>
                                 <div class="staple-info">
-                                    <h3 class="staple-name">面条</h3>
+                                    <h3 class="staple-name">Noodles</h3>
                                 </div>
                             </div>
                             
                             <div class="staple-card" onclick="selectStaple('tofu')">
                                 <div class="staple-image">
-                                    <img src="图片素材/豆腐.png" alt="豆腐" />
+                                    <img src="图片素材/豆腐.png" alt="Tofu" />
                                 </div>
                                 <div class="staple-info">
-                                    <h3 class="staple-name">豆腐</h3>
+                                    <h3 class="staple-name">Tofu</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="navigation">
-                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>选择配料</button>
+                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>Select Ingredients</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 1-2: 选择配菜 -->
+            <!-- Step 1-2: Select Side Ingredients -->
             <div class="step" id="step1-2">
                 <div class="step-container">
-                    <div class="step-progress">
-                        <div class="progress-indicator">
-                            <div class="progress-step active">1</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">2</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">3</div>
-                            <div class="progress-line"></div>
-                            <div class="progress-step">4</div>
-                        </div>
-                        <div class="progress-text">第1步，共4步</div>
-                    </div>
-                    
-                    <h1 class="step-title">选择食材</h1>
-                    
                     <div class="main-content-panel">
                         <div class="section-header">
-                            <h2 class="section-title">选择配菜</h2>
-                            <p class="section-description">从下面选择最多3种配菜来丰富您的料理</p>
-                            <div class="selection-limit" id="selection-limit">已选择: 0/3</div>
+                            <h2 class="section-title">Select Side Ingredients</h2>
+                            <p class="section-description">Choose up to 3 side ingredients to enrich your dish</p>
+                            <div class="selection-limit" id="selection-limit">Selected: 0/3</div>
                         </div>
                         
                         <div class="ingredient-options">
                             <div class="ingredient-card" onclick="selectIngredient('onion')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/洋葱.png" alt="洋葱" />
+                                    <img src="图片素材/洋葱.png" alt="Onion" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">洋葱</h3>
+                                    <h3 class="ingredient-name">Onion</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('tomato')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/番茄.png" alt="番茄" />
+                                    <img src="图片素材/番茄.png" alt="Tomato" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">番茄</h3>
+                                    <h3 class="ingredient-name">Tomato</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('cabbage')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/白菜.png" alt="白菜" />
+                                    <img src="图片素材/白菜.png" alt="Cabbage" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">白菜</h3>
+                                    <h3 class="ingredient-name">Cabbage</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('bean-sprouts')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/豆芽.png" alt="豆芽" />
+                                    <img src="图片素材/豆芽.png" alt="Bean Sprouts" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">豆芽</h3>
+                                    <h3 class="ingredient-name">Bean Sprouts</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('pepper')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/辣椒.png" alt="辣椒" />
+                                    <img src="图片素材/辣椒.png" alt="Pepper" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">辣椒</h3>
+                                    <h3 class="ingredient-name">Pepper</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('egg')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/鸡蛋.png" alt="鸡蛋" />
+                                    <img src="图片素材/鸡蛋.png" alt="Egg" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">鸡蛋</h3>
+                                    <h3 class="ingredient-name">Egg</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="navigation">
-                        <button class="btn btn-secondary" onclick="prevSubStep()">← 返回</button>
-                        <button class="btn btn-primary" onclick="nextStep()" id="step1-2-next-btn" disabled>下一步 →</button>
+                        <button class="btn btn-secondary" onclick="prevSubStep()">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep()" id="step1-2-next-btn" disabled>Next Step →</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 2: 选择烹饪方式 -->
-            <div class="step" id="step2">
+            <!-- Step 2-1: Select Cooking Method -->
+            <div class="step" id="step2-1">
                 <div class="step-container">
-                    <div class="step-progress">
-                        <div class="progress-indicator">
-                            <span class="progress-text">第2步,共4步</span>
-                        </div>
+                    <!-- 主内容区域 -->
+                    <div class="main-content-panel step2-1-panel">
+                        <!-- 标题区域 -->
+                        <div class="step2-1-header">
+                            <h1 class="step2-1-title">Select Different Cooking Methods</h1>
+                            <p class="step2-1-subtitle">Choose One</p>
                     </div>
                     
-                    <div class="main-content-panel">
-                        <div class="section-header">
-                            <h1 class="section-title">选择烹饪方式</h1>
-                            <p class="section-description">选择您喜欢的烹饪方式来制作美味的料理</p>
+                        <!-- 烹饪方式选择区域 -->
+                        <div class="cooking-methods-container">
+                            <div class="method-card step2-1-card" onclick="selectMethod('boil')">
+                                <div class="method-content">
+                                    <div class="method-technique">Digital Print/Knitting</div>
+                                    <div class="method-name">Boil</div>
+                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                            </div>
+                            </div>
+                            <div class="method-card step2-1-card" onclick="selectMethod('stir-fry')">
+                                <div class="method-content">
+                                    <div class="method-technique">Digital Print+Embroidery</div>
+                                    <div class="method-name">Stir-fry</div>
+                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                                </div>
+                            </div>
+                            <div class="method-card step2-1-card" onclick="selectMethod('fry')">
+                                <div class="method-content">
+                                    <div class="method-technique">Screen Printing</div>
+                                    <div class="method-name">Fry</div>
+                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="cooking-methods">
-                            <div class="method-card" onclick="selectMethod('steam')">
-                                <div class="method-icon">🔥</div>
-                                <div class="method-name">蒸煮</div>
-                                <div class="method-desc">保持食材原味</div>
+                        <!-- 导航按钮 -->
+                        <div class="navigation step2-1-navigation">
+                            <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                            <button class="btn btn-primary" onclick="nextSubStep2()" id="step2-1-next" disabled>Next Step →</button>
                             </div>
-                            <div class="method-card" onclick="selectMethod('stir-fry')">
-                                <div class="method-icon">🍳</div>
-                                <div class="method-name">炒制</div>
-                                <div class="method-desc">快速翻炒</div>
                             </div>
-                            <div class="method-card" onclick="selectMethod('braise')">
-                                <div class="method-icon">🥘</div>
-                                <div class="method-name">炖煮</div>
-                                <div class="method-desc">慢火炖煮</div>
                             </div>
                         </div>
                         
-                        <div class="navigation">
-                            <button class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
-                            <button class="btn" onclick="nextStep()" id="step2-next" disabled>下一步 →</button>
+            <!-- Step 2-2: Select Product -->
+            <div class="step" id="step2-2">
+                <div class="step-container">
+                    <!-- 主内容区域 -->
+                    <div class="main-content-panel step2-2-panel">
+                        <!-- 标题区域 -->
+                        <div class="step2-2-header">
+                            <h1 class="step2-2-title">Select Product Type</h1>
+                            <p class="step2-2-subtitle">Choose the product you want to create</p>
+                        </div>
+                        
+                        <!-- 产品选择区域 -->
+                        <div class="product-selection-container" id="product-selection-container">
+                            <!-- 动态生成产品选项 -->
+                        </div>
+                        
+                        <!-- 导航按钮 -->
+                        <div class="navigation step2-2-navigation">
+                            <button class="btn btn-secondary" onclick="prevSubStep2()">← Previous</button>
+                            <button class="btn btn-primary" onclick="nextStep()" id="step2-2-next" disabled>Next Step →</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 3: 确认食材 -->
+            <!-- Step 3: Confirm Ingredients -->
             <div class="step" id="step3">
                 <div class="step-container">
-                    <h1 class="step-title">Step 3 - 确认食材</h1>
-                    <p class="step-subtitle">Confirm Your Selection</p>
-                    
-                    <div class="confirmation-grid">
-                        <div class="confirmation-section">
-                            <div class="confirmation-title">选择的主食</div>
-                            <div class="selected-items" id="selected-staple">
+                    <!-- 主内容区域 -->
+                    <div class="main-content-panel step3-panel">
+                        <!-- 标题区域 -->
+                        <div class="step3-header">
+                            <h1 class="step3-title">Confirm Ingredients</h1>
+                        </div>
+                        
+                        <!-- 确认内容区域 -->
+                        <div class="confirmation-content">
+                            <!-- 主食区域 -->
+                            <div class="confirmation-section-main">
+                                <div class="section-title">Main Ingredient</div>
+                                <div class="confirmation-card main-card" id="selected-staple">
                                 <!-- 动态填充 -->
                             </div>
                         </div>
-                        <div class="confirmation-section">
-                            <div class="confirmation-title">选择的配菜</div>
-                            <div class="selected-items" id="selected-ingredients">
+                            
+                            <!-- 配菜区域 -->
+                            <div class="confirmation-section-side">
+                                <div class="section-title">Side Ingredients</div>
+                                <div class="confirmation-cards-container" id="selected-ingredients">
                                 <!-- 动态填充 -->
                             </div>
                         </div>
                     </div>
                     
-                    <div class="confirmation-section" style="margin-top: 20px;">
-                        <div class="confirmation-title">烹饪方式</div>
-                        <div class="selected-items" id="selected-method">
-                            <!-- 动态填充 -->
+                        <!-- 烹饪方式和产品信息 -->
+                        <div class="additional-info">
+                            <div class="info-item">
+                                <span class="info-label">Cooking Method:</span>
+                                <span class="info-value" id="selected-method">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Product:</span>
+                                <span class="info-value" id="selected-product">-</span>
                         </div>
                     </div>
                     
-                    <div class="navigation">
-                        <button class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
-                        <button class="btn" onclick="nextStep()">开始烹饪 →</button>
+                        <!-- 导航按钮 -->
+                        <div class="navigation step3-navigation">
+                            <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                            <button class="btn btn-primary" onclick="nextStep()">Start Cooking →</button>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 4: 烹饪创作页面 -->
+            <!-- Step 4: Cooking Creation Page -->
             <div class="step" id="step4">
                 <div class="step-container" style="min-height: 500px;">
-                    <h1 class="step-title">Step 4 - 烹饪创作</h1>
-                    <p class="step-subtitle">Adjust Parameters to Create Your Pattern</p>
-                    
                     <div class="cooking-layout">
                         <div class="controls-panel">
                             <div class="pill">🔲 Tile <strong id="tileLabel">512×512</strong></div>
-                            <p class="hint">AVA-style seamless tiling. All sprites wrap on the lattice.（基于 AVA 的连续方式，元素在晶格上自动对缝）</p>
+                            <p class="hint">AVA-style seamless tiling. All sprites wrap on the lattice.</p>
 
                             <h2>🔄 Repeat</h2>
                             <div class="row">
                                 <div>
-                                    <label>Tile size（px）<small class="cn">基元尺寸</small></label>
+                                    <label>Tile size (px)</label>
                                     <input id="tileSize" type="number" min="128" step="32" value="512" />
                                 </div>
                                 <div>
-                                    <label>Mode<small class="cn">连续方式</small></label>
+                                    <label>Mode</label>
                                     <select id="repeatMode">
                                         <option value="straight">Straight</option>
                                         <option value="half-drop">Half-Drop</option>
@@ -1248,25 +2225,25 @@
                             </div>
                             <div class="row">
                                 <div>
-                                    <label><input type="checkbox" id="show3x3" checked/> 3×3 Preview <small class="cn">平铺预览</small></label>
+                                    <label><input type="checkbox" id="show3x3" checked/> 3×3 Preview</label>
                                 </div>
                                 <div>
-                                    <label>Preview scale <small class="cn">预览缩放</small></label>
+                                    <label>Preview scale</label>
                                     <input id="previewScale" type="range" min="0.25" max="2" step="0.05" value="1" />
                                 </div>
                             </div>
 
-                            <h2>🥘 Staple & Ingredients（主食与食材）</h2>
+                            <h2>🥘 Staple & Ingredients</h2>
 
                             <details class="layer" id="baseColorCard" open>
-                                <summary>🎨 Base Color <small class="cn">底料颜色</small></summary>
+                                <summary>🎨 Base Color</summary>
                                 <div class="row">
                                     <div>
-                                        <label>🎨 Background Color <small class="cn">背景颜色</small></label>
+                                        <label>🎨 Background Color</label>
                                         <input type="color" id="baseColor" value="#ffffff" />
                                     </div>
                                     <div>
-                                        <label>👁️ Preview <small class="cn">预览</small></label>
+                                        <label>👁️ Preview</label>
                                         <div style="width:100%; height:40px; border:1px solid var(--muted); border-radius:8px; background-color:#ffffff;" id="baseColorPreview"></div>
                                     </div>
                                 </div>
@@ -1344,18 +2321,54 @@
             <!-- Step 5: 成品预览 -->
             <div class="step" id="step5">
                 <div class="step-container">
-                    <h1 class="step-title">🎉 创作完成！</h1>
-                    <p class="step-subtitle">Your Rice Pattern is Ready</p>
-                    
-                    <div class="final-preview">
-                        <div class="final-image" id="final-pattern">
-                            🍚 你的米饭图案
+                    <div class="main-content-panel step5-panel">
+                        <!-- 标题区域 -->
+                        <div class="step5-header">
+                            <h1 class="step5-title">🎉 Creation Complete!</h1>
+                            <p class="step5-subtitle">Your unique pattern is ready</p>
                         </div>
                         
-                        <div class="final-actions">
-                            <button class="btn" onclick="downloadPattern()">💾 下载图案</button>
-                            <button class="btn btn-secondary" onclick="sharePattern()">📤 分享作品</button>
-                            <button class="btn btn-success" onclick="restart()">🔄 重新创作</button>
+                        <!-- 主要内容区域 -->
+                        <div class="step5-content">
+                            <!-- 图案展示区域 -->
+                            <div class="pattern-showcase">
+                                <div class="pattern-main-display">
+                                    <div class="pattern-image-large" id="final-pattern">
+                                        🍚 Your Pattern
+                                    </div>
+                                    <div class="pattern-badge">
+                                        <span class="badge-text">Your Creation</span>
+                                    </div>
+                        </div>
+                        
+                                <!-- 图案信息卡片 -->
+                                <div class="pattern-info-card">
+                                    <div class="info-header">
+                                        <h3>Pattern Details</h3>
+                        </div>
+                                    <div class="info-content" id="pattern-details">
+                                        <!-- 动态填充图案信息 -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 操作区域 -->
+                            <div class="step5-actions">
+                                <div class="action-buttons">
+                                    <button class="btn btn-primary" onclick="downloadPattern()">
+                                        <span class="btn-icon">💾</span>
+                                        <span class="btn-text">Download Pattern</span>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="sharePattern()">
+                                        <span class="btn-icon">📤</span>
+                                        <span class="btn-text">Share Creation</span>
+                                    </button>
+                                    <button class="btn btn-success" onclick="restart()">
+                                        <span class="btn-icon">🔄</span>
+                                        <span class="btn-text">Create New</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1368,6 +2381,7 @@
         let selectedStaple = null;
         let selectedIngredients = [];
         let selectedMethod = null;
+        let selectedProduct = null;
         
         // 主食选择
         function selectStaple(staple) {
@@ -1443,13 +2457,178 @@
             selectedMethod = method;
             
             // 更新UI
-            document.querySelectorAll('.method-card').forEach(card => {
+            document.querySelectorAll('.step2-1-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            event.target.closest('.method-card').classList.add('selected');
+            event.target.closest('.step2-1-card').classList.add('selected');
             
             // 启用下一步按钮
-            document.getElementById('step2-next').disabled = false;
+            document.getElementById('step2-1-next').disabled = false;
+        }
+        
+        // 产品选择
+        function selectProduct(product) {
+            selectedProduct = product;
+            
+            // 更新UI
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.product-card').classList.add('selected');
+            
+            // 启用下一步按钮
+            document.getElementById('step2-2-next').disabled = false;
+        }
+        
+        // Step2子步骤导航
+        function nextSubStep2() {
+            if (selectedMethod) {
+                // 根据选择的烹饪方式生成产品选项
+                generateProductOptions();
+                document.getElementById('step2-1').classList.remove('active');
+                document.getElementById('step2-2').classList.add('active');
+            }
+        }
+        
+        // 根据烹饪方式生成产品选项
+        function generateProductOptions() {
+            console.log('生成产品选项，选择的烹饪方式:', selectedMethod);
+            
+            const productOptions = {
+                'boil': ['placemat', 'apron', 'tablecloth', 'cushion', 'towel', 'blanket', 'pajamas'],
+                'fry': ['placemat', 'apron', 'tablecloth', 'cushion'],
+                'stir-fry': ['placemat', 'apron', 'tablecloth', 'cushion', 'towel', 'pajamas']
+            };
+            
+            const productNames = {
+                'placemat': 'Placemat',
+                'apron': 'Apron', 
+                'tablecloth': 'Tablecloth',
+                'cushion': 'Cushion',
+                'towel': 'Towel',
+                'blanket': 'Blanket',
+                'pajamas': 'Pajamas'
+            };
+            
+            const productImages = {
+                'placemat': '图片素材/餐垫.png',
+                'apron': '图片素材/围裙.png',
+                'tablecloth': '图片素材/桌布.png',
+                'cushion': '图片素材/靠垫.png',
+                'towel': '图片素材/毛巾.png',
+                'blanket': '图片素材/毛毯.png',
+                'pajamas': '图片素材/睡衣.png'
+            };
+            
+            const container = document.getElementById('product-selection-container');
+            const availableProducts = productOptions[selectedMethod] || [];
+            
+            console.log('可用产品:', availableProducts);
+            
+            container.innerHTML = '';
+            
+            // 材质选项
+            const materialOptions = {
+                'placemat': ['Cotton', 'Linen', 'Polyester', 'Bamboo'],
+                'apron': ['Cotton', 'Denim', 'Canvas', 'Polyester'],
+                'tablecloth': ['Cotton', 'Linen', 'Polyester', 'Silk'],
+                'cushion': ['Cotton', 'Velvet', 'Linen', 'Polyester'],
+                'towel': ['Cotton', 'Bamboo', 'Microfiber', 'Linen'],
+                'blanket': ['Cotton', 'Wool', 'Fleece', 'Bamboo'],
+                'pajamas': ['Cotton', 'Silk', 'Bamboo', 'Modal']
+            };
+            
+            availableProducts.forEach(productId => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                // 添加悬停事件
+                productCard.addEventListener('mouseenter', () => {
+                    showMaterialDropdown(productId, productCard);
+                });
+                
+                productCard.addEventListener('mouseleave', () => {
+                    // 延迟隐藏，给用户时间移动到下拉菜单
+                    setTimeout(() => {
+                        hideMaterialDropdown(productCard);
+                    }, 200);
+                });
+                
+                productCard.innerHTML = `
+                    <div class="product-icon">
+                        <img src="${productImages[productId]}" alt="${productNames[productId]}" />
+                    </div>
+                    <div class="product-name">${productNames[productId]}</div>
+                    <div class="material-dropdown" id="dropdown-${productId}">
+                        ${materialOptions[productId].map(material => 
+                            `<div class="material-option" onclick="selectMaterial('${productId}', '${material}')">${material}</div>`
+                        ).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+        }
+        
+        // 材质选择相关变量
+        let selectedMaterial = null;
+        
+        // 切换材质下拉菜单
+        // 悬停显示材质下拉菜单
+        function showMaterialDropdown(productId, productCard) {
+            // 关闭所有其他下拉菜单
+            document.querySelectorAll('.material-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('show');
+            });
+            
+            // 显示当前下拉菜单
+            const dropdown = productCard.querySelector('.material-dropdown');
+            dropdown.classList.add('show');
+        }
+        
+        // 隐藏材质下拉菜单
+        function hideMaterialDropdown(productCard) {
+            const dropdown = productCard.querySelector('.material-dropdown');
+            dropdown.classList.remove('show');
+        }
+        
+        // 选择材质
+        function selectMaterial(productId, material) {
+            selectedProduct = productId;
+            selectedMaterial = material;
+            
+            // 更新产品卡片状态
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            const selectedCard = document.querySelector(`[onclick*="${productId}"]`).parentElement;
+            selectedCard.classList.add('selected');
+            
+            // 更新材质选项状态
+            document.querySelectorAll('.material-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            const selectedOption = document.querySelector(`[onclick*="${material}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+            }
+            
+            // 关闭下拉菜单
+            document.querySelectorAll('.material-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('show');
+            });
+            
+            // 启用下一步按钮
+            document.getElementById('step2-2-next').disabled = false;
+            
+            console.log('选择的产品:', productId, '材质:', material);
+        }
+        
+        function prevSubStep2() {
+            document.getElementById('step2-2').classList.remove('active');
+            document.getElementById('step2-1').classList.add('active');
         }
         
         // 步骤导航
@@ -1468,6 +2647,13 @@
             if (document.getElementById('step1-2').classList.contains('active')) {
                 console.log('In step1-2, calling prevSubStep');
                 prevSubStep();
+                return;
+            }
+            
+            // 检查是否在Step 2-2
+            if (document.getElementById('step2-2').classList.contains('active')) {
+                console.log('In step2-2, calling prevSubStep2');
+                prevSubStep2();
                 return;
             }
             
@@ -1491,9 +2677,14 @@
             // 显示当前步骤
             if (step === 1) {
                 document.getElementById('step1-1').classList.add('active');
+            } else if (step === 2) {
+                document.getElementById('step2-1').classList.add('active');
             } else {
                 document.getElementById(`step${step}`).classList.add('active');
             }
+            
+            // 更新顶部导航状态
+            updateTopNavigation(step);
             
             // 特殊处理
             if (step === 3) {
@@ -1503,6 +2694,16 @@
             } else if (step === 5) {
                 generateFinalPattern();
             }
+        }
+        
+        // 更新顶部导航状态
+        function updateTopNavigation(currentStep) {
+            document.querySelectorAll('.nav-item').forEach((item, index) => {
+                item.classList.remove('active');
+                if (index + 1 === currentStep) {
+                    item.classList.add('active');
+                }
+            });
         }
         
         function updateStepIndicator() {
@@ -1519,39 +2720,75 @@
         // 更新确认页面
         function updateConfirmation() {
             const stapleNames = {
-                'rice': '白米饭',
-                'brown-rice': '糙米饭',
-                'sushi-rice': '寿司米'
+                'rice': 'Rice',
+                'noodles': 'Noodles',
+                'tofu': 'Tofu'
             };
             
             const ingredientNames = {
-                'carrot': '胡萝卜',
-                'broccoli': '西兰花',
-                'chicken': '鸡肉',
-                'beef': '牛肉',
-                'shrimp': '虾仁',
-                'egg': '鸡蛋',
-                'mushroom': '香菇',
-                'peanut': '花生'
+                'onion': 'Onion',
+                'tomato': 'Tomato',
+                'cabbage': 'Cabbage',
+                'bean-sprouts': 'Bean Sprouts',
+                'pepper': 'Pepper',
+                'egg': 'Egg'
             };
             
             const methodNames = {
-                'steam': '蒸煮',
-                'stir-fry': '炒制',
-                'braise': '炖煮'
+                'boil': 'Boil',
+                'stir-fry': 'Stir-fry',
+                'fry': 'Fry'
+            };
+            
+            const productNames = {
+                'placemat': 'Placemat',
+                'apron': 'Apron',
+                'tablecloth': 'Tablecloth',
+                'cushion': 'Cushion',
+                'towel': 'Towel',
+                'blanket': 'Blanket',
+                'pajamas': 'Pajamas'
+            };
+            
+            const stapleImages = {
+                'rice': '图片素材/米饭.png',
+                'noodles': '图片素材/面条.png',
+                'tofu': '图片素材/豆腐.png'
+            };
+            
+            const ingredientImages = {
+                'onion': '图片素材/洋葱.png',
+                'tomato': '图片素材/番茄.png',
+                'cabbage': '图片素材/白菜.png',
+                'bean-sprouts': '图片素材/豆芽.png',
+                'pepper': '图片素材/辣椒.png',
+                'egg': '图片素材/鸡蛋.png'
             };
             
             // 更新主食显示
-            document.getElementById('selected-staple').innerHTML = 
-                `<div class="selected-item">${stapleNames[selectedStaple]}</div>`;
+            document.getElementById('selected-staple').innerHTML = `
+                <div class="card-image">
+                    <img src="${stapleImages[selectedStaple]}" alt="${stapleNames[selectedStaple]}" />
+                </div>
+                <div class="card-name">${stapleNames[selectedStaple]}</div>
+            `;
             
             // 更新配菜显示
-            document.getElementById('selected-ingredients').innerHTML = 
-                selectedIngredients.map(ing => `<div class="selected-item">${ingredientNames[ing]}</div>`).join('');
+            const ingredientsContainer = document.getElementById('selected-ingredients');
+            ingredientsContainer.innerHTML = selectedIngredients.map(ing => `
+                <div class="side-card">
+                    <div class="card-image">
+                        <img src="${ingredientImages[ing]}" alt="${ingredientNames[ing]}" />
+                    </div>
+                    <div class="card-name">${ingredientNames[ing]}</div>
+                </div>
+            `).join('');
             
             // 更新烹饪方式显示
-            document.getElementById('selected-method').innerHTML = 
-                `<div class="selected-item">${methodNames[selectedMethod]}</div>`;
+            document.getElementById('selected-method').textContent = methodNames[selectedMethod];
+            
+            // 更新产品显示
+            document.getElementById('selected-product').textContent = `${productNames[selectedProduct]} (${selectedMaterial})`;
         }
         
         // 设置烹饪控制
@@ -1605,15 +2842,18 @@
                 'tofu': '图片素材/豆腐.png'
             };
             
+            console.log('设置主食图片，选择的主食:', selectedStaple);
+            
             const img = new Image();
-            img.crossOrigin = 'anonymous'; // 解决跨域问题
+            // 移除crossOrigin设置，避免跨域问题
             img.onload = () => {
+                console.log('主食图片加载成功:', selectedStaple, img.src);
                 window.patternState.staple.img = img;
                 genPositions(window.patternState.staple);
                 render();
             };
-            img.onerror = () => {
-                console.error('图片加载失败:', stapleImages[selectedStaple]);
+            img.onerror = (e) => {
+                console.error('主食图片加载失败:', stapleImages[selectedStaple], e);
                 // 如果图片加载失败，创建一个简单的占位符
                 const canvas = document.createElement('canvas');
                 canvas.width = 100;
@@ -1630,6 +2870,7 @@
                 render();
             };
             img.src = stapleImages[selectedStaple] || stapleImages['rice'];
+            console.log('开始加载主食图片:', img.src);
         }
         
         // 设置配菜图片
@@ -1643,17 +2884,20 @@
                 'egg': '图片素材/鸡蛋.png'
             };
             
+            console.log('设置配菜图片，选择的配菜:', selectedIngredients);
+            
             window.patternState.ingredients = selectedIngredients.map((ingredient, index) => {
                 const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}`);
                 const img = new Image();
-                img.crossOrigin = 'anonymous'; // 解决跨域问题
+                // 移除crossOrigin设置，避免跨域问题
                 img.onload = () => {
+                    console.log('配菜图片加载成功:', ingredient, img.src);
                     layer.img = img;
                     genPositions(layer);
                     render();
                 };
-                img.onerror = () => {
-                    console.error('图片加载失败:', ingredientImages[ingredient]);
+                img.onerror = (e) => {
+                    console.error('配菜图片加载失败:', ingredientImages[ingredient], e);
                     // 如果图片加载失败，创建一个简单的占位符
                     const canvas = document.createElement('canvas');
                     canvas.width = 100;
@@ -1670,6 +2914,7 @@
                     render();
                 };
                 img.src = ingredientImages[ingredient] || ingredientImages['onion'];
+                console.log('开始加载配菜图片:', img.src);
                 return layer;
             });
         }
@@ -1952,16 +3197,18 @@
             g.rotate(rotDeg * Math.PI / 180);
             g.filter = blurPx > 0 ? `blur(${blurPx}px)` : 'none';
             
-            // 1) Base image with layer opacity
+            // 简化版本：直接绘制图片
             g.globalAlpha = opacity;
             g.globalCompositeOperation = 'source-over';
             g.drawImage(img, -drawW/2, -drawH/2, drawW, drawH);
             
-            // 2) Colour overlay only on opaque pixels (multiply to preserve shading)
-            const tint = getTintMask(img, color);
-            g.globalAlpha = opacity;
+            // 如果颜色不是白色，应用颜色叠加
+            if (color !== '#ffffff' && color !== '#FFFFFF') {
             g.globalCompositeOperation = 'multiply';
-            g.drawImage(tint, -drawW/2, -drawH/2, drawW, drawH);
+                g.fillStyle = color;
+                g.globalAlpha = 0.3;
+                g.fillRect(-drawW/2, -drawH/2, drawW, drawH);
+            }
             
             g.globalAlpha = 1;
             g.globalCompositeOperation = 'source-over';
@@ -2173,6 +3420,7 @@
         // 生成最终图案
         function generateFinalPattern() {
             const finalPattern = document.getElementById('final-pattern');
+            const patternDetails = document.getElementById('pattern-details');
             
             // 创建最终图案的canvas
             const canvas = document.createElement('canvas');
@@ -2187,21 +3435,32 @@
                 
                 // 绘制到最终canvas
                 ctx.drawImage(cooked, 0, 0, 400, 400);
-            }
             
+                // 清空并添加canvas
             finalPattern.innerHTML = '';
             finalPattern.appendChild(canvas);
             
-            // 添加图案信息
-            const info = document.createElement('div');
-            info.style.cssText = 'text-align: center; margin-top: 20px; font-size: 1.2rem;';
-            info.innerHTML = `
-                你的专属米饭图案<br>
-                <small style="font-size: 0.9rem; opacity: 0.8;">
-                    ${selectedStaple} + ${selectedIngredients.length}种配菜
-                </small>
-            `;
-            finalPattern.appendChild(info);
+                // 更新图案详细信息
+                if (patternDetails) {
+                    const stapleName = stapleNames[selectedStaple] || selectedStaple;
+                    const ingredientNames = selectedIngredients.map(ing => ingredientNames[ing] || ing).join(', ');
+                    const methodName = methodNames[selectedMethod] || selectedMethod;
+                    const productName = productNames[selectedProduct] || selectedProduct;
+                    
+                    patternDetails.innerHTML = `
+                        <div style="margin-bottom: 8px;"><strong>Main Ingredient:</strong> ${stapleName}</div>
+                        <div style="margin-bottom: 8px;"><strong>Side Ingredients:</strong> ${ingredientNames || 'None'}</div>
+                        <div style="margin-bottom: 8px;"><strong>Cooking Method:</strong> ${methodName}</div>
+                        <div><strong>Product:</strong> ${productName}</div>
+                    `;
+                }
+            } else {
+                // 如果没有图案状态，显示默认内容
+                finalPattern.innerHTML = '🍚 Your Pattern';
+                if (patternDetails) {
+                    patternDetails.innerHTML = 'Pattern will be generated based on your selections';
+                }
+            }
         }
         
         // 下载图案
@@ -2291,11 +3550,19 @@
             selectedStaple = null;
             selectedIngredients = [];
             selectedMethod = null;
+            selectedProduct = null;
+            selectedMaterial = null;
             
             // 重置UI
-            document.querySelectorAll('.staple-card, .ingredient-card, .method-card').forEach(card => {
+            document.querySelectorAll('.staple-card, .ingredient-card, .step2-1-card, .product-card').forEach(card => {
                 card.classList.remove('selected');
             });
+            
+            // 清空产品选择容器
+            const productContainer = document.getElementById('product-selection-container');
+            if (productContainer) {
+                productContainer.innerHTML = '';
+            }
             
             // 重置按钮状态
             document.querySelectorAll('.btn').forEach(btn => {
