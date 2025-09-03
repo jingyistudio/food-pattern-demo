@@ -2175,24 +2175,37 @@
                 return;
             }
             
-            // 创建高分辨率canvas用于下载
-            const downloadCanvas = document.createElement('canvas');
-            downloadCanvas.width = window.patternState.W * 2;
-            downloadCanvas.height = window.patternState.H * 2;
-            const ctx = downloadCanvas.getContext('2d');
-            
-            // 渲染图案
-            const base = renderBaseTile();
-            const cooked = applyHeat(base);
-            
-            // 绘制到下载canvas
-            ctx.drawImage(cooked, 0, 0, downloadCanvas.width, downloadCanvas.height);
-            
-            // 创建下载链接
-            const link = document.createElement('a');
-            link.download = `rice-pattern-${Date.now()}.png`;
-            link.href = downloadCanvas.toDataURL('image/png');
-            link.click();
+            try {
+                // 创建高分辨率canvas用于下载
+                const downloadCanvas = document.createElement('canvas');
+                downloadCanvas.width = window.patternState.W * 2;
+                downloadCanvas.height = window.patternState.H * 2;
+                const ctx = downloadCanvas.getContext('2d');
+                
+                // 渲染图案
+                const base = renderBaseTile();
+                const cooked = applyHeat(base);
+                
+                // 绘制到下载canvas
+                ctx.drawImage(cooked, 0, 0, downloadCanvas.width, downloadCanvas.height);
+                
+                // 创建下载链接
+                const link = document.createElement('a');
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                link.download = `米饭图案-${timestamp}.png`;
+                link.href = downloadCanvas.toDataURL('image/png', 1.0);
+                
+                // 触发下载
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // 用户反馈
+                console.log('图案下载成功！');
+            } catch (error) {
+                console.error('下载失败:', error);
+                alert('下载失败，请重试！');
+            }
         }
         
         // 分享作品

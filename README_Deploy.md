@@ -73,7 +73,15 @@ npm run dev
 python3 -m http.server 8000
 ```
 
-### 5. 嵌入 Framer 的 postMessage 自适应高度
+### 5. 图案下载功能
+**功能**：用户完成图案创作后可以下载PNG格式的图案文件
+**实现**：使用Canvas API的`toDataURL()`方法生成高质量PNG图片
+**特点**：
+- 高分辨率输出（2倍原始尺寸）
+- 自动生成带时间戳的文件名
+- 浏览器自动下载，无需额外依赖
+
+### 6. 嵌入 Framer 的 postMessage 自适应高度
 **配置**：在 Framer 中嵌入时，需要处理高度自适应
 
 ```javascript
@@ -103,25 +111,22 @@ window.addEventListener('resize', notifyHeight);
 ## 📁 项目结构
 
 ```
-├── demo.html              # 主应用入口
-├── page4.html             # 图案创作页面
-├── sketch.js              # P5.js 画布代码
+├── demo.html              # 主应用入口（包含所有功能）
 ├── style.css              # 样式文件
 ├── package.json           # 项目配置
 ├── vercel.json            # Vercel 部署配置
-├── 图片素材/              # 静态图片资源
-│   ├── 米饭.png
-│   ├── 面条.png
-│   ├── 豆腐.png
-│   ├── 洋葱.png
-│   ├── 番茄.png
-│   ├── 白菜.png
-│   ├── 豆芽.png
-│   ├── 辣椒.png
-│   └── 鸡蛋.png
-└── libraries/             # 第三方库
-    ├── p5.min.js
-    └── p5.sound.min.js
+├── README_Deploy.md       # 部署指南
+├── .gitignore             # Git忽略文件
+└── 图片素材/              # 静态图片资源
+    ├── 米饭.png
+    ├── 面条.png
+    ├── 豆腐.png
+    ├── 洋葱.png
+    ├── 番茄.png
+    ├── 白菜.png
+    ├── 豆芽.png
+    ├── 辣椒.png
+    └── 鸡蛋.png
 ```
 
 ## 🌐 部署后的访问地址
