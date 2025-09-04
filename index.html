@@ -14,9 +14,10 @@
         body {
             font-family: 'Helvetica', sans-serif;
             background: #FDFBF6;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         
         .app-container {
@@ -63,15 +64,51 @@
             background: #4CAF50;
         }
         
-        /* 顶部导航组件样式 */
+        /* Top Navigation Component Styles */
         .top-navigation {
             background: #FDFBF6;
-            padding: 45px 48px;
+            padding: 12px 48px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 116px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .bottom-navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #FDFBF6;
+            padding: 16px 48px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 9999; /* 提高z-index，确保在最顶层 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            pointer-events: auto;
+        }
+        
+        .bottom-nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .bottom-nav-content .btn {
+            min-width: 100px;
+            height: 40px;
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 6px;
         }
         
         .nav-item {
@@ -79,8 +116,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
+            cursor: default;
             transition: all 0.3s ease;
+            pointer-events: none;
         }
         
         .nav-icon {
@@ -110,6 +148,9 @@
             font-weight: 600;
             line-height: 36px;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .nav-item.active .nav-icon {
@@ -125,26 +166,29 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding: 20px 0;
-            min-height: calc(100vh - 140px);
+            padding: 8px 0 80px 0;
+            height: calc(100vh - 120px);
             width: 100%;
             max-width: 100%;
+            overflow-y: auto;
         }
         
         .step-container {
             background: linear-gradient(135deg, #FEFDFB 0%, #FDFBF6 100%);
             border-radius: 24px;
-            padding: 32px;
+            padding: 24px;
             max-width: 1200px;
             width: 100%;
             box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
             text-align: center;
-            min-height: calc(100vh - 200px);
+            height: calc(100vh - 200px);
+            max-height: calc(100vh - 200px);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 24px;
+            gap: 16px;
             margin: 0 auto;
+            overflow-y: auto;
         }
         
         .step-title {
@@ -157,12 +201,12 @@
         
         .step-subtitle {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #666;
+            color: #9F8A60;
             margin-bottom: 40px;
             font-family: 'Helvetica', sans-serif;
         }
         
-        /* Step 1: 选择主食和配菜 */
+        /* Step 1: Select Staple Food and Side Dishes */
         .selection-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -201,7 +245,7 @@
         }
         
         .staple-card:hover {
-            border-color: #667eea;
+            border-color: #FFA3C0;
             transform: translateY(-3px);
         }
         
@@ -238,7 +282,7 @@
         }
         
         .ingredient-card:hover {
-            border-color: #667eea;
+            border-color: #FFA3C0;
             transform: translateY(-2px);
         }
         
@@ -264,7 +308,7 @@
             margin-bottom: 15px;
         }
         
-        /* Step 2: 选择烹饪方式 */
+        /* Step 2: Select Cooking Method */
         .cooking-methods {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -318,11 +362,11 @@
         
         .method-desc {
             font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-            color: #666;
+            color: #9F8A60;
             font-family: 'Helvetica', sans-serif;
         }
         
-        /* Step 2-1 特殊样式 */
+        /* Step 2-1 Special Styles */
         .step2-1-panel {
             background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
             border-radius: 20px;
@@ -396,7 +440,10 @@
             gap: 12px;
             display: flex;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: cardSlideIn 0.6s ease-out forwards;
         }
         
         .step2-1-card:hover {
@@ -471,7 +518,7 @@
             display: flex;
         }
         
-        /* Step 2-2 样式 */
+        /* Step 2-2 Styles */
         .step2-2-panel {
             background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
             border-radius: 20px;
@@ -538,7 +585,7 @@
             border-radius: 16px;
             padding: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -548,6 +595,9 @@
             height: 120px;
             width: 120px;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: cardSlideIn 0.6s ease-out forwards;
             flex-shrink: 0;
         }
         
@@ -568,7 +618,7 @@
             box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
         }
         
-        /* 材质选择下拉菜单 */
+        /* Material Selection Dropdown */
         .material-dropdown {
             position: absolute;
             top: 100%;
@@ -655,7 +705,7 @@
             display: flex;
         }
         
-        /* Step 3 样式 */
+        /* Step 3 Styles */
         .step3-panel {
             background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
             border-radius: 20px;
@@ -838,11 +888,46 @@
             display: flex;
         }
         
-        /* 响应式设计 */
+        /* Card Animations */
+        @keyframes cardSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Add delayed animations for different cards */
+        .staple-card:nth-child(1) { animation-delay: 0.1s; }
+        .staple-card:nth-child(2) { animation-delay: 0.2s; }
+        .staple-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .ingredient-card:nth-child(1) { animation-delay: 0.1s; }
+        .ingredient-card:nth-child(2) { animation-delay: 0.2s; }
+        .ingredient-card:nth-child(3) { animation-delay: 0.3s; }
+        .ingredient-card:nth-child(4) { animation-delay: 0.4s; }
+        .ingredient-card:nth-child(5) { animation-delay: 0.5s; }
+        .ingredient-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .step2-1-card:nth-child(1) { animation-delay: 0.1s; }
+        .step2-1-card:nth-child(2) { animation-delay: 0.2s; }
+        .step2-1-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Responsive Design */
         @media (max-width: 1200px) {
             .top-navigation {
                 gap: 60px;
-                padding: 30px 24px;
+                padding: 16px 24px;
             }
             
             .nav-item {
@@ -892,11 +977,18 @@
             }
             
             .ingredient-options {
-                max-width: 800px;
-                gap: 14px;
+                max-width: 95%;
+                gap: 20px;
+                height: 240px;
             }
             
-            /* Step 5 响应式 */
+            .ingredient-card {
+                width: 180px;
+                height: 180px;
+                padding: 16px 24px;
+            }
+            
+            /* Step 5 Responsive */
             .step5-title {
                 font-size: 2.2rem;
             }
@@ -915,9 +1007,24 @@
         @media (max-width: 768px) {
             .top-navigation {
                 gap: 20px;
-                padding: 20px 16px;
+                padding: 12px 16px;
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .bottom-navigation {
+                padding: 12px 16px;
+            }
+            
+            .bottom-nav-content {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            
+            .bottom-nav-content .btn {
+                min-width: 80px;
+                height: 36px;
+                font-size: 13px;
             }
             
             .nav-item {
@@ -968,10 +1075,19 @@
             }
             
             .ingredient-options {
-                max-width: 600px;
-                gap: 12px;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, 1fr);
+                max-width: 95%;
+                gap: 15px;
+                height: 200px;
+            }
+            
+            .ingredient-card {
+                width: 150px;
+                height: 150px;
+                padding: 12px 20px;
+            }
+            
+            .ingredient-name {
+                font-size: 18px;
             }
             
             .step2-1-navigation, .step2-2-navigation, .step3-navigation {
@@ -1004,7 +1120,7 @@
                 min-width: 150px;
             }
             
-            /* Step 5 响应式 */
+            /* Step 5 Responsive */
             .step5-title {
                 font-size: 2rem;
             }
@@ -1051,10 +1167,19 @@
             }
             
             .ingredient-options {
-                max-width: 400px;
+                max-width: 95%;
                 gap: 10px;
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(6, 1fr);
+                height: 160px;
+            }
+            
+            .ingredient-card {
+                width: 120px;
+                height: 120px;
+                padding: 10px 16px;
+            }
+            
+            .ingredient-name {
+                font-size: 16px;
             }
             
             .step2-1-panel, .step2-2-panel {
@@ -1062,7 +1187,7 @@
             }
         }
         
-        /* Step 3: 确认食材 */
+        /* Step 3: Confirm Ingredients */
         .confirmation-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1097,7 +1222,7 @@
             font-size: 0.9rem;
         }
         
-        /* Step 4: 烹饪创作页面 */
+        /* Step 4: Cooking Creation Page */
         .cooking-layout {
             display: grid;
             grid-template-columns: 320px 1fr;
@@ -1157,7 +1282,7 @@
         
         .control-value {
             font-size: 0.8rem;
-            color: #666;
+            color: #9F8A60;
             text-align: right;
         }
         
@@ -1203,7 +1328,7 @@
             text-align: center;
         }
         
-        /* Page4 样式 */
+        /* Page4 Styles */
         .pill {
             background: #f0f0f0;
             border-radius: 20px;
@@ -1215,7 +1340,7 @@
         
         .hint {
             font-size: 0.85rem;
-            color: #666;
+            color: #9F8A60;
             margin-bottom: 20px;
             line-height: 1.4;
         }
@@ -1252,7 +1377,7 @@
         }
         
         .controls-panel label small.cn {
-            color: #666;
+            color: #9F8A60;
             font-weight: normal;
         }
         
@@ -1294,7 +1419,7 @@
         .btn.ghost {
             background: transparent;
             border: 1px solid #ddd;
-            color: #666;
+            color: #9F8A60;
             padding: 8px 15px;
             border-radius: 5px;
             cursor: pointer;
@@ -1307,7 +1432,7 @@
             border-color: #999;
         }
         
-        /* Step 1 Figma样式 */
+        /* Step 1 Figma Styles */
         .step-progress {
             text-align: center;
             margin-bottom: 28px;
@@ -1343,7 +1468,7 @@
         }
         
         .progress-line {
-            display: none; /* Figma设计中没有连接线 */
+            display: none; /* No connection lines in Figma design */
         }
         
         .progress-text {
@@ -1357,7 +1482,7 @@
         .main-content-panel {
             background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
             border-radius: 20px;
-            padding: 32px;
+            padding: 24px;
             margin: 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
             position: relative;
@@ -1365,11 +1490,15 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
             align-items: center;
             gap: 24px;
             width: 100%;
             max-width: 100%;
             min-height: calc(100vh - 300px);
+            z-index: 1;
+            pointer-events: auto; /* 确保可以接收点击事件 */
         }
         
         .section-header {
@@ -1426,7 +1555,7 @@
             padding: 20px 30px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid rgba(237, 228, 212, 0.50);
             display: flex;
             flex-direction: column;
@@ -1434,6 +1563,9 @@
             align-items: center;
             gap: 16px;
             flex: 1;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: cardSlideIn 0.6s ease-out forwards;
             max-width: 280px;
         }
         
@@ -1484,14 +1616,14 @@
         }
         
         .staple-description {
-            display: none; /* Figma设计中没有描述文字 */
+            display: none; /* No description text in Figma design */
         }
         
         .btn-primary {
             background: #FE3474;
             color: white;
             border: none;
-            border-radius: 25px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -1500,52 +1632,63 @@
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
             flex-shrink: 0;
+            opacity: 0.5;
         }
         
         .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(254, 52, 116, 0.4);
             background: #E02D66;
+            opacity: 1;
         }
         
         .btn-primary:disabled {
             background: rgba(117, 117, 117, 0.50);
-            cursor: not-allowed;
+            cursor: pointer; /* 改为pointer，确保可以点击 */
             box-shadow: none;
+            opacity: 0.5;
+            pointer-events: auto; /* Allow disabled buttons to receive click events */
         }
         
+        .btn-primary.active {
+            opacity: 1;
+        }
 
         
-        /* 配菜选项样式 - 固定2行3列布局 */
+        
+        /* Side Dish Options Styles - Consistent with Step 1-1 */
         .ingredient-options {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            height: 280px;
             width: 100%;
-            max-width: 1000px;
-            height: auto;
-            min-height: 320px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 16px;
-            margin: 0 auto;
+            max-width: 95%;
             flex-shrink: 0;
-            padding: 0;
+            flex-wrap: wrap;
         }
         
         .ingredient-card {
-            width: 100%;
-            height: 140px;
+            width: 200px;
+            height: 200px;
             background: rgba(254, 253, 251, 0.80);
             border-radius: 16px;
-            padding: 12px;
+            padding: 20px 30px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid rgba(237, 228, 212, 0.50);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
+            flex: 1;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: cardSlideIn 0.6s ease-out forwards;
+            max-width: 200px;
         }
         
         .ingredient-card:hover {
@@ -1561,7 +1704,7 @@
         
         .ingredient-image {
             width: 100%;
-            height: 80px;
+            flex: 1;
             border-radius: 12px;
             overflow: hidden;
             background: linear-gradient(180deg, #F9F4E7 0%, #FDFBF6 100%);
@@ -1569,7 +1712,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 6px;
         }
         
         .ingredient-image img {
@@ -1582,21 +1724,21 @@
         
         .ingredient-info {
             text-align: center;
-            height: auto;
+            height: 28px;
             flex-shrink: 0;
         }
         
         .ingredient-name {
-            font-size: 14px;
+            font-size: 20px;
             font-weight: 400;
             color: #FE3474;
             margin: 0;
             font-family: 'Helvetica', sans-serif;
-            line-height: 1.2;
+            line-height: 28px;
         }
         
         .ingredient-description {
-            display: none; /* Figma设计中没有描述文字 */
+            display: none; /* No description text in Figma design */
         }
         
         .selection-limit {
@@ -1613,32 +1755,39 @@
         }
         
         .btn-secondary {
-            background: #6c757d;
-            color: white;
-            border: none;
+            background: #FDFBF6;
+            color: #FE3474;
+            border: 1px solid #FFA3C0;
             padding: 12px 24px;
             font-size: 14px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
-            border-radius: 25px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
             pointer-events: auto;
             z-index: 10;
             position: relative;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .btn-secondary:hover {
-            background: #5a6268;
+            background: #FFA3C0;
+            color: white;
             transform: translateY(-2px);
-            opacity: 0.8;
+            opacity: 1;
         }
         
         .btn-secondary:active {
             transform: translateY(0);
-            opacity: 1;
+            opacity: 0.8;
+        }
+        
+        .btn-secondary.active {
+            opacity: 1; /* 100%显示 */
+            background: #FDFBF6;
+            color: #FE3474;
         }
         
         .preview-area {
@@ -1665,7 +1814,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: #666;
+            color: #9F8A60;
         }
         
         #preview {
@@ -1675,7 +1824,7 @@
             max-height: 100%;
         }
         
-        /* Step 5: 成品预览样式 - 重新设计 */
+        /* Step 5: Product Preview Styles - Redesigned */
         .step5-panel {
             display: flex;
             flex-direction: column;
@@ -1692,15 +1841,15 @@
         
         .step5-title {
             font-size: 2.4rem;
-            font-weight: 600;
+            font-weight: 400;
             color: #FE3474;
-            margin: 0 0 6px 0;
+            margin: 0 0 13px 0;
             text-shadow: 0 2px 4px rgba(254, 52, 116, 0.1);
         }
         
         .step5-subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: #9F8A60;
             margin: 0;
             font-weight: 400;
         }
@@ -1712,10 +1861,10 @@
         }
         
         .pattern-showcase {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 32px;
-            align-items: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
             min-height: 400px;
         }
         
@@ -1833,9 +1982,11 @@
             gap: 10px;
             padding: 14px 24px;
             min-width: 160px;
+            height: 53px;
             justify-content: center;
             border-radius: 12px;
-            font-weight: 500;
+            font-weight: 400;
+            font-size: 16px;
             transition: all 0.3s ease;
         }
         
@@ -1853,13 +2004,13 @@
             font-weight: 500;
         }
         
-        /* 按钮样式 - 统一Step1风格 */
+        /* Button Styles - Unified Design */
         .btn {
             background: #FE3474;
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 25px;
+            border-radius: 6px;
             font-size: 14px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
@@ -1867,37 +2018,71 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            opacity: 0.5;
+            pointer-events: auto;
         }
         
         .btn:hover:not(:disabled) {
             background: #E02D66;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(254, 52, 116, 0.4);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .btn.active {
+            opacity: 1;
         }
         
         .btn:disabled {
             background: rgba(117, 117, 117, 0.50);
-            cursor: not-allowed;
+            cursor: pointer; /* 改为pointer，确保可以点击 */
             box-shadow: none;
+            pointer-events: auto; /* Allow disabled buttons to receive click events */
         }
         
 
         
         .btn-success {
-            background: linear-gradient(45deg, #43e97b, #38f9d7);
+            background: linear-gradient(135deg, #FFA3C0 0%, #EB8B47 50%, #E98463 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 400;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+        
+        .btn-success:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 163, 192, 0.4);
+            background: linear-gradient(135deg, #FF9BB8 0%, #E67D3A 50%, #E07A56 100%);
+            opacity: 1;
+        }
+        
+        .btn-success.active {
+            opacity: 1;
         }
         
         .navigation {
-            display: flex;
-            justify-content: center;
-            gap: 100px;
-            margin-top: 30px;
-            flex-shrink: 0;
-            width: auto;
-            height: auto;
+            display: none; /* Hide step navigation, use fixed bottom navigation */
         }
         
-        /* 隐藏步骤 */
+        /* Ensure bottom navigation buttons are clickable */
+        .bottom-navigation .btn {
+            pointer-events: auto;
+            cursor: pointer;
+            position: relative;
+            z-index: 10000; /* 确保按钮在最顶层 */
+        }
+        
+        /* Hide steps */
         .step {
             display: none;
         }
@@ -1935,7 +2120,7 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- 顶部导航组件 -->
+        <!-- Top Navigation Component -->
         <div class="top-navigation">
             <div class="nav-item" data-step="1">
                 <div class="nav-icon">1</div>
@@ -1947,26 +2132,26 @@
             </div>
             <div class="nav-item" data-step="3">
                 <div class="nav-icon">3</div>
-                <div class="nav-text">Confirm</div>
+                <div class="nav-text">Confirm Ingredients</div>
             </div>
             <div class="nav-item" data-step="4">
                 <div class="nav-icon">4</div>
-                <div class="nav-text">Cooking</div>
+                <div class="nav-text">Start Cooking</div>
             </div>
             <div class="nav-item" data-step="5">
                 <div class="nav-icon">5</div>
-                <div class="nav-text">Preview</div>
+                <div class="nav-text">Product Preview</div>
             </div>
         </div>
         
         <div class="main-content">
-            <!-- Step 1-1: 选择主食 -->
+            <!-- Step 1-1: Select Staple Food -->
             <div class="step active" id="step1-1">
                 <div class="step-container">
                     <div class="main-content-panel">
                         <div class="section-header">
-                            <h2 class="section-title">Select Main Ingredient</h2>
-                            <p class="section-description">Choose one main ingredient to start your cooking journey</p>
+                            <h2 class="section-title">Select Staple Food</h2>
+                            <p class="section-description">Choose a staple food to start your cooking journey</p>
                         </div>
                         
                         <div class="staple-options">
@@ -2000,7 +2185,7 @@
                     </div>
                     
                     <div class="navigation">
-                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>Select Ingredients</button>
+                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>Select Side Dishes</button>
                     </div>
                 </div>
             </div>
@@ -2010,8 +2195,8 @@
                 <div class="step-container">
                     <div class="main-content-panel">
                         <div class="section-header">
-                            <h2 class="section-title">Select Side Ingredients</h2>
-                            <p class="section-description">Choose up to 3 side ingredients to enrich your dish</p>
+                            <h2 class="section-title">Select Side Dishes</h2>
+                            <p class="section-description">Choose up to 3 side dishes to enrich your dish</p>
                             <div class="selection-limit" id="selection-limit">Selected: 0/3</div>
                         </div>
                         
@@ -2074,7 +2259,7 @@
                     
                     <div class="navigation">
                         <button class="btn btn-secondary" onclick="prevSubStep()">← Back</button>
-                        <button class="btn btn-primary" onclick="nextStep()" id="step1-2-next-btn" disabled>Next Step →</button>
+                        <button class="btn btn-primary" onclick="nextStep()" id="step1-2-next-btn" disabled>Next →</button>
                     </div>
                 </div>
             </div>
@@ -2082,43 +2267,43 @@
             <!-- Step 2-1: Select Cooking Method -->
             <div class="step" id="step2-1">
                 <div class="step-container">
-                    <!-- 主内容区域 -->
+                    <!-- Main content area -->
                     <div class="main-content-panel step2-1-panel">
-                        <!-- 标题区域 -->
+                        <!-- Title area -->
                         <div class="step2-1-header">
-                            <h1 class="step2-1-title">Select Different Cooking Methods</h1>
+                            <h1 class="step2-1-title">Choose Different Cooking Methods</h1>
                             <p class="step2-1-subtitle">Choose One</p>
                     </div>
                     
-                        <!-- 烹饪方式选择区域 -->
+                        <!-- Cooking method selection area -->
                         <div class="cooking-methods-container">
                             <div class="method-card step2-1-card" onclick="selectMethod('boil')">
                                 <div class="method-content">
-                                    <div class="method-technique">Digital Print/Knitting</div>
+                                    <div class="method-technique">Digital Printing/Knitting</div>
                                     <div class="method-name">Boil</div>
-                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                                    <div class="method-description">Like putting ingredients in soup, let the color evenly penetrate the entire fabric.</div>
                             </div>
                             </div>
                             <div class="method-card step2-1-card" onclick="selectMethod('stir-fry')">
                                 <div class="method-content">
-                                    <div class="method-technique">Digital Print+Embroidery</div>
+                                    <div class="method-technique">Digital Printing+Embroidery</div>
                                     <div class="method-name">Stir-fry</div>
-                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                                    <div class="method-description">Like quickly stir-frying in a hot pan, let the color form unique textures on the fabric.</div>
                                 </div>
                             </div>
                             <div class="method-card step2-1-card" onclick="selectMethod('fry')">
                                 <div class="method-content">
                                     <div class="method-technique">Screen Printing</div>
                                     <div class="method-name">Fry</div>
-                                    <div class="method-description">Like putting ingredients into soup, letting colors evenly penetrate the entire fabric.</div>
+                                    <div class="method-description">Like frying ingredients in oil, let the color create rich patterns on the fabric.</div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- 导航按钮 -->
+                        <!-- Navigation buttons -->
                         <div class="navigation step2-1-navigation">
                             <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
-                            <button class="btn btn-primary" onclick="nextSubStep2()" id="step2-1-next" disabled>Next Step →</button>
+                            <button class="btn btn-primary" onclick="nextSubStep2()" id="step2-1-next" disabled>Next →</button>
                             </div>
                             </div>
                             </div>
@@ -2127,23 +2312,23 @@
             <!-- Step 2-2: Select Product -->
             <div class="step" id="step2-2">
                 <div class="step-container">
-                    <!-- 主内容区域 -->
+                    <!-- Main content area -->
                     <div class="main-content-panel step2-2-panel">
-                        <!-- 标题区域 -->
+                        <!-- Title area -->
                         <div class="step2-2-header">
                             <h1 class="step2-2-title">Select Product Type</h1>
                             <p class="step2-2-subtitle">Choose the product you want to create</p>
                         </div>
                         
-                        <!-- 产品选择区域 -->
+                        <!-- Product selection area -->
                         <div class="product-selection-container" id="product-selection-container">
-                            <!-- 动态生成产品选项 -->
+                            <!-- Dynamically generated product options -->
                         </div>
                         
-                        <!-- 导航按钮 -->
+                        <!-- Navigation buttons -->
                         <div class="navigation step2-2-navigation">
                             <button class="btn btn-secondary" onclick="prevSubStep2()">← Previous</button>
-                            <button class="btn btn-primary" onclick="nextStep()" id="step2-2-next" disabled>Next Step →</button>
+                            <button class="btn btn-primary" onclick="nextStep()" id="step2-2-next" disabled>Next →</button>
                         </div>
                     </div>
                 </div>
@@ -2152,18 +2337,18 @@
             <!-- Step 3: Confirm Ingredients -->
             <div class="step" id="step3">
                 <div class="step-container">
-                    <!-- 主内容区域 -->
+                    <!-- Main content area -->
                     <div class="main-content-panel step3-panel">
                         <!-- 标题区域 -->
                         <div class="step3-header">
-                            <h1 class="step3-title">Confirm Ingredients</h1>
+                            <h1 class="step3-title">确认食材</h1>
                         </div>
                         
                         <!-- 确认内容区域 -->
                         <div class="confirmation-content">
                             <!-- 主食区域 -->
                             <div class="confirmation-section-main">
-                                <div class="section-title">Main Ingredient</div>
+                                <div class="section-title">主食</div>
                                 <div class="confirmation-card main-card" id="selected-staple">
                                 <!-- 动态填充 -->
                             </div>
@@ -2171,7 +2356,7 @@
                             
                             <!-- 配菜区域 -->
                             <div class="confirmation-section-side">
-                                <div class="section-title">Side Ingredients</div>
+                                <div class="section-title">配菜</div>
                                 <div class="confirmation-cards-container" id="selected-ingredients">
                                 <!-- 动态填充 -->
                             </div>
@@ -2181,16 +2366,16 @@
                         <!-- 烹饪方式和产品信息 -->
                         <div class="additional-info">
                             <div class="info-item">
-                                <span class="info-label">Cooking Method:</span>
+                                <span class="info-label">烹饪方式:</span>
                                 <span class="info-value" id="selected-method">-</span>
                             </div>
                             <div class="info-item">
-                                <span class="info-label">Product:</span>
+                                <span class="info-label">产品:</span>
                                 <span class="info-value" id="selected-product">-</span>
                         </div>
                     </div>
                     
-                        <!-- 导航按钮 -->
+                        <!-- Navigation buttons -->
                         <div class="navigation step3-navigation">
                             <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
                             <button class="btn btn-primary" onclick="nextStep()">Start Cooking →</button>
@@ -2312,67 +2497,45 @@
                     </div>
                     
                     <div class="navigation">
-                        <button class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
-                        <button class="btn btn-success" onclick="nextStep()">完成创作 →</button>
+                        <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button class="btn btn-success" onclick="nextStep()">Complete Creation →</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 5: 成品预览 -->
+            <!-- Step 5: Product Preview -->
             <div class="step" id="step5">
                 <div class="step-container">
                     <div class="main-content-panel step5-panel">
-                        <!-- 标题区域 -->
+                        <!-- Title area -->
                         <div class="step5-header">
-                            <h1 class="step5-title">🎉 Creation Complete!</h1>
-                            <p class="step5-subtitle">Your unique pattern is ready</p>
+                            <h1 class="step5-title">Creation Complete</h1>
+                            <p class="step5-subtitle">View your unique pattern product</p>
                         </div>
                         
-                        <!-- 主要内容区域 -->
+                        <!-- Main content area -->
                         <div class="step5-content">
-                            <!-- 图案展示区域 -->
+                            <!-- Pattern display area -->
                             <div class="pattern-showcase">
                                 <div class="pattern-main-display">
                                     <div class="pattern-image-large" id="final-pattern">
                                         🍚 Your Pattern
                                     </div>
-                                    <div class="pattern-badge">
-                                        <span class="badge-text">Your Creation</span>
                                     </div>
                         </div>
                         
-                                <!-- 图案信息卡片 -->
-                                <div class="pattern-info-card">
-                                    <div class="info-header">
-                                        <h3>Pattern Details</h3>
+                            <!-- 操作区域 - 移除重复按钮，使用底部导航 -->
                         </div>
-                                    <div class="info-content" id="pattern-details">
-                                        <!-- 动态填充图案信息 -->
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- 操作区域 -->
-                            <div class="step5-actions">
-                                <div class="action-buttons">
-                                    <button class="btn btn-primary" onclick="downloadPattern()">
-                                        <span class="btn-icon">💾</span>
-                                        <span class="btn-text">Download Pattern</span>
-                                    </button>
-                                    <button class="btn btn-secondary" onclick="sharePattern()">
-                                        <span class="btn-icon">📤</span>
-                                        <span class="btn-text">Share Creation</span>
-                                    </button>
-                                    <button class="btn btn-success" onclick="restart()">
-                                        <span class="btn-icon">🔄</span>
-                                        <span class="btn-text">Create New</span>
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Fixed Bottom Navigation Bar -->
+    <div class="bottom-navigation" id="bottom-navigation">
+        <div class="bottom-nav-content">
+            <!-- Navigation buttons will be dynamically inserted here -->
         </div>
     </div>
 
@@ -2385,13 +2548,22 @@
         
         // 主食选择
         function selectStaple(staple) {
+            console.log('selectStaple called with:', staple);
             selectedStaple = staple;
             
             // 更新UI
             document.querySelectorAll('.staple-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            event.target.closest('.staple-card').classList.add('selected');
+            
+            // 找到对应的卡片并添加选中状态
+            const cards = document.querySelectorAll('.staple-card');
+            cards.forEach(card => {
+                const onclickStr = card.getAttribute('onclick');
+                if (onclickStr && onclickStr.includes(staple)) {
+                    card.classList.add('selected');
+                }
+            });
             
             // 检查是否可以进入下一步
             checkStep1Complete();
@@ -2399,16 +2571,24 @@
         
         // 配菜选择
         function selectIngredient(ingredient) {
-            const card = event.target.closest('.ingredient-card');
+            // 找到对应的卡片
+            const cards = document.querySelectorAll('.ingredient-card');
+            let targetCard = null;
+            cards.forEach(card => {
+                const onclickStr = card.getAttribute('onclick');
+                if (onclickStr && onclickStr.includes(ingredient)) {
+                    targetCard = card;
+                }
+            });
             
             if (selectedIngredients.includes(ingredient)) {
                 // 取消选择
                 selectedIngredients = selectedIngredients.filter(item => item !== ingredient);
-                card.classList.remove('selected');
+                if (targetCard) targetCard.classList.remove('selected');
             } else if (selectedIngredients.length < 3) {
                 // 添加选择
                 selectedIngredients.push(ingredient);
-                card.classList.add('selected');
+                if (targetCard) targetCard.classList.add('selected');
             }
             
             // 更新选择计数
@@ -2421,20 +2601,76 @@
         // 检查第一步是否完成
         function checkStep1Complete() {
             const isComplete = selectedStaple !== null;
-            document.getElementById('step1-1-next-btn').disabled = !isComplete;
+            
+            // 更新HTML中的原始按钮
+            const originalBtn = document.getElementById('step1-1-next-btn');
+            if (originalBtn) {
+                originalBtn.disabled = !isComplete;
+                if (isComplete) {
+                    originalBtn.classList.add('active');
+                } else {
+                    originalBtn.classList.remove('active');
+                }
+            }
+            
+            // 更新底部导航中的按钮
+            const bottomBtn = document.querySelector('.bottom-nav-content #step1-1-next-btn');
+            if (bottomBtn) {
+                bottomBtn.disabled = !isComplete;
+                if (isComplete) {
+                    bottomBtn.classList.add('active');
+                } else {
+                    bottomBtn.classList.remove('active');
+                }
+            }
+            
+            console.log('Step1 complete check:', isComplete, 'selectedStaple:', selectedStaple);
         }
         
         // 检查第一步配菜是否完成
         function checkStep1IngredientComplete() {
             const isComplete = selectedIngredients.length > 0;
-            document.getElementById('step1-2-next-btn').disabled = !isComplete;
+            
+            // 更新HTML中的原始按钮
+            const originalBtn = document.getElementById('step1-2-next-btn');
+            if (originalBtn) {
+                originalBtn.disabled = !isComplete;
+                if (isComplete) {
+                    originalBtn.classList.add('active');
+                } else {
+                    originalBtn.classList.remove('active');
+                }
+            }
+            
+            // 更新底部导航中的按钮
+            const bottomBtn = document.querySelector('.bottom-nav-content #step1-2-next-btn');
+            if (bottomBtn) {
+                bottomBtn.disabled = !isComplete;
+                if (isComplete) {
+                    bottomBtn.classList.add('active');
+                } else {
+                    bottomBtn.classList.remove('active');
+                }
+            }
+            
+            console.log('Step1-2 complete check:', isComplete, 'selectedIngredients:', selectedIngredients.length);
+            console.log('Original button disabled:', originalBtn ? originalBtn.disabled : 'not found');
+            console.log('Bottom button disabled:', bottomBtn ? bottomBtn.disabled : 'not found');
         }
         
         // 下一步子步骤
         function nextSubStep() {
+            console.log('nextSubStep called, selectedStaple:', selectedStaple);
             if (selectedStaple) {
                 document.getElementById('step1-1').classList.remove('active');
                 document.getElementById('step1-2').classList.add('active');
+                currentStep = 1; // Step1-2仍然属于Step1
+                updateTopNavigation(currentStep);
+                updateBottomNavigation();
+                updateButtonStates();
+                console.log('Successfully moved to step1-2');
+            } else {
+                console.log('Cannot proceed: no staple selected');
             }
         }
         
@@ -2443,13 +2679,15 @@
             console.log('prevSubStep called');
             document.getElementById('step1-2').classList.remove('active');
             document.getElementById('step1-1').classList.add('active');
+            currentStep = 1;
+            updateBottomNavigation();
         }
         
         // 更新选择限制显示
         function updateSelectionLimit() {
             const limit = document.getElementById('selection-limit');
             limit.textContent = `已选择: ${selectedIngredients.length}/3`;
-            limit.style.color = selectedIngredients.length >= 3 ? '#ff6b6b' : '#666';
+                            limit.style.color = selectedIngredients.length >= 3 ? '#ff6b6b' : '#9F8A60';
         }
         
         // 烹饪方式选择
@@ -2460,39 +2698,59 @@
             document.querySelectorAll('.step2-1-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            event.target.closest('.step2-1-card').classList.add('selected');
+            
+            // 找到对应的卡片并添加选中状态
+            const cards = document.querySelectorAll('.step2-1-card');
+            cards.forEach(card => {
+                const onclickStr = card.getAttribute('onclick');
+                if (onclickStr && onclickStr.includes(method)) {
+                    card.classList.add('selected');
+                }
+            });
             
             // 启用下一步按钮
-            document.getElementById('step2-1-next').disabled = false;
+            const originalBtn = document.getElementById('step2-1-next');
+            if (originalBtn) {
+                originalBtn.disabled = false;
+                originalBtn.classList.add('active');
+            }
+            
+            // 更新底部导航中的按钮
+            const bottomBtn = document.querySelector('.bottom-nav-content #step2-1-next-btn');
+            if (bottomBtn) {
+                bottomBtn.disabled = false;
+                bottomBtn.classList.add('active');
+            }
+            
+            // 同时更新按钮状态检查
+            updateButtonStates();
+            
+            console.log('Method selected:', method, 'button enabled');
         }
         
-        // 产品选择
-        function selectProduct(product) {
-            selectedProduct = product;
-            
-            // 更新UI
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.target.closest('.product-card').classList.add('selected');
-            
-            // 启用下一步按钮
-            document.getElementById('step2-2-next').disabled = false;
-        }
+
         
         // Step2子步骤导航
         function nextSubStep2() {
+            console.log('nextSubStep2 called, selectedMethod:', selectedMethod);
             if (selectedMethod) {
+                console.log('Jumping from step2-1 to step2-2');
                 // 根据选择的烹饪方式生成产品选项
                 generateProductOptions();
                 document.getElementById('step2-1').classList.remove('active');
                 document.getElementById('step2-2').classList.add('active');
+                currentStep = 2; // Step2-2仍然属于Step2
+                updateTopNavigation(currentStep);
+                updateBottomNavigation();
+                updateButtonStates();
+            } else {
+                console.log('Cannot proceed: no method selected');
             }
         }
         
         // 根据烹饪方式生成产品选项
         function generateProductOptions() {
-            console.log('生成产品选项，选择的烹饪方式:', selectedMethod);
+            console.log('Generating product options, selected cooking method:', selectedMethod);
             
             const productOptions = {
                 'boil': ['placemat', 'apron', 'tablecloth', 'cushion', 'towel', 'blanket', 'pajamas'],
@@ -2501,13 +2759,13 @@
             };
             
             const productNames = {
-                'placemat': 'Placemat',
-                'apron': 'Apron', 
-                'tablecloth': 'Tablecloth',
-                'cushion': 'Cushion',
-                'towel': 'Towel',
-                'blanket': 'Blanket',
-                'pajamas': 'Pajamas'
+                'placemat': '餐垫',
+                'apron': '围裙', 
+                'tablecloth': '桌布',
+                'cushion': '靠垫',
+                'towel': '毛巾',
+                'blanket': '毛毯',
+                'pajamas': '睡衣'
             };
             
             const productImages = {
@@ -2523,19 +2781,19 @@
             const container = document.getElementById('product-selection-container');
             const availableProducts = productOptions[selectedMethod] || [];
             
-            console.log('可用产品:', availableProducts);
+            console.log('Available products:', availableProducts);
             
             container.innerHTML = '';
             
             // 材质选项
             const materialOptions = {
-                'placemat': ['Cotton', 'Linen', 'Polyester', 'Bamboo'],
-                'apron': ['Cotton', 'Denim', 'Canvas', 'Polyester'],
-                'tablecloth': ['Cotton', 'Linen', 'Polyester', 'Silk'],
-                'cushion': ['Cotton', 'Velvet', 'Linen', 'Polyester'],
-                'towel': ['Cotton', 'Bamboo', 'Microfiber', 'Linen'],
-                'blanket': ['Cotton', 'Wool', 'Fleece', 'Bamboo'],
-                'pajamas': ['Cotton', 'Silk', 'Bamboo', 'Modal']
+                'placemat': ['棉质', '亚麻', '聚酯', '竹纤维'],
+                'apron': ['棉质', '牛仔', '帆布', '聚酯'],
+                'tablecloth': ['棉质', '亚麻', '聚酯', '丝绸'],
+                'cushion': ['棉质', '天鹅绒', '亚麻', '聚酯'],
+                'towel': ['棉质', '竹纤维', '超细纤维', '亚麻'],
+                'blanket': ['棉质', '羊毛', '法兰绒', '竹纤维'],
+                'pajamas': ['棉质', '丝绸', '竹纤维', '莫代尔']
             };
             
             availableProducts.forEach(productId => {
@@ -2597,45 +2855,108 @@
             selectedProduct = productId;
             selectedMaterial = material;
             
+            console.log('selectMaterial called with productId:', productId, 'material:', material);
+            
             // 更新产品卡片状态
             document.querySelectorAll('.product-card').forEach(card => {
                 card.classList.remove('selected');
             });
             
-            const selectedCard = document.querySelector(`[onclick*="${productId}"]`).parentElement;
-            selectedCard.classList.add('selected');
+            // 找到对应的产品卡片
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const dropdown = card.querySelector('.material-dropdown');
+                if (dropdown && dropdown.id === `dropdown-${productId}`) {
+                    card.classList.add('selected');
+                }
+            });
             
             // 更新材质选项状态
             document.querySelectorAll('.material-option').forEach(option => {
                 option.classList.remove('selected');
             });
             
-            const selectedOption = document.querySelector(`[onclick*="${material}"]`);
-            if (selectedOption) {
-                selectedOption.classList.add('selected');
-            }
+            // 找到对应的材质选项
+            const materialOptions = document.querySelectorAll('.material-option');
+            materialOptions.forEach(option => {
+                const onclickStr = option.getAttribute('onclick');
+                if (onclickStr && onclickStr.includes(material)) {
+                    option.classList.add('selected');
+                }
+            });
             
             // 关闭下拉菜单
             document.querySelectorAll('.material-dropdown').forEach(dropdown => {
                 dropdown.classList.remove('show');
             });
             
-            // 启用下一步按钮
-            document.getElementById('step2-2-next').disabled = false;
+            // 更新按钮状态 - 同时更新原始按钮和底部导航按钮
+            updateStep2_2ButtonState();
             
-            console.log('选择的产品:', productId, '材质:', material);
+            console.log('Selected product:', productId, 'material:', material, 'selectedProduct:', selectedProduct);
+        }
+        
+        // 更新Step2-2按钮状态
+        function updateStep2_2ButtonState() {
+            console.log('updateStep2_2ButtonState called, selectedProduct:', selectedProduct);
+            
+            // 更新原始HTML中的按钮
+            const originalBtn = document.getElementById('step2-2-next');
+            if (originalBtn) {
+                originalBtn.disabled = !selectedProduct;
+                if (selectedProduct) {
+                    originalBtn.classList.add('active');
+                    console.log('Original step2-2 button enabled and active');
+                } else {
+                    originalBtn.classList.remove('active');
+                    console.log('Original step2-2 button disabled');
+                }
+            } else {
+                console.log('Original step2-2 button not found');
+            }
+            
+            // 更新底部导航中的按钮
+            const bottomBtn = document.getElementById('step2-2-next-btn');
+            if (bottomBtn) {
+                bottomBtn.disabled = !selectedProduct;
+                if (selectedProduct) {
+                    bottomBtn.classList.add('active');
+                    console.log('Bottom step2-2 button enabled and active');
+                } else {
+                    bottomBtn.classList.remove('active');
+                    console.log('Bottom step2-2 button disabled');
+                }
+            } else {
+                console.log('Bottom step2-2 button not found');
+            }
         }
         
         function prevSubStep2() {
             document.getElementById('step2-2').classList.remove('active');
             document.getElementById('step2-1').classList.add('active');
+            currentStep = 3;
+            updateBottomNavigation();
         }
         
         // 步骤导航
         function nextStep() {
+            console.log('nextStep called, currentStep:', currentStep);
             if (currentStep < 5) {
-                currentStep++;
-                showStep(currentStep);
+                // 检查当前是否在Step1-2
+                if (document.getElementById('step1-2').classList.contains('active')) {
+                    console.log('Jumping from step1-2 to step2-1');
+                    // 从Step1-2到Step2-1
+                    document.getElementById('step1-2').classList.remove('active');
+                    document.getElementById('step2-1').classList.add('active');
+                    currentStep = 2;
+                    updateTopNavigation(currentStep);
+                    updateBottomNavigation();
+                    updateButtonStates();
+                } else {
+                    console.log('Normal step progression');
+                    currentStep++;
+                    showStep(currentStep);
+                }
                 updateStepIndicator();
             }
         }
@@ -2657,6 +2978,35 @@
                 return;
             }
             
+            // 检查是否在Step 3 - 应该返回到Step 2-2
+            if (document.getElementById('step3').classList.contains('active')) {
+                console.log('In step3, going to step2-2');
+                currentStep = 2;
+                document.getElementById('step3').classList.remove('active');
+                document.getElementById('step2-2').classList.add('active');
+                updateTopNavigation(2);
+                return;
+            }
+            
+            // 检查是否在Step 2-1 - 应该返回到Step 1-2
+            if (document.getElementById('step2-1').classList.contains('active')) {
+                console.log('In step2-1, going to step1-2');
+                currentStep = 1;
+                document.getElementById('step2-1').classList.remove('active');
+                document.getElementById('step1-2').classList.add('active');
+                updateTopNavigation(1);
+                return;
+            }
+            
+            // 检查是否在Step 5 - 应该返回到Step 4
+            if (document.getElementById('step5').classList.contains('active')) {
+                console.log('In step5, going to step4');
+                currentStep = 4;
+                showStep(4);
+                updateStepIndicator();
+                return;
+            }
+            
             // 正常的上一步逻辑
             if (currentStep > 1) {
                 console.log('Going to previous step');
@@ -2669,6 +3019,8 @@
         }
         
         function showStep(step) {
+            console.log('showStep called with step:', step);
+            
             // 隐藏所有步骤
             document.querySelectorAll('.step').forEach(s => {
                 s.classList.remove('active');
@@ -2676,15 +3028,26 @@
             
             // 显示当前步骤
             if (step === 1) {
+                // Step1默认显示step1-1
                 document.getElementById('step1-1').classList.add('active');
+                currentStep = 1;
             } else if (step === 2) {
+                // Step2默认显示step2-1
                 document.getElementById('step2-1').classList.add('active');
+                currentStep = 2;
             } else {
                 document.getElementById(`step${step}`).classList.add('active');
+                currentStep = step;
             }
             
+            console.log('Current step set to:', currentStep);
+            
             // 更新顶部导航状态
-            updateTopNavigation(step);
+            updateTopNavigation(currentStep);
+            
+            // 更新底部导航栏
+            updateBottomNavigation();
+            updateButtonStates();
             
             // 特殊处理
             if (step === 3) {
@@ -2698,12 +3061,35 @@
         
         // 更新顶部导航状态
         function updateTopNavigation(currentStep) {
+            console.log('updateTopNavigation called with currentStep:', currentStep);
+            
             document.querySelectorAll('.nav-item').forEach((item, index) => {
                 item.classList.remove('active');
-                if (index + 1 === currentStep) {
+                
+                // 根据当前步骤设置激活状态（累积式显示）
+                if (currentStep >= 1 && index === 0) {
+                    // 步骤1：总是激活
+                    item.classList.add('active');
+                }
+                if (currentStep >= 2 && index === 1) {
+                    // 步骤2：当currentStep >= 2时激活
+                    item.classList.add('active');
+                }
+                if (currentStep >= 3 && index === 2) {
+                    // 步骤3：当currentStep >= 3时激活
+                    item.classList.add('active');
+                }
+                if (currentStep >= 4 && index === 3) {
+                    // 步骤4：当currentStep >= 4时激活
+                    item.classList.add('active');
+                }
+                if (currentStep >= 5 && index === 4) {
+                    // 步骤5：当currentStep >= 5时激活
                     item.classList.add('active');
                 }
             });
+            
+            console.log('Top navigation updated for step:', currentStep);
         }
         
         function updateStepIndicator() {
@@ -2720,34 +3106,34 @@
         // 更新确认页面
         function updateConfirmation() {
             const stapleNames = {
-                'rice': 'Rice',
-                'noodles': 'Noodles',
-                'tofu': 'Tofu'
+                'rice': '米饭',
+                'noodles': '面条',
+                'tofu': '豆腐'
             };
             
             const ingredientNames = {
-                'onion': 'Onion',
-                'tomato': 'Tomato',
-                'cabbage': 'Cabbage',
-                'bean-sprouts': 'Bean Sprouts',
-                'pepper': 'Pepper',
-                'egg': 'Egg'
+                'onion': '洋葱',
+                'tomato': '番茄',
+                'cabbage': '白菜',
+                'bean-sprouts': '豆芽',
+                'pepper': '辣椒',
+                'egg': '鸡蛋'
             };
             
             const methodNames = {
-                'boil': 'Boil',
-                'stir-fry': 'Stir-fry',
-                'fry': 'Fry'
+                'boil': '煮',
+                'stir-fry': '炒',
+                'fry': '煎'
             };
             
             const productNames = {
-                'placemat': 'Placemat',
-                'apron': 'Apron',
-                'tablecloth': 'Tablecloth',
-                'cushion': 'Cushion',
-                'towel': 'Towel',
-                'blanket': 'Blanket',
-                'pajamas': 'Pajamas'
+                'placemat': '餐垫',
+                'apron': '围裙',
+                'tablecloth': '桌布',
+                'cushion': '靠垫',
+                'towel': '毛巾',
+                'blanket': '毛毯',
+                'pajamas': '睡衣'
             };
             
             const stapleImages = {
@@ -2842,12 +3228,12 @@
                 'tofu': '图片素材/豆腐.png'
             };
             
-            console.log('设置主食图片，选择的主食:', selectedStaple);
+            console.log('Setting staple food image, selected staple:', selectedStaple);
             
             const img = new Image();
             // 移除crossOrigin设置，避免跨域问题
             img.onload = () => {
-                console.log('主食图片加载成功:', selectedStaple, img.src);
+                console.log('Staple food image loaded successfully:', selectedStaple, img.src);
                 window.patternState.staple.img = img;
                 genPositions(window.patternState.staple);
                 render();
@@ -2870,7 +3256,7 @@
                 render();
             };
             img.src = stapleImages[selectedStaple] || stapleImages['rice'];
-            console.log('开始加载主食图片:', img.src);
+            console.log('Starting to load staple food image:', img.src);
         }
         
         // 设置配菜图片
@@ -2884,14 +3270,14 @@
                 'egg': '图片素材/鸡蛋.png'
             };
             
-            console.log('设置配菜图片，选择的配菜:', selectedIngredients);
+            console.log('Setting ingredient images, selected ingredients:', selectedIngredients);
             
             window.patternState.ingredients = selectedIngredients.map((ingredient, index) => {
                 const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}`);
                 const img = new Image();
                 // 移除crossOrigin设置，避免跨域问题
                 img.onload = () => {
-                    console.log('配菜图片加载成功:', ingredient, img.src);
+                    console.log('Ingredient image loaded successfully:', ingredient, img.src);
                     layer.img = img;
                     genPositions(layer);
                     render();
@@ -2914,7 +3300,7 @@
                     render();
                 };
                 img.src = ingredientImages[ingredient] || ingredientImages['onion'];
-                console.log('开始加载配菜图片:', img.src);
+                console.log('Starting to load ingredient image:', img.src);
                 return layer;
             });
         }
@@ -3197,6 +3583,10 @@
             g.rotate(rotDeg * Math.PI / 180);
             g.filter = blurPx > 0 ? `blur(${blurPx}px)` : 'none';
             
+            // 启用高质量图像平滑
+            g.imageSmoothingEnabled = true;
+            g.imageSmoothingQuality = 'high';
+            
             // 简化版本：直接绘制图片
             g.globalAlpha = opacity;
             g.globalCompositeOperation = 'source-over';
@@ -3272,6 +3662,10 @@
             base.height = window.patternState.H;
             const b = base.getContext('2d');
             
+            // 启用高质量渲染
+            b.imageSmoothingEnabled = true;
+            b.imageSmoothingQuality = 'high';
+            
             b.fillStyle = window.patternState.baseColor;
             b.fillRect(0, 0, window.patternState.W, window.patternState.H);
             
@@ -3344,20 +3738,31 @@
             const W = window.patternState.W;
             const H = window.patternState.H;
             
-            // 动态设置canvas尺寸
+            // 获取设备像素比，提高清晰度
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            
+            // 动态设置canvas尺寸 - 提高最大尺寸限制
             const container = canvas.parentElement;
             const containerRect = container.getBoundingClientRect();
             const maxSize = Math.min(containerRect.width - 40, containerRect.height - 100);
-            const canvasSize = Math.min(maxSize, 400);
+            const canvasSize = Math.min(maxSize, 800); // 从400提高到800
             
-            canvas.width = canvasSize;
-            canvas.height = canvasSize;
+            // 设置canvas的实际尺寸（考虑设备像素比）
+            canvas.width = canvasSize * devicePixelRatio;
+            canvas.height = canvasSize * devicePixelRatio;
+            
+            // 设置canvas的CSS尺寸
+            canvas.style.width = canvasSize + 'px';
+            canvas.style.height = canvasSize + 'px';
+            
+            // 缩放上下文以匹配设备像素比
+            ctx.scale(devicePixelRatio, devicePixelRatio);
             
             const base = renderBaseTile();
             const cooked = applyHeat(base);
             
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+            ctx.clearRect(0, 0, canvasSize, canvasSize);
             ctx.scale(scale, scale);
             
             function drawCell(g, img, ox, oy) {
@@ -3422,10 +3827,17 @@
             const finalPattern = document.getElementById('final-pattern');
             const patternDetails = document.getElementById('pattern-details');
             
-            // 创建最终图案的canvas
+            // 创建最终图案的canvas - 使用高清分辨率
             const canvas = document.createElement('canvas');
-            canvas.width = 400;
-            canvas.height = 400;
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            const baseSize = 600; // 提高基础尺寸
+            const canvasSize = baseSize * devicePixelRatio;
+            
+            canvas.width = canvasSize;
+            canvas.height = canvasSize;
+            canvas.style.width = baseSize + 'px';
+            canvas.style.height = baseSize + 'px';
+            
             const ctx = canvas.getContext('2d');
             
             // 渲染最终图案
@@ -3433,8 +3845,13 @@
                 const base = renderBaseTile();
                 const cooked = applyHeat(base);
                 
-                // 绘制到最终canvas
-                ctx.drawImage(cooked, 0, 0, 400, 400);
+                // 缩放上下文以匹配设备像素比
+                ctx.scale(devicePixelRatio, devicePixelRatio);
+                
+                // 绘制到最终canvas - 使用高质量缩放
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(cooked, 0, 0, baseSize, baseSize);
             
                 // 清空并添加canvas
             finalPattern.innerHTML = '';
@@ -3448,17 +3865,17 @@
                     const productName = productNames[selectedProduct] || selectedProduct;
                     
                     patternDetails.innerHTML = `
-                        <div style="margin-bottom: 8px;"><strong>Main Ingredient:</strong> ${stapleName}</div>
-                        <div style="margin-bottom: 8px;"><strong>Side Ingredients:</strong> ${ingredientNames || 'None'}</div>
-                        <div style="margin-bottom: 8px;"><strong>Cooking Method:</strong> ${methodName}</div>
-                        <div><strong>Product:</strong> ${productName}</div>
+                        <div style="margin-bottom: 8px;"><strong>主食:</strong> ${stapleName}</div>
+                        <div style="margin-bottom: 8px;"><strong>配菜:</strong> ${ingredientNames || '无'}</div>
+                        <div style="margin-bottom: 8px;"><strong>烹饪方式:</strong> ${methodName}</div>
+                        <div><strong>产品:</strong> ${productName}</div>
                     `;
                 }
             } else {
                 // 如果没有图案状态，显示默认内容
-                finalPattern.innerHTML = '🍚 Your Pattern';
+                finalPattern.innerHTML = '🍚 您的图案';
                 if (patternDetails) {
-                    patternDetails.innerHTML = 'Pattern will be generated based on your selections';
+                    patternDetails.innerHTML = '图案将根据您的选择生成';
                 }
             }
         }
@@ -3466,31 +3883,36 @@
         // 下载图案
         function downloadPattern() {
             if (!window.patternState) {
-                alert('请先生成图案！');
+                alert('Please generate a pattern first!');
                 return;
             }
             
             try {
-                console.log('开始下载图案...');
+                console.log('Starting to download pattern...');
                 
-                // 创建高分辨率canvas用于下载
+                // 创建超高分辨率canvas用于下载
                 const downloadCanvas = document.createElement('canvas');
-                downloadCanvas.width = window.patternState.W * 2;
-                downloadCanvas.height = window.patternState.H * 2;
+                const downloadScale = 4; // 提高下载分辨率倍数
+                downloadCanvas.width = window.patternState.W * downloadScale;
+                downloadCanvas.height = window.patternState.H * downloadScale;
                 const ctx = downloadCanvas.getContext('2d');
                 
-                console.log('Canvas尺寸:', downloadCanvas.width, 'x', downloadCanvas.height);
+                // 启用高质量图像平滑
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                
+                console.log('Canvas size:', downloadCanvas.width, 'x', downloadCanvas.height);
                 
                 // 渲染图案
                 const base = renderBaseTile();
                 const cooked = applyHeat(base);
                 
-                console.log('图案渲染完成');
+                console.log('Pattern rendering completed');
                 
-                // 绘制到下载canvas
+                // 绘制到下载canvas - 使用高质量缩放
                 ctx.drawImage(cooked, 0, 0, downloadCanvas.width, downloadCanvas.height);
                 
-                console.log('图案绘制到下载canvas完成');
+                console.log('Pattern drawn to download canvas completed');
                 
                 // 检查canvas是否有内容
                 const imageData = ctx.getImageData(0, 0, downloadCanvas.width, downloadCanvas.height);
@@ -3503,14 +3925,14 @@
                 // 创建下载链接
                 const link = document.createElement('a');
                 const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-                link.download = `米饭图案-${timestamp}.png`;
+                link.download = `rice-pattern-${timestamp}.png`;
                 
                 // 生成DataURL
                 const dataURL = downloadCanvas.toDataURL('image/png', 1.0);
-                console.log('DataURL生成成功，长度:', dataURL.length);
+                console.log('DataURL generated successfully, length:', dataURL.length);
                 
                 if (dataURL === 'data:,') {
-                    throw new Error('Canvas内容为空，无法生成图片');
+                    throw new Error('Canvas content is empty, cannot generate image');
                 }
                 
                 link.href = dataURL;
@@ -3521,13 +3943,13 @@
                 document.body.removeChild(link);
                 
                 // 用户反馈
-                console.log('图案下载成功！');
-                alert('图案下载成功！');
+                console.log('Pattern download successful!');
+                alert('Pattern download successful!');
                 
             } catch (error) {
-                console.error('下载失败:', error);
-                console.error('错误详情:', error.message);
-                alert(`下载失败: ${error.message}\n\n请确保：\n1. 使用HTTP服务器访问（不是直接打开文件）\n2. 图片资源正确加载\n3. 浏览器支持Canvas下载功能`);
+                console.error('Download failed:', error);
+                console.error('Error details:', error.message);
+                alert(`Download failed: ${error.message}\n\nPlease ensure:\n1. Access via HTTP server (not directly opening file)\n2. Image resources loaded correctly\n3. Browser supports Canvas download functionality`);
             }
         }
         
@@ -3535,12 +3957,12 @@
         function sharePattern() {
             if (navigator.share) {
                 navigator.share({
-                    title: '我的米饭图案作品',
-                    text: '使用烹饪图案生成器创作的独特设计！',
+                    title: 'My Rice Pattern Creation',
+                    text: 'Unique design created with Cooking Pattern Generator!',
                     url: window.location.href
                 });
             } else {
-                alert('分享功能需要现代浏览器支持！');
+                alert('Share functionality requires modern browser support!');
             }
         }
         
@@ -3564,32 +3986,260 @@
                 productContainer.innerHTML = '';
             }
             
-            // 重置按钮状态
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.disabled = true;
-            });
-            
             // 重置选择限制显示
             const limit = document.getElementById('selection-limit');
             if (limit) {
                 limit.textContent = '已选择: 0/3';
-                limit.style.color = '#666';
+                limit.style.color = '#9F8A60';
             }
             
             // 显示第一步
             showStep(1);
             updateStepIndicator();
             
-            // 确保第一步的按钮状态正确
-            setTimeout(() => {
-                checkStep1Complete();
-                checkStep1IngredientComplete();
-            }, 100);
+            // 重置所有按钮状态并确保第一步按钮正确
+            resetAllButtonStates();
+            
+            // 确保第一步按钮在重新开始时是禁用状态（因为还没有选择）
+            const step1_1_next_btn = document.getElementById('step1-1-next-btn');
+            if (step1_1_next_btn) {
+                step1_1_next_btn.disabled = true;
+            }
+            
+            const step1_2_next_btn = document.getElementById('step1-2-next-btn');
+            if (step1_2_next_btn) {
+                step1_2_next_btn.disabled = true;
+            }
+        }
+        
+        // 重置所有按钮状态
+        function resetAllButtonStates() {
+            // 重置其他步骤的按钮状态（除了第一步）
+            const step2_1_next = document.getElementById('step2-1-next');
+            const step2_2_next = document.getElementById('step2-2-next');
+            
+            if (step2_1_next) {
+                step2_1_next.disabled = true;
+                step2_1_next.classList.remove('active');
+            }
+            if (step2_2_next) {
+                step2_2_next.disabled = true;
+                step2_2_next.classList.remove('active');
+            }
+            
+            // 确保第一步的按钮状态正确（根据当前选择状态）
+            checkStep1Complete();
+            checkStep1IngredientComplete();
+        }
+        
+        // 更新底部导航栏
+        function updateBottomNavigation() {
+            const bottomNav = document.getElementById('bottom-navigation');
+            const bottomNavContent = bottomNav.querySelector('.bottom-nav-content');
+            
+            console.log('Update bottom navigation, current step:', currentStep);
+            
+            let navHTML = '';
+            
+            if (currentStep === 1) {
+                // 检查当前显示的是step1-1还是step1-2
+                if (document.getElementById('step1-1').classList.contains('active')) {
+                    // Step 1-1: Only next step button
+                    navHTML = `
+                        <button class="btn btn-primary" id="step1-1-next-btn" disabled>Select Side Dishes</button>
+                    `;
+                } else {
+                    // Step 1-2: Previous and next step buttons
+                    navHTML = `
+                        <button class="btn btn-secondary">← Previous</button>
+                        <button class="btn btn-primary" id="step1-2-next-btn" disabled>Next →</button>
+                    `;
+                }
+            } else if (currentStep === 2) {
+                // Step 2: 检查当前显示的是step2-1还是step2-2
+                if (document.getElementById('step2-1').classList.contains('active')) {
+                    // Step 2-1: Previous and next step buttons
+                    navHTML = `
+                        <button class="btn btn-secondary">← Previous</button>
+                        <button class="btn btn-primary" id="step2-1-next-btn" disabled>Next →</button>
+                    `;
+                } else {
+                    // Step 2-2: Previous and next step buttons
+                    navHTML = `
+                        <button class="btn btn-secondary">← Previous</button>
+                        <button class="btn btn-primary" id="step2-2-next-btn" disabled>Next →</button>
+                    `;
+                }
+            } else if (currentStep === 3) {
+                // Step 3: Previous and start cooking buttons
+                navHTML = `
+                    <button class="btn btn-secondary">← Previous</button>
+                    <button class="btn btn-primary">Start Cooking →</button>
+                `;
+            } else if (currentStep === 4) {
+                // Step 4: Previous and complete creation buttons
+                navHTML = `
+                    <button class="btn btn-secondary">← Previous</button>
+                    <button class="btn btn-success">Complete Creation →</button>
+                `;
+            } else if (currentStep === 5) {
+                // Step 5: Previous, download, share, restart buttons
+                navHTML = `
+                    <button class="btn btn-secondary">← Previous</button>
+                    <button class="btn btn-primary">Download Pattern</button>
+                    <button class="btn btn-secondary">Share Work</button>
+                    <button class="btn btn-success">Restart</button>
+                `;
+            }
+            
+            bottomNavContent.innerHTML = navHTML;
+            
+            // 重新绑定事件监听器
+            bindBottomNavEvents();
+            
+            // 更新按钮状态
+            updateButtonStates();
+        }
+        
+        // 绑定底部导航事件
+        function bindBottomNavEvents() {
+            const bottomNavContent = document.querySelector('.bottom-nav-content');
+            if (!bottomNavContent) {
+                console.log('Bottom nav content not found');
+                return;
+            }
+            
+            // 移除之前的事件监听器
+            bottomNavContent.removeEventListener('click', handleBottomNavClick);
+            
+            // 添加新的事件监听器
+            bottomNavContent.addEventListener('click', handleBottomNavClick);
+            
+            console.log('Bottom nav events bound successfully');
+        }
+        
+        // 顶部导航不再支持点击互动，仅作为状态指示器
+        function bindTopNavEvents() {
+            // 顶部导航已禁用点击功能，仅作为流程状态显示
+            console.log('Top navigation is now display-only');
+        }
+        
+        // 处理底部导航点击事件
+        function handleBottomNavClick(e) {
+            const target = e.target;
+            if (target.tagName === 'BUTTON') {
+                console.log('Click button:', target.textContent, 'disabled:', target.disabled, 'id:', target.id);
+                
+                // 阻止默认行为，确保即使disabled也能处理
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 根据按钮ID执行相应函数
+                const buttonId = target.id;
+                const buttonText = target.textContent.trim();
+                
+                console.log('Button ID:', buttonId, 'Button Text:', buttonText);
+                
+                // 处理各种按钮点击
+                switch(buttonId) {
+                    case 'step1-1-next-btn':
+                        console.log('Step1-1 Next button clicked');
+                        nextSubStep();
+                        break;
+                    case 'step1-2-next-btn':
+                        console.log('Step1-2 Next button clicked');
+                        nextStep();
+                        break;
+                    case 'step2-1-next-btn':
+                        console.log('Step2-1 Next button clicked');
+                        nextSubStep2();
+                        break;
+                    case 'step2-2-next-btn':
+                        console.log('Step2-2 Next button clicked');
+                        nextStep();
+                        break;
+                    default:
+                        // 根据文本内容处理
+                        if (buttonText.includes('Previous') || buttonText.includes('← Previous')) {
+                            console.log('Previous button clicked');
+                            prevStep();
+                        } else if (buttonText.includes('Next') || buttonText.includes('Next →')) {
+                            console.log('Generic Next button clicked');
+                            nextStep();
+                        } else if (buttonText.includes('Start Cooking')) {
+                            console.log('Start Cooking button clicked');
+                            nextStep();
+                        } else if (buttonText.includes('Complete Creation')) {
+                            console.log('Complete Creation button clicked');
+                            nextStep();
+                        } else if (buttonText.includes('Download Pattern')) {
+                            console.log('Download Pattern button clicked');
+                            downloadPattern();
+                        } else if (buttonText.includes('Share Work')) {
+                            console.log('Share Work button clicked');
+                            sharePattern();
+                        } else if (buttonText.includes('Restart')) {
+                            console.log('Restart button clicked');
+                            restart();
+                        }
+                        break;
+                }
+            }
+        }
+        
+        // 更新按钮状态
+        function updateButtonStates() {
+            console.log('updateButtonStates called, currentStep:', currentStep);
+            
+            if (currentStep === 1) {
+                // 检查当前显示的是step1-1还是step1-2
+                if (document.getElementById('step1-1').classList.contains('active')) {
+                    console.log('Updating step1-1 button states');
+                    checkStep1Complete();
+                } else {
+                    console.log('Updating step1-2 button states');
+                    checkStep1IngredientComplete();
+                }
+            } else if (currentStep === 2) {
+                // 检查当前显示的是step2-1还是step2-2
+                if (document.getElementById('step2-1').classList.contains('active')) {
+                    console.log('Updating step2-1 button states, selectedMethod:', selectedMethod);
+                    const btn = document.getElementById('step2-1-next-btn');
+                    if (btn) {
+                        btn.disabled = !selectedMethod;
+                        if (selectedMethod) {
+                            btn.classList.add('active');
+                            console.log('Step2-1 button enabled and active');
+                        } else {
+                            btn.classList.remove('active');
+                            console.log('Step2-1 button disabled');
+                        }
+                    } else {
+                        console.log('Step2-1 button not found');
+                    }
+                } else {
+                    console.log('Updating step2-2 button states, selectedProduct:', selectedProduct);
+                    updateStep2_2ButtonState();
+                }
+            } else if (currentStep === 3) {
+                // Step 3 不需要按钮状态检查，直接启用
+                console.log('Step 3 - no button state check needed');
+            } else if (currentStep === 4) {
+                // Step 4 不需要按钮状态检查，直接启用
+                console.log('Step 4 - no button state check needed');
+            }
         }
         
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
             updateStepIndicator();
+            updateBottomNavigation();
+            
+            // 绑定底部导航事件
+            bindBottomNavEvents();
+            
+            // 绑定顶部导航事件
+            bindTopNavEvents();
         });
     </script>
 </body>
