@@ -1,4 +1,4 @@
-/* 米饭图案生成器 - 样式文件 */
+/* Rice Pattern Generator - Style File */
 
 :root {
   --bg: #ffffff;
@@ -9,7 +9,7 @@
   --soft: #f7f8fa;
 }
 
-/* 基础样式 */
+/* Base Styles */
 html, body {
   height: 100%;
   margin: 0;
@@ -18,7 +18,7 @@ html, body {
   color: var(--text);
 }
 
-/* 布局 */
+/* Layout */
 .wrap {
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -28,7 +28,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* 控制面板 */
+/* Control Panel */
 .controls {
   background: var(--panel);
   border: 1px solid var(--muted);
@@ -39,7 +39,7 @@ html, body {
   overflow: auto;
 }
 
-/* 预览区域 */
+/* Preview Area */
 .preview {
   background: var(--panel);
   border: 1px solid var(--muted);
@@ -53,7 +53,7 @@ html, body {
   flex-direction: column;
 }
 
-/* 标题样式 */
+/* Title Styles */
 h1 {
   font-size: 18px;
   margin: 0 0 8px;
@@ -70,7 +70,7 @@ h3 {
   margin: 0 0 6px;
 }
 
-/* 网格布局 */
+/* Grid Layout */
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -83,7 +83,7 @@ h3 {
   gap: 10px;
 }
 
-/* 表单元素 */
+/* Form Elements */
 label {
   font-size: 12px;
   display: block;
@@ -116,7 +116,7 @@ input[type=checkbox] {
   transform: translateY(1px);
 }
 
-/* 按钮样式 */
+/* Button Styles */
 .btn {
   padding: 10px 12px;
   background: #111827;
@@ -151,7 +151,7 @@ input[type=checkbox] {
   background: #0284c7;
 }
 
-/* 提示和标签 */
+/* Hints and Labels */
 .hint {
   opacity: 0.7;
   font-size: 12px;
@@ -168,7 +168,7 @@ input[type=checkbox] {
   border-radius: 999px;
 }
 
-/* 图层折叠面板 */
+/* Layer Collapse Panel */
 details.layer {
   border: 1px dashed var(--muted);
   border-radius: 12px;
@@ -197,7 +197,7 @@ details.layer summary::-webkit-details-marker {
   display: none;
 }
 
-/* 画布样式 */
+/* Canvas Styles */
 canvas {
   flex: 1;
   background: #fff;
@@ -208,7 +208,7 @@ canvas {
   image-rendering: pixelated;
 }
 
-/* 响应式设计 */
+/* Responsive Design */
 @media (max-width: 768px) {
   .wrap {
     grid-template-columns: 1fr;
@@ -233,7 +233,7 @@ canvas {
   }
 }
 
-/* 动画效果 */
+/* Animation Effects */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -243,7 +243,7 @@ canvas {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* 滚动条样式 */
+/* Scrollbar Styles */
 .controls::-webkit-scrollbar {
   width: 6px;
 }

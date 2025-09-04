@@ -1,7 +1,7 @@
 {
   "name": "rice-pattern-generator",
   "version": "1.0.0",
-  "description": "烹饪图案生成器 - 一个基于HTML5 Canvas的交互式图案创作工具",
+  "description": "Cooking Pattern Generator - An interactive pattern creation tool based on HTML5 Canvas",
   "main": "demo.html",
   "scripts": {
     "dev": "python3 -m http.server 8000",
