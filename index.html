@@ -2341,14 +2341,14 @@
                     <div class="main-content-panel step3-panel">
                         <!-- 标题区域 -->
                         <div class="step3-header">
-                            <h1 class="step3-title">确认食材</h1>
+                            <h1 class="step3-title">Confirm Ingredients</h1>
                         </div>
                         
                         <!-- 确认内容区域 -->
                         <div class="confirmation-content">
                             <!-- 主食区域 -->
                             <div class="confirmation-section-main">
-                                <div class="section-title">主食</div>
+                                <div class="section-title">Staple Food</div>
                                 <div class="confirmation-card main-card" id="selected-staple">
                                 <!-- 动态填充 -->
                             </div>
@@ -2356,7 +2356,7 @@
                             
                             <!-- 配菜区域 -->
                             <div class="confirmation-section-side">
-                                <div class="section-title">配菜</div>
+                                <div class="section-title">Side Dishes</div>
                                 <div class="confirmation-cards-container" id="selected-ingredients">
                                 <!-- 动态填充 -->
                             </div>
@@ -2366,11 +2366,11 @@
                         <!-- 烹饪方式和产品信息 -->
                         <div class="additional-info">
                             <div class="info-item">
-                                <span class="info-label">烹饪方式:</span>
+                                <span class="info-label">Cooking Method:</span>
                                 <span class="info-value" id="selected-method">-</span>
                             </div>
                             <div class="info-item">
-                                <span class="info-label">产品:</span>
+                                <span class="info-label">Product:</span>
                                 <span class="info-value" id="selected-product">-</span>
                         </div>
                     </div>
@@ -2435,40 +2435,40 @@
                             </details>
 
                             <details class="layer" id="stapleCard" open>
-                                <summary>🍚 Staple (Rice) <small class="cn">主食/米饭</small></summary>
+                                <summary>🍚 Staple (Rice) <small class="cn">Staple/Rice</small></summary>
                                 <div class="row" style="margin-top:8px;">
                                     <div>
-                                        <label>🔢 Amount <small class="cn">数量</small></label>
+                                        <label>🔢 Amount <small class="cn">Quantity</small></label>
                                         <input type="range" id="stapleAmt" min="0" max="80" step="1" value="12" />
                                     </div>
                                 </div>
                                 <div class="row3">
                                     <div>
-                                        <label>🎨 Colour <small class="cn">颜色</small></label>
+                                        <label>🎨 Colour <small class="cn">Color</small></label>
                                         <input type="color" id="stapleColor" value="#dbe6ff" />
                                     </div>
                                     <div>
-                                        <label>💧 Opacity <small class="cn">不透明度</small></label>
+                                        <label>💧 Opacity <small class="cn">Opacity</small></label>
                                         <input type="range" id="stapleOpacity" min="0" max="1" step="0.01" value="0.9" />
                                     </div>
                                     <div>
-                                        <label>🌫️ Blur (px) <small class="cn">模糊</small></label>
+                                        <label>🌫️ Blur (px) <small class="cn">Blur</small></label>
                                         <input type="range" id="stapleBlur" min="0" max="12" step="1" value="0" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div>
-                                        <label>📏 Scale <small class="cn">缩放</small></label>
+                                        <label>📏 Scale <small class="cn">Scale</small></label>
                                         <input type="range" id="stapleScale" min="0.1" max="3" step="0.05" value="1" />
                                     </div>
                                     <div>
-                                        <label>📊 Scale Variation <small class="cn">缩放变化</small></label>
+                                        <label>📊 Scale Variation <small class="cn">Scale Variation</small></label>
                                         <input type="range" id="stapleScaleVar" min="0" max="1" step="0.05" value="0.3" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <button class="btn ghost" id="stapleShuffle">🔄 Reseed <small class="cn">重排</small></button>
-                                    <label><input type="checkbox" id="stapleVisible" checked/> 👁️ Visible <small class="cn">可见</small></label>
+                                    <button class="btn ghost" id="stapleShuffle">🔄 Reseed <small class="cn">Reshuffle</small></button>
+                                    <label><input type="checkbox" id="stapleVisible" checked/> 👁️ Visible <small class="cn">Visible</small></label>
                                 </div>
                             </details>
 
@@ -2479,11 +2479,11 @@
                             <h2>🔥 Heat（火候）</h2>
                             <div class="row">
                                 <div>
-                                    <label>Heat Level <small class="cn">火候等级</small></label>
+                                    <label>Heat Level <small class="cn">Heat Level</small></label>
                                     <select id="heatLevel">
-                                        <option value="low">Low <small class="cn">小火</small></option>
-                                        <option value="med">Medium <small class="cn">中火</small></option>
-                                        <option value="high">High <small class="cn">大火</small></option>
+                                        <option value="low">Low <small class="cn">Low Heat</small></option>
+                                        <option value="med">Medium <small class="cn">Medium Heat</small></option>
+                                        <option value="high">High <small class="cn">High Heat</small></option>
                                     </select>
                                 </div>
                             </div>
@@ -2492,7 +2492,7 @@
                         <div class="preview-area">
                             <h1 style="margin-bottom:10px;">👀 Preview</h1>
                             <canvas id="preview"></canvas>
-                            <p class="hint" style="margin-top:8px;">Canvas is fixed. Scrolling the left panel won't move it.（画布固定，左侧面板滚动互不影响）</p>
+                            <p class="hint" style="margin-top:8px;">Canvas is fixed. Scrolling the left panel won't move it.（Canvas is fixed, scrolling the left panel won't affect it）</p>
                         </div>
                     </div>
                     
@@ -2686,7 +2686,7 @@
         // 更新选择限制显示
         function updateSelectionLimit() {
             const limit = document.getElementById('selection-limit');
-            limit.textContent = `已选择: ${selectedIngredients.length}/3`;
+            limit.textContent = `Selected: ${selectedIngredients.length}/3`;
                             limit.style.color = selectedIngredients.length >= 3 ? '#ff6b6b' : '#9F8A60';
         }
         
@@ -2759,13 +2759,13 @@
             };
             
             const productNames = {
-                'placemat': '餐垫',
-                'apron': '围裙', 
-                'tablecloth': '桌布',
-                'cushion': '靠垫',
-                'towel': '毛巾',
-                'blanket': '毛毯',
-                'pajamas': '睡衣'
+                'placemat': 'Placemat',
+                'apron': 'Apron', 
+                'tablecloth': 'Tablecloth',
+                'cushion': 'Cushion',
+                'towel': 'Towel',
+                'blanket': 'Blanket',
+                'pajamas': 'Pajamas'
             };
             
             const productImages = {
@@ -2787,13 +2787,13 @@
             
             // 材质选项
             const materialOptions = {
-                'placemat': ['棉质', '亚麻', '聚酯', '竹纤维'],
-                'apron': ['棉质', '牛仔', '帆布', '聚酯'],
-                'tablecloth': ['棉质', '亚麻', '聚酯', '丝绸'],
-                'cushion': ['棉质', '天鹅绒', '亚麻', '聚酯'],
-                'towel': ['棉质', '竹纤维', '超细纤维', '亚麻'],
-                'blanket': ['棉质', '羊毛', '法兰绒', '竹纤维'],
-                'pajamas': ['棉质', '丝绸', '竹纤维', '莫代尔']
+                'placemat': ['Cotton', 'Linen', 'Polyester', 'Bamboo Fiber'],
+                'apron': ['Cotton', 'Denim', 'Canvas', 'Polyester'],
+                'tablecloth': ['Cotton', 'Linen', 'Polyester', 'Silk'],
+                'cushion': ['Cotton', 'Velvet', 'Linen', 'Polyester'],
+                'towel': ['Cotton', 'Bamboo Fiber', 'Microfiber', 'Linen'],
+                'blanket': ['Cotton', 'Wool', 'Flannel', 'Bamboo Fiber'],
+                'pajamas': ['Cotton', 'Silk', 'Bamboo Fiber', 'Modal']
             };
             
             availableProducts.forEach(productId => {
@@ -3106,34 +3106,34 @@
         // 更新确认页面
         function updateConfirmation() {
             const stapleNames = {
-                'rice': '米饭',
-                'noodles': '面条',
-                'tofu': '豆腐'
+                'rice': 'Rice',
+                'noodles': 'Noodles',
+                'tofu': 'Tofu'
             };
             
             const ingredientNames = {
-                'onion': '洋葱',
-                'tomato': '番茄',
-                'cabbage': '白菜',
-                'bean-sprouts': '豆芽',
-                'pepper': '辣椒',
-                'egg': '鸡蛋'
+                'onion': 'Onion',
+                'tomato': 'Tomato',
+                'cabbage': 'Cabbage',
+                'bean-sprouts': 'Bean Sprouts',
+                'pepper': 'Pepper',
+                'egg': 'Egg'
             };
             
             const methodNames = {
-                'boil': '煮',
-                'stir-fry': '炒',
-                'fry': '煎'
+                'boil': 'Boil',
+                'stir-fry': 'Stir-fry',
+                'fry': 'Fry'
             };
             
             const productNames = {
-                'placemat': '餐垫',
-                'apron': '围裙',
-                'tablecloth': '桌布',
-                'cushion': '靠垫',
-                'towel': '毛巾',
-                'blanket': '毛毯',
-                'pajamas': '睡衣'
+                'placemat': 'Placemat',
+                'apron': 'Apron',
+                'tablecloth': 'Tablecloth',
+                'cushion': 'Cushion',
+                'towel': 'Towel',
+                'blanket': 'Blanket',
+                'pajamas': 'Pajamas'
             };
             
             const stapleImages = {
@@ -3239,7 +3239,7 @@
                 render();
             };
             img.onerror = (e) => {
-                console.error('主食图片加载失败:', stapleImages[selectedStaple], e);
+                console.error('Staple image loading failed:', stapleImages[selectedStaple], e);
                 // 如果图片加载失败，创建一个简单的占位符
                 const canvas = document.createElement('canvas');
                 canvas.width = 100;
@@ -3312,44 +3312,44 @@
             
             selectedIngredients.forEach((ingredient, index) => {
                 const ingredientName = {
-                    'onion': '洋葱',
-                    'tomato': '番茄',
-                    'cabbage': '白菜',
-                    'bean-sprouts': '豆芽',
-                    'pepper': '辣椒',
-                    'egg': '鸡蛋'
+                    'onion': 'Onion',
+                    'tomato': 'Tomato',
+                    'cabbage': 'Cabbage',
+                    'bean-sprouts': 'Bean Sprouts',
+                    'pepper': 'Pepper',
+                    'egg': 'Egg'
                 }[ingredient];
                 
                 const cardHTML = `
                     <details class="layer" id="ingredient${index}Card" open>
-                        <summary>🥕 ${ingredientName} <small class="cn">配菜${index + 1}</small></summary>
+                        <summary>🥕 ${ingredientName} <small class="cn">Side Dish ${index + 1}</small></summary>
                         <div class="row" style="margin-top:8px;">
                             <div>
-                                <label>🔢 Amount <small class="cn">数量</small></label>
+                                <label>🔢 Amount <small class="cn">Quantity</small></label>
                                 <input type="range" id="ingredient${index}Amt" min="0" max="30" step="1" value="8" />
                             </div>
                         </div>
                         <div class="row3">
                             <div>
-                                <label>🎨 Colour <small class="cn">颜色</small></label>
+                                <label>🎨 Colour <small class="cn">Color</small></label>
                                 <input type="color" id="ingredient${index}Color" value="#ffffff" />
                             </div>
                             <div>
-                                <label>💧 Opacity <small class="cn">不透明度</small></label>
+                                <label>💧 Opacity <small class="cn">Opacity</small></label>
                                 <input type="range" id="ingredient${index}Opacity" min="0" max="1" step="0.01" value="0.8" />
                             </div>
                             <div>
-                                <label>🌫️ Blur (px) <small class="cn">模糊</small></label>
+                                <label>🌫️ Blur (px) <small class="cn">Blur</small></label>
                                 <input type="range" id="ingredient${index}Blur" min="0" max="12" step="1" value="0" />
                             </div>
                         </div>
                         <div class="row">
                             <div>
-                                <label>📏 Scale <small class="cn">缩放</small></label>
+                                <label>📏 Scale <small class="cn">Scale</small></label>
                                 <input type="range" id="ingredient${index}Scale" min="0.1" max="3" step="0.05" value="1" />
                             </div>
                             <div>
-                                <label>📊 Scale Variation <small class="cn">缩放变化</small></label>
+                                <label>📊 Scale Variation <small class="cn">Scale Variation</small></label>
                                 <input type="range" id="ingredient${index}ScaleVar" min="0" max="1" step="0.05" value="0.3" />
                             </div>
                         </div>
@@ -3365,13 +3365,13 @@
                         </div>
                         <div class="row">
                             <div>
-                                <label>🔄 Rotate <small class="cn">旋转</small></label>
+                                <label>🔄 Rotate <small class="cn">Rotation</small></label>
                                 <input type="range" id="ingredient${index}Rotate" min="-180" max="180" step="1" value="0" />
                             </div>
                         </div>
                         <div class="row">
-                            <button class="btn ghost" id="ingredient${index}Shuffle">🔄 Reseed <small class="cn">重排</small></button>
-                            <label><input type="checkbox" id="ingredient${index}Visible" checked/> 👁️ Visible <small class="cn">可见</small></label>
+                            <button class="btn ghost" id="ingredient${index}Shuffle">🔄 Reseed <small class="cn">Reshuffle</small></button>
+                            <label><input type="checkbox" id="ingredient${index}Visible" checked/> 👁️ Visible <small class="cn">Visible</small></label>
                         </div>
                     </details>
                 `;
