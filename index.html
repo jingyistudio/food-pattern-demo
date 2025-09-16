@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cooking Pattern Generator</title>
+    
+    <!-- Google Fonts - Cherry Bomb One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts - Amiko -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -164,9 +174,9 @@
         .main-content {
             flex: 1;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
-            padding: 8px 0 80px 0;
+            padding: 20px 0 20px 0;
             height: calc(100vh - 120px);
             width: 100%;
             max-width: 100%;
@@ -221,7 +231,7 @@
         }
         
         .section-title {
-            font-size: 1.3rem;
+            font-size: 40px;
             font-weight: 600;
             color: #333;
             margin-bottom: 16px;
@@ -388,18 +398,19 @@
         .step2-1-header {
             width: 100%;
             max-width: 1161px;
-            padding: 0 410px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 8px;
+            margin-bottom: 20px;
         }
         
         .step2-1-title {
             text-align: center;
             color: #FE3474;
-            font-size: 1.8rem;
+            font-size: 40px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 600;
             line-height: 36px;
@@ -408,7 +419,7 @@
         
         .step2-1-subtitle {
             text-align: center;
-            color: #9F8A60;
+            color: #FE3474;
             font-size: 18px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
@@ -540,18 +551,19 @@
         .step2-2-header {
             width: 100%;
             max-width: 1161px;
-            padding: 0 410px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 8px;
+            margin-bottom: 20px;
         }
         
         .step2-2-title {
             text-align: center;
             color: #FE3474;
-            font-size: 1.8rem;
+            font-size: 40px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 600;
             line-height: 36px;
@@ -560,7 +572,7 @@
         
         .step2-2-subtitle {
             text-align: center;
-            color: #9F8A60;
+            color: #FE3474;
             font-size: 18px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
@@ -726,17 +738,20 @@
         
         .step3-header {
             width: 100%;
+            max-width: 1161px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 8px;
+            margin-bottom: 20px;
         }
         
         .step3-title {
             text-align: center;
             color: #FE3474;
-            font-size: 1.8rem;
+            font-size: 40px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 600;
             line-height: 36px;
@@ -990,7 +1005,7 @@
             
             /* Step 5 Responsive */
             .step5-title {
-                font-size: 2.2rem;
+                font-size: 32px;
             }
             
             .pattern-showcase {
@@ -1061,7 +1076,7 @@
             }
             
             .step2-1-title, .step2-2-title, .step3-title {
-                font-size: 1.6rem;
+                font-size: 32px;
             }
             
             .step2-1-subtitle, .step2-2-subtitle {
@@ -1122,7 +1137,7 @@
             
             /* Step 5 Responsive */
             .step5-title {
-                font-size: 2rem;
+                font-size: 28px;
             }
             
             .step5-subtitle {
@@ -1528,7 +1543,7 @@
         
         .section-description {
             font-size: 18px;
-            color: #9F8A60;
+            color: #FE3474;
             line-height: 28px;
             font-family: 'Helvetica', sans-serif;
             font-weight: 400;
@@ -1803,6 +1818,7 @@
             position: sticky;
             top: 20px;
             overflow: hidden;
+            box-sizing: border-box;
         }
         
         .pattern-preview {
@@ -1819,9 +1835,10 @@
         
         #preview {
             width: 100% !important;
-            height: 100% !important;
+            height: auto !important;
             max-width: 100%;
-            max-height: 100%;
+            max-height: calc(100vh - 300px);
+            object-fit: contain;
         }
         
         /* Step 5: Product Preview Styles - Redesigned */
@@ -1840,7 +1857,7 @@
         }
         
         .step5-title {
-            font-size: 2.4rem;
+            font-size: 40px;
             font-weight: 400;
             color: #FE3474;
             margin: 0 0 13px 0;
@@ -1849,7 +1866,7 @@
         
         .step5-subtitle {
             font-size: 1.1rem;
-            color: #9F8A60;
+            color: #FE3474;
             margin: 0;
             font-weight: 400;
         }
@@ -2116,6 +2133,267 @@
                 padding: 20px;
             }
         }
+        
+        /* Cherry Bomb One Font Styles */
+        .cherry-bomb-one-regular {
+            font-family: "Cherry Bomb One", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 40px;
+        }
+        
+        /* Amiko Font Styles */
+        .amiko-regular {
+            font-family: "Amiko", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .amiko-semibold {
+            font-family: "Amiko", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .amiko-bold {
+            font-family: "Amiko", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        /* Apply Cherry Bomb One to step titles */
+        .section-title,
+        .step2-1-title,
+        .step2-2-title,
+        .step3-title,
+        .step5-title {
+            font-family: "Cherry Bomb One", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 40px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Apply Amiko font to all other text */
+        body, p, div, span, button, input, textarea, select, 
+        .section-description, .step2-1-subtitle, .step2-2-subtitle, 
+        .step3-subtitle, .step5-subtitle, .nav-text, .btn,
+        .selection-limit, .ingredient-name, .method-name, .product-name {
+            font-family: "Amiko", sans-serif;
+        }
+        
+        /* Payment Page Styles */
+        .payment-container {
+            background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 1200px;
+            min-height: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+        
+        .payment-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .order-summary {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-summary h2 {
+            color: #0d1a26;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .product-image {
+            margin-bottom: 20px;
+        }
+        
+        .product-image canvas {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #F9F4E7 0%, #FDFBF6 100%);
+            border: 1px solid rgba(237, 228, 212, 0.5);
+        }
+        
+        .order-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #304050;
+            font-size: 16px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 10px 0;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #0d1a26;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .payment-form {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-form h2 {
+            color: #0d1a26;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #304050;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: normal;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffa3c0;
+            box-shadow: 0 0 0 2px rgba(255, 163, 192, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .purchase-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #FFA3C0 0%, #EB8B47 50%, #E98463 100%);
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 163, 192, 0.3);
+        }
+        
+        .purchase-btn:active {
+            transform: translateY(0);
+        }
+        
+        .payment-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        /* Payment form animations */
+        .payment-container {
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        .order-summary, .payment-form {
+            animation: fadeInScale 0.8s ease-out;
+        }
+        
+        .order-summary {
+            animation-delay: 0.2s;
+        }
+        
+        .payment-form {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Responsive design for payment page */
+        @media (max-width: 768px) {
+            .payment-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .payment-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2124,7 +2402,7 @@
         <div class="top-navigation">
             <div class="nav-item" data-step="1">
                 <div class="nav-icon">1</div>
-                <div class="nav-text">Select Ingredients</div>
+                <div class="nav-text">Select Side Dishes</div>
             </div>
             <div class="nav-item" data-step="2">
                 <div class="nav-icon">2</div>
@@ -2132,7 +2410,7 @@
             </div>
             <div class="nav-item" data-step="3">
                 <div class="nav-icon">3</div>
-                <div class="nav-text">Confirm Ingredients</div>
+                <div class="nav-text">Select Product</div>
             </div>
             <div class="nav-item" data-step="4">
                 <div class="nav-icon">4</div>
@@ -2145,53 +2423,8 @@
         </div>
         
         <div class="main-content">
-            <!-- Step 1-1: Select Staple Food -->
+            <!-- Step 1-1: Select Side Dishes -->
             <div class="step active" id="step1-1">
-                <div class="step-container">
-                    <div class="main-content-panel">
-                        <div class="section-header">
-                            <h2 class="section-title">Select Staple Food</h2>
-                            <p class="section-description">Choose a staple food to start your cooking journey</p>
-                        </div>
-                        
-                        <div class="staple-options">
-                            <div class="staple-card" onclick="selectStaple('rice')">
-                                <div class="staple-image">
-                                    <img src="图片素材/米饭.png" alt="Rice" />
-                                </div>
-                                <div class="staple-info">
-                                    <h3 class="staple-name">Rice</h3>
-                                </div>
-                            </div>
-                            
-                            <div class="staple-card" onclick="selectStaple('noodles')">
-                                <div class="staple-image">
-                                    <img src="图片素材/面条.png" alt="Noodles" />
-                                </div>
-                                <div class="staple-info">
-                                    <h3 class="staple-name">Noodles</h3>
-                                </div>
-                            </div>
-                            
-                            <div class="staple-card" onclick="selectStaple('tofu')">
-                                <div class="staple-image">
-                                    <img src="图片素材/豆腐.png" alt="Tofu" />
-                                </div>
-                                <div class="staple-info">
-                                    <h3 class="staple-name">Tofu</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="navigation">
-                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>Select Side Dishes</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Step 1-2: Select Side Ingredients -->
-            <div class="step" id="step1-2">
                 <div class="step-container">
                     <div class="main-content-panel">
                         <div class="section-header">
@@ -2206,7 +2439,7 @@
                                     <img src="图片素材/洋葱.png" alt="Onion" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Onion</h3>
+                                    <h3 class="ingredient-name">洋葱</h3>
                                 </div>
                             </div>
                             
@@ -2215,7 +2448,7 @@
                                     <img src="图片素材/番茄.png" alt="Tomato" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Tomato</h3>
+                                    <h3 class="ingredient-name">番茄</h3>
                                 </div>
                             </div>
                             
@@ -2224,16 +2457,16 @@
                                     <img src="图片素材/白菜.png" alt="Cabbage" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Cabbage</h3>
+                                    <h3 class="ingredient-name">白菜</h3>
                                 </div>
                             </div>
                             
-                            <div class="ingredient-card" onclick="selectIngredient('bean-sprouts')">
+                            <div class="ingredient-card" onclick="selectIngredient('broccoli')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/豆芽.png" alt="Bean Sprouts" />
+                                    <img src="图片素材/西兰花.png" alt="Broccoli" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Bean Sprouts</h3>
+                                    <h3 class="ingredient-name">西兰花</h3>
                                 </div>
                             </div>
                             
@@ -2242,30 +2475,30 @@
                                     <img src="图片素材/辣椒.png" alt="Pepper" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Pepper</h3>
+                                    <h3 class="ingredient-name">辣椒</h3>
                                 </div>
                             </div>
                             
-                            <div class="ingredient-card" onclick="selectIngredient('egg')">
+                            <div class="ingredient-card" onclick="selectIngredient('mushroom')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/鸡蛋.png" alt="Egg" />
+                                    <img src="图片素材/蘑菇.png" alt="Mushroom" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Egg</h3>
+                                    <h3 class="ingredient-name">香菇</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="navigation">
-                        <button class="btn btn-secondary" onclick="prevSubStep()">← Back</button>
-                        <button class="btn btn-primary" onclick="nextStep()" id="step1-2-next-btn" disabled>Next →</button>
+                        <button class="btn btn-primary" onclick="nextSubStep()" id="step1-1-next-btn" disabled>Next Step</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 2-1: Select Cooking Method -->
-            <div class="step" id="step2-1">
+            
+            <!-- Step 2: Select Cooking Method -->
+            <div class="step" id="step2">
                 <div class="step-container">
                     <!-- Main content area -->
                     <div class="main-content-panel step2-1-panel">
@@ -2303,14 +2536,14 @@
                         <!-- Navigation buttons -->
                         <div class="navigation step2-1-navigation">
                             <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
-                            <button class="btn btn-primary" onclick="nextSubStep2()" id="step2-1-next" disabled>Next →</button>
+                            <button class="btn btn-primary" onclick="nextSubStep2()" id="step2-next" disabled>Next →</button>
                             </div>
                             </div>
                             </div>
                         </div>
                         
-            <!-- Step 2-2: Select Product -->
-            <div class="step" id="step2-2">
+            <!-- Step 3: Select Product -->
+            <div class="step" id="step3">
                 <div class="step-container">
                     <!-- Main content area -->
                     <div class="main-content-panel step2-2-panel">
@@ -2328,61 +2561,12 @@
                         <!-- Navigation buttons -->
                         <div class="navigation step2-2-navigation">
                             <button class="btn btn-secondary" onclick="prevSubStep2()">← Previous</button>
-                            <button class="btn btn-primary" onclick="nextStep()" id="step2-2-next" disabled>Next →</button>
+                            <button class="btn btn-primary" onclick="nextStep()" id="step3-next" disabled>Start Cooking →</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Step 3: Confirm Ingredients -->
-            <div class="step" id="step3">
-                <div class="step-container">
-                    <!-- Main content area -->
-                    <div class="main-content-panel step3-panel">
-                        <!-- 标题区域 -->
-                        <div class="step3-header">
-                            <h1 class="step3-title">Confirm Ingredients</h1>
-                        </div>
-                        
-                        <!-- 确认内容区域 -->
-                        <div class="confirmation-content">
-                            <!-- 主食区域 -->
-                            <div class="confirmation-section-main">
-                                <div class="section-title">Staple Food</div>
-                                <div class="confirmation-card main-card" id="selected-staple">
-                                <!-- 动态填充 -->
-                            </div>
-                        </div>
-                            
-                            <!-- 配菜区域 -->
-                            <div class="confirmation-section-side">
-                                <div class="section-title">Side Dishes</div>
-                                <div class="confirmation-cards-container" id="selected-ingredients">
-                                <!-- 动态填充 -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                        <!-- 烹饪方式和产品信息 -->
-                        <div class="additional-info">
-                            <div class="info-item">
-                                <span class="info-label">Cooking Method:</span>
-                                <span class="info-value" id="selected-method">-</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Product:</span>
-                                <span class="info-value" id="selected-product">-</span>
-                        </div>
-                    </div>
-                    
-                        <!-- Navigation buttons -->
-                        <div class="navigation step3-navigation">
-                            <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
-                            <button class="btn btn-primary" onclick="nextStep()">Start Cooking →</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
             <!-- Step 4: Cooking Creation Page -->
             <div class="step" id="step4">
@@ -2418,7 +2602,7 @@
                                 </div>
                             </div>
 
-                            <h2>🥘 Staple & Ingredients</h2>
+                            <h2>🥘 食材选择</h2>
 
                             <details class="layer" id="baseColorCard" open>
                                 <summary>🎨 Base Color</summary>
@@ -2434,46 +2618,8 @@
                                 </div>
                             </details>
 
-                            <details class="layer" id="stapleCard" open>
-                                <summary>🍚 Staple (Rice) <small class="cn">Staple/Rice</small></summary>
-                                <div class="row" style="margin-top:8px;">
-                                    <div>
-                                        <label>🔢 Amount <small class="cn">Quantity</small></label>
-                                        <input type="range" id="stapleAmt" min="0" max="80" step="1" value="12" />
-                                    </div>
-                                </div>
-                                <div class="row3">
-                                    <div>
-                                        <label>🎨 Colour <small class="cn">Color</small></label>
-                                        <input type="color" id="stapleColor" value="#dbe6ff" />
-                                    </div>
-                                    <div>
-                                        <label>💧 Opacity <small class="cn">Opacity</small></label>
-                                        <input type="range" id="stapleOpacity" min="0" max="1" step="0.01" value="0.9" />
-                                    </div>
-                                    <div>
-                                        <label>🌫️ Blur (px) <small class="cn">Blur</small></label>
-                                        <input type="range" id="stapleBlur" min="0" max="12" step="1" value="0" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div>
-                                        <label>📏 Scale <small class="cn">Scale</small></label>
-                                        <input type="range" id="stapleScale" min="0.1" max="3" step="0.05" value="1" />
-                                    </div>
-                                    <div>
-                                        <label>📊 Scale Variation <small class="cn">Scale Variation</small></label>
-                                        <input type="range" id="stapleScaleVar" min="0" max="1" step="0.05" value="0.3" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button class="btn ghost" id="stapleShuffle">🔄 Reseed <small class="cn">Reshuffle</small></button>
-                                    <label><input type="checkbox" id="stapleVisible" checked/> 👁️ Visible <small class="cn">Visible</small></label>
-                                </div>
-                            </details>
-
                             <div id="ingredientCards">
-                                <!-- 动态生成配菜卡片 -->
+                                <!-- 动态生成食材卡片 -->
                             </div>
 
                             <h2>🔥 Heat（火候）</h2>
@@ -2499,6 +2645,69 @@
                     <div class="navigation">
                         <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
                         <button class="btn btn-success" onclick="nextStep()">Complete Creation →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Page -->
+            <div class="step" id="payment-page" style="display: none;">
+                <div class="payment-container">
+                    <div class="payment-content">
+                        <!-- Order Summary -->
+                        <div class="order-summary">
+                            <h2>Your Order</h2>
+                            <div class="product-image">
+                                <canvas id="payment-pattern-canvas" width="400" height="300"></canvas>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-item">
+                                    <span>Subtotal</span>
+                                    <span>$320.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <span>Shipping</span>
+                                    <span>$15.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <span>Taxes</span>
+                                    <span>$26.80</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="order-total">
+                                    <span>Total</span>
+                                    <span>$361.80</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Form -->
+                        <div class="payment-form">
+                            <h2>Payment Information</h2>
+                            <form id="payment-form">
+                                <div class="form-group">
+                                    <label for="cardholder-name">Cardholder Name</label>
+                                    <input type="text" id="cardholder-name" placeholder="Enter cardholder name" required>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-number">Card Number</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary purchase-btn">Purchase</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2547,27 +2756,7 @@
         let selectedProduct = null;
         
         // Staple food selection
-        function selectStaple(staple) {
-            console.log('selectStaple called with:', staple);
-            selectedStaple = staple;
-            
-            // Update UI
-            document.querySelectorAll('.staple-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Find corresponding card and add selected state
-            const cards = document.querySelectorAll('.staple-card');
-            cards.forEach(card => {
-                const onclickStr = card.getAttribute('onclick');
-                if (onclickStr && onclickStr.includes(staple)) {
-                    card.classList.add('selected');
-                }
-            });
-            
-            // Check if can proceed to next step
-            checkStep1Complete();
-        }
+        // Staple food selection - removed since we only have side dishes now
         
         // Side dish selection
         function selectIngredient(ingredient) {
@@ -2598,9 +2787,9 @@
             checkStep1IngredientComplete();
         }
         
-        // Check if step 1 is complete
+        // Check if step 1 is complete - now only checks side dishes
         function checkStep1Complete() {
-            const isComplete = selectedStaple !== null;
+            const isComplete = selectedIngredients.length > 0;
             
             // Update original button in HTML
             const originalBtn = document.getElementById('step1-1-next-btn');
@@ -2624,7 +2813,7 @@
                 }
             }
             
-            console.log('Step1 complete check:', isComplete, 'selectedStaple:', selectedStaple);
+            console.log('Step1 complete check:', isComplete, 'selectedIngredients:', selectedIngredients.length);
         }
         
         // Check if step 1 side dishes are complete
@@ -2632,7 +2821,7 @@
             const isComplete = selectedIngredients.length > 0;
             
             // Update original button in HTML
-            const originalBtn = document.getElementById('step1-2-next-btn');
+            const originalBtn = document.getElementById('step1-1-next-btn');
             if (originalBtn) {
                 originalBtn.disabled = !isComplete;
                 if (isComplete) {
@@ -2643,7 +2832,7 @@
             }
             
             // Update button in bottom navigation
-            const bottomBtn = document.querySelector('.bottom-nav-content #step1-2-next-btn');
+            const bottomBtn = document.querySelector('.bottom-nav-content #step1-1-next-btn');
             if (bottomBtn) {
                 bottomBtn.disabled = !isComplete;
                 if (isComplete) {
@@ -2658,36 +2847,30 @@
             console.log('Bottom button disabled:', bottomBtn ? bottomBtn.disabled : 'not found');
         }
         
-        // Next sub-step
+        // Next sub-step - now goes directly to step 2
         function nextSubStep() {
-            console.log('nextSubStep called, selectedStaple:', selectedStaple);
-            if (selectedStaple) {
+            console.log('nextSubStep called, selectedIngredients:', selectedIngredients);
+            if (selectedIngredients.length > 0) {
                 document.getElementById('step1-1').classList.remove('active');
-                document.getElementById('step1-2').classList.add('active');
-                currentStep = 1; // Step1-2 still belongs to Step1
+                document.getElementById('step2').classList.add('active');
+                currentStep = 2; // Go directly to Step 2
                 updateTopNavigation(currentStep);
                 updateBottomNavigation();
                 updateButtonStates();
-                console.log('Successfully moved to step1-2');
+                console.log('Successfully moved to step2');
             } else {
-                console.log('Cannot proceed: no staple selected');
+                console.log('Cannot proceed: no ingredients selected');
             }
         }
         
-        // Previous sub-step
-        function prevSubStep() {
-            console.log('prevSubStep called');
-            document.getElementById('step1-2').classList.remove('active');
-            document.getElementById('step1-1').classList.add('active');
-            currentStep = 1;
-            updateBottomNavigation();
-        }
+        // Previous sub-step - removed since we no longer have step1-2
         
         // Update selection limit display
         function updateSelectionLimit() {
             const limit = document.getElementById('selection-limit');
             limit.textContent = `Selected: ${selectedIngredients.length}/3`;
-                            limit.style.color = selectedIngredients.length >= 3 ? '#ff6b6b' : '#9F8A60';
+            // Keep background color, but ensure text is white
+            limit.style.color = 'white';
         }
         
         // Cooking method selection
@@ -2734,12 +2917,12 @@
         function nextSubStep2() {
             console.log('nextSubStep2 called, selectedMethod:', selectedMethod);
             if (selectedMethod) {
-                console.log('Jumping from step2-1 to step2-2');
+                console.log('Jumping from step2 to step3');
                 // Generate product options based on selected cooking method
                 generateProductOptions();
-                document.getElementById('step2-1').classList.remove('active');
-                document.getElementById('step2-2').classList.add('active');
-                currentStep = 2; // Step2-2 still belongs to Step2
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step3').classList.add('active');
+                currentStep = 3; // Step3
                 updateTopNavigation(currentStep);
                 updateBottomNavigation();
                 updateButtonStates();
@@ -2891,72 +3074,65 @@
             });
             
             // Update button state - update both original button and bottom navigation button
-            updateStep2_2ButtonState();
+            updateStep3ButtonState();
             
             console.log('Selected product:', productId, 'material:', material, 'selectedProduct:', selectedProduct);
         }
         
-        // Update Step2-2 button state
-        function updateStep2_2ButtonState() {
-            console.log('updateStep2_2ButtonState called, selectedProduct:', selectedProduct);
+        // Update Step3 button state
+        function updateStep3ButtonState() {
+            console.log('updateStep3ButtonState called, selectedProduct:', selectedProduct);
             
             // Update original button in HTML
-            const originalBtn = document.getElementById('step2-2-next');
+            const originalBtn = document.getElementById('step3-next');
             if (originalBtn) {
                 originalBtn.disabled = !selectedProduct;
                 if (selectedProduct) {
                     originalBtn.classList.add('active');
-                    console.log('Original step2-2 button enabled and active');
+                    console.log('Original step3 button enabled and active');
                 } else {
                     originalBtn.classList.remove('active');
-                    console.log('Original step2-2 button disabled');
+                    console.log('Original step3 button disabled');
                 }
             } else {
-                console.log('Original step2-2 button not found');
+                console.log('Original step3 button not found');
             }
             
             // Update button in bottom navigation
-            const bottomBtn = document.getElementById('step2-2-next-btn');
+            const bottomBtn = document.getElementById('step3-next-btn');
             if (bottomBtn) {
                 bottomBtn.disabled = !selectedProduct;
                 if (selectedProduct) {
                     bottomBtn.classList.add('active');
-                    console.log('Bottom step2-2 button enabled and active');
+                    console.log('Bottom step3 button enabled and active');
                 } else {
                     bottomBtn.classList.remove('active');
-                    console.log('Bottom step2-2 button disabled');
+                    console.log('Bottom step3 button disabled');
                 }
             } else {
-                console.log('Bottom step2-2 button not found');
+                console.log('Bottom step3 button not found');
             }
         }
         
         function prevSubStep2() {
-            document.getElementById('step2-2').classList.remove('active');
-            document.getElementById('step2-1').classList.add('active');
-            currentStep = 3;
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            currentStep = 2;
+            updateTopNavigation(currentStep);
             updateBottomNavigation();
+            updateButtonStates();
         }
         
         // Step navigation
         function nextStep() {
             console.log('nextStep called, currentStep:', currentStep);
             if (currentStep < 5) {
-                // Check if currently in Step1-2
-                if (document.getElementById('step1-2').classList.contains('active')) {
-                    console.log('Jumping from step1-2 to step2-1');
-                    // From Step1-2 to Step2-1
-                    document.getElementById('step1-2').classList.remove('active');
-                    document.getElementById('step2-1').classList.add('active');
-                    currentStep = 2;
-                    updateTopNavigation(currentStep);
-                    updateBottomNavigation();
-                    updateButtonStates();
-                } else {
                     console.log('Normal step progression');
                     currentStep++;
                     showStep(currentStep);
-                }
+                updateTopNavigation(currentStep);
+                updateBottomNavigation();
+                updateButtonStates();
                 updateStepIndicator();
             }
         }
@@ -2964,37 +3140,22 @@
         function prevStep() {
             console.log('prevStep called, currentStep:', currentStep);
             
-            // Check if in Step 1-2
-            if (document.getElementById('step1-2').classList.contains('active')) {
-                console.log('In step1-2, calling prevSubStep');
-                prevSubStep();
-                return;
-            }
-            
-            // Check if in Step 2-2
-            if (document.getElementById('step2-2').classList.contains('active')) {
-                console.log('In step2-2, calling prevSubStep2');
+            // Check if in Step 3
+            if (document.getElementById('step3').classList.contains('active')) {
+                console.log('In step3, calling prevSubStep2');
                 prevSubStep2();
                 return;
             }
             
-            // Check if in Step 3 - should return to Step 2-2
-            if (document.getElementById('step3').classList.contains('active')) {
-                console.log('In step3, going to step2-2');
-                currentStep = 2;
-                document.getElementById('step3').classList.remove('active');
-                document.getElementById('step2-2').classList.add('active');
-                updateTopNavigation(2);
-                return;
-            }
-            
-            // Check if in Step 2-1 - should return to Step 1-2
-            if (document.getElementById('step2-1').classList.contains('active')) {
-                console.log('In step2-1, going to step1-2');
+            // Check if in Step 2 - should return to Step 1-1
+            if (document.getElementById('step2').classList.contains('active')) {
+                console.log('In step2, going to step1-1');
                 currentStep = 1;
-                document.getElementById('step2-1').classList.remove('active');
-                document.getElementById('step1-2').classList.add('active');
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step1-1').classList.add('active');
                 updateTopNavigation(1);
+                updateBottomNavigation();
+                updateButtonStates();
                 return;
             }
             
@@ -3021,10 +3182,16 @@
         function showStep(step) {
             console.log('showStep called with step:', step);
             
-            // Hide all steps
+            // Hide all steps and payment page
             document.querySelectorAll('.step').forEach(s => {
                 s.classList.remove('active');
             });
+            
+            // Also hide payment page
+            const paymentPage = document.getElementById('payment-page');
+            if (paymentPage) {
+                paymentPage.style.display = 'none';
+            }
             
             // Show current step
             if (step === 1) {
@@ -3032,12 +3199,21 @@
                 document.getElementById('step1-1').classList.add('active');
                 currentStep = 1;
             } else if (step === 2) {
-                // Step2 defaults to showing step2-1
-                document.getElementById('step2-1').classList.add('active');
+                // Step2 shows step2
+                document.getElementById('step2').classList.add('active');
                 currentStep = 2;
-            } else {
-                document.getElementById(`step${step}`).classList.add('active');
-                currentStep = step;
+            } else if (step === 3) {
+                // Step3 shows step3
+                document.getElementById('step3').classList.add('active');
+                currentStep = 3;
+            } else if (step === 4) {
+                // Step4 shows step4 (start cooking)
+                document.getElementById('step4').classList.add('active');
+                currentStep = 4;
+            } else if (step === 5) {
+                // Step5 shows step5 (product preview)
+                document.getElementById('step5').classList.add('active');
+                currentStep = 5;
             }
             
             console.log('Current step set to:', currentStep);
@@ -3066,25 +3242,8 @@
             document.querySelectorAll('.nav-item').forEach((item, index) => {
                 item.classList.remove('active');
                 
-                // Set active state based on current step (cumulative display)
-                if (currentStep >= 1 && index === 0) {
-                    // Step 1: always active
-                    item.classList.add('active');
-                }
-                if (currentStep >= 2 && index === 1) {
-                    // Step 2: activate when currentStep >= 2
-                    item.classList.add('active');
-                }
-                if (currentStep >= 3 && index === 2) {
-                    // Step 3: activate when currentStep >= 3
-                    item.classList.add('active');
-                }
-                if (currentStep >= 4 && index === 3) {
-                    // Step 4: activate when currentStep >= 4
-                    item.classList.add('active');
-                }
-                if (currentStep >= 5 && index === 4) {
-                    // Step 5: activate when currentStep >= 5
+                // Only highlight the current step
+                if (index === currentStep - 1) {
                     item.classList.add('active');
                 }
             });
@@ -3106,7 +3265,7 @@
         // Update confirmation page
         function updateConfirmation() {
             const stapleNames = {
-                'rice': 'Rice',
+                'mushroom': 'Mushroom',
                 'noodles': 'Noodles',
                 'tofu': 'Tofu'
             };
@@ -3115,9 +3274,9 @@
                 'onion': 'Onion',
                 'tomato': 'Tomato',
                 'cabbage': 'Cabbage',
-                'bean-sprouts': 'Bean Sprouts',
+                'broccoli': 'Broccoli',
                 'pepper': 'Pepper',
-                'egg': 'Egg'
+                'mushroom': 'Mushroom'
             };
             
             const methodNames = {
@@ -3137,7 +3296,7 @@
             };
             
             const stapleImages = {
-                'rice': '图片素材/米饭.png',
+                'mushroom': '图片素材/蘑菇.png',
                 'noodles': '图片素材/面条.png',
                 'tofu': '图片素材/豆腐.png'
             };
@@ -3146,9 +3305,9 @@
                 'onion': '图片素材/洋葱.png',
                 'tomato': '图片素材/番茄.png',
                 'cabbage': '图片素材/白菜.png',
-                'bean-sprouts': '图片素材/豆芽.png',
+                'broccoli': '图片素材/西兰花.png',
                 'pepper': '图片素材/辣椒.png',
-                'egg': '图片素材/鸡蛋.png'
+                'mushroom': '图片素材/蘑菇.png'
             };
             
             // Update staple food display
@@ -3177,8 +3336,49 @@
             document.getElementById('selected-product').textContent = `${productNames[selectedProduct]} (${selectedMaterial})`;
         }
         
+        // Force clean step4 data
+        function forceCleanStep4Data() {
+            console.log('forceCleanStep4Data: Cleaning step4 data...');
+            
+            // Remove any potential default ingredients
+            const originalIngredients = [...selectedIngredients];
+            console.log('forceCleanStep4Data: Original ingredients:', originalIngredients);
+            
+            // Clear pattern state if it exists
+            if (window.patternState && window.patternState.ingredients) {
+                window.patternState.ingredients = [];
+                console.log('forceCleanStep4Data: Cleared pattern state ingredients');
+            }
+            
+            // Clear ingredient cards container
+            const container = document.getElementById('ingredientCards');
+            if (container) {
+                container.innerHTML = '';
+                console.log('forceCleanStep4Data: Cleared ingredient cards container');
+            }
+            
+            console.log('forceCleanStep4Data: Final selectedIngredients:', selectedIngredients);
+        }
+        
         // Setup cooking controls
         function setupCookingControls() {
+            // Force clean any potential cached/default data
+            forceCleanStep4Data();
+            
+            // Reset cooking preview image tracking when entering step4
+            usedCookingImages = {};
+            console.log('Reset cooking preview image tracking for step4');
+            
+            // Debug: Log selected ingredients to ensure they're correct
+            console.log('setupCookingControls - selectedIngredients:', selectedIngredients);
+            console.log('setupCookingControls - selectedIngredients length:', selectedIngredients.length);
+            
+            // Ensure we only work with actually selected ingredients
+            if (!selectedIngredients || selectedIngredients.length === 0) {
+                console.warn('No ingredients selected, cannot proceed with step4');
+                return;
+            }
+            
             // Initialize pattern generator state
             initPatternState();
             
@@ -3223,18 +3423,28 @@
         // Set staple food image
         function setStapleImage() {
             const stapleImages = {
-                'rice': '图片素材/米饭.png',
+                'mushroom': '图片素材/蘑菇.png',
                 'noodles': '图片素材/面条.png',
                 'tofu': '图片素材/豆腐.png'
             };
             
             console.log('Setting staple food image, selected staple:', selectedStaple);
             
+            // If no staple food is selected, don't load any staple image
+            if (!selectedStaple) {
+                console.log('No staple food selected, setting staple to null');
+                window.patternState.staple.img = null;
+                window.patternState.staple.visible = false;
+                render();
+                return;
+            }
+            
             const img = new Image();
             // Remove crossOrigin setting to avoid cross-origin issues
             img.onload = () => {
                 console.log('Staple food image loaded successfully:', selectedStaple, img.src);
                 window.patternState.staple.img = img;
+                window.patternState.staple.visible = true;
                 genPositions(window.patternState.staple);
                 render();
             };
@@ -3252,27 +3462,99 @@
                 ctx.textAlign = 'center';
                 ctx.fillText('Image', 50, 50);
                 window.patternState.staple.img = canvas;
+                window.patternState.staple.visible = true;
                 genPositions(window.patternState.staple);
                 render();
             };
-            img.src = stapleImages[selectedStaple] || stapleImages['rice'];
+            img.src = stapleImages[selectedStaple];
             console.log('Starting to load staple food image:', img.src);
+        }
+        
+        // Global tracking for used cooking preview images
+        let usedCookingImages = {};
+        
+        // Function to get cooking preview image ensuring all variants are shown
+        function getCookingPreviewImage(ingredient) {
+            const cookingPreviewPaths = {
+                'tomato': ['图片素材/烹饪预览/番茄-烹饪预览/番茄.png'],
+                'cabbage': [
+                    '图片素材/烹饪预览/白菜-烹饪预览/白菜2.png',
+                    '图片素材/烹饪预览/白菜-烹饪预览/白菜3.png',
+                    '图片素材/烹饪预览/白菜-烹饪预览/白菜4.png',
+                    '图片素材/烹饪预览/白菜-烹饪预览/白菜5.png',
+                    '图片素材/烹饪预览/白菜-烹饪预览/白菜6.png'
+                ],
+                'mushroom': ['图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇.png']
+            };
+            
+            if (!cookingPreviewPaths[ingredient]) {
+                return null;
+            }
+            
+            const availableImages = cookingPreviewPaths[ingredient];
+            
+            // Initialize tracking for this ingredient if not exists
+            if (!usedCookingImages[ingredient]) {
+                usedCookingImages[ingredient] = new Set();
+            }
+            
+            // Find unused images
+            const unusedImages = availableImages.filter(img => !usedCookingImages[ingredient].has(img));
+            
+            let selectedImage;
+            if (unusedImages.length > 0) {
+                // Use an unused image
+                selectedImage = unusedImages[Math.floor(Math.random() * unusedImages.length)];
+            } else {
+                // All images have been used, reset and pick randomly
+                usedCookingImages[ingredient] = new Set();
+                selectedImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+            }
+            
+            // Mark this image as used
+            usedCookingImages[ingredient].add(selectedImage);
+            
+            console.log(`Selected cooking preview for ${ingredient}:`, selectedImage);
+            return selectedImage;
         }
         
         // Set side dish images
         function setIngredientImages() {
+            // Use cooking preview images for step4, regular images for other steps
+            const isStep4 = document.getElementById('step4').classList.contains('active');
+            
+            // CRITICAL: Validate selectedIngredients before processing
+            if (!selectedIngredients || selectedIngredients.length === 0) {
+                console.error('setIngredientImages: No ingredients selected!');
+                return;
+            }
+            
+            console.log('setIngredientImages: Processing ingredients:', selectedIngredients);
+            console.log('setIngredientImages: Is Step4:', isStep4);
+            
+            // Filter out any invalid ingredients
+            const validIngredients = selectedIngredients.filter(ing => 
+                ['onion', 'tomato', 'cabbage', 'broccoli', 'pepper', 'mushroom'].includes(ing)
+            );
+            
+            if (validIngredients.length !== selectedIngredients.length) {
+                console.warn('setIngredientImages: Found invalid ingredients, filtered to:', validIngredients);
+                selectedIngredients = validIngredients;
+            }
+            
             const ingredientImages = {
                 'onion': '图片素材/洋葱.png',
-                'tomato': '图片素材/番茄.png',
-                'cabbage': '图片素材/白菜.png',
-                'bean-sprouts': '图片素材/豆芽.png',
+                'tomato': isStep4 ? getCookingPreviewImage('tomato') || '图片素材/番茄.png' : '图片素材/番茄.png',
+                'cabbage': isStep4 ? getCookingPreviewImage('cabbage') || '图片素材/白菜.png' : '图片素材/白菜.png',
+                'broccoli': '图片素材/西兰花.png', // No cooking preview available
                 'pepper': '图片素材/辣椒.png',
-                'egg': '图片素材/鸡蛋.png'
+                'mushroom': isStep4 ? getCookingPreviewImage('mushroom') || '图片素材/蘑菇.png' : '图片素材/蘑菇.png'
             };
             
-            console.log('Setting ingredient images, selected ingredients:', selectedIngredients);
+            console.log('Setting ingredient images, final selected ingredients:', selectedIngredients);
             
             window.patternState.ingredients = selectedIngredients.map((ingredient, index) => {
+                console.log(`setIngredientImages: Creating layer for ingredient ${index}: ${ingredient}`);
                 const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}`);
                 const img = new Image();
                 // Remove crossOrigin setting to avoid cross-origin issues
@@ -3310,19 +3592,42 @@
             const container = document.getElementById('ingredientCards');
             container.innerHTML = '';
             
+            // Debug: Log the ingredients being processed
+            console.log('generateIngredientCards - Processing ingredients:', selectedIngredients);
+            console.log('generateIngredientCards - Number of ingredients:', selectedIngredients.length);
+            
+            // Ensure we have valid ingredients
+            if (!selectedIngredients || selectedIngredients.length === 0) {
+                console.warn('generateIngredientCards - No ingredients to generate cards for');
+                return;
+            }
+            
             selectedIngredients.forEach((ingredient, index) => {
+                console.log(`generateIngredientCards - Processing ingredient ${index}:`, ingredient);
                 const ingredientName = {
-                    'onion': 'Onion',
-                    'tomato': 'Tomato',
-                    'cabbage': 'Cabbage',
-                    'bean-sprouts': 'Bean Sprouts',
-                    'pepper': 'Pepper',
-                    'egg': 'Egg'
+                    'onion': '洋葱',
+                    'tomato': '番茄',
+                    'cabbage': '白菜',
+                    'broccoli': '西兰花',
+                    'pepper': '辣椒',
+                    'mushroom': '香菇'
+                }[ingredient];
+                
+                const ingredientImage = {
+                    'onion': '图片素材/洋葱.png',
+                    'tomato': '图片素材/番茄.png',
+                    'cabbage': '图片素材/白菜.png',
+                    'broccoli': '图片素材/西兰花.png',
+                    'pepper': '图片素材/辣椒.png',
+                    'mushroom': '图片素材/蘑菇.png'
                 }[ingredient];
                 
                 const cardHTML = `
                     <details class="layer" id="ingredient${index}Card" open>
-                        <summary>🥕 ${ingredientName} <small class="cn">Side Dish ${index + 1}</small></summary>
+                        <summary>
+                            <img src="${ingredientImage}" alt="${ingredientName}" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;" />
+                            ${ingredientName} <small class="cn">食材 ${index + 1}</small>
+                        </summary>
                         <div class="row" style="margin-top:8px;">
                             <div>
                                 <label>🔢 Amount <small class="cn">Quantity</small></label>
@@ -3408,50 +3713,14 @@
                 render();
             });
             
-            // 主食控制
-            document.getElementById('stapleAmt').addEventListener('input', (e) => {
-                window.patternState.staple.amount = parseInt(e.target.value);
-                genPositions(window.patternState.staple);
-                render();
-            });
             
-            document.getElementById('stapleColor').addEventListener('input', (e) => {
-                window.patternState.staple.color = e.target.value;
-                render();
-            });
             
-            document.getElementById('stapleOpacity').addEventListener('input', (e) => {
-                window.patternState.staple.opacity = parseFloat(e.target.value);
-                render();
-            });
             
-            document.getElementById('stapleBlur').addEventListener('input', (e) => {
-                window.patternState.staple.blur = parseInt(e.target.value);
-                render();
-            });
             
-            document.getElementById('stapleScale').addEventListener('input', (e) => {
-                window.patternState.staple.scale = parseFloat(e.target.value);
-                genPositions(window.patternState.staple);
-                render();
-            });
             
-            document.getElementById('stapleScaleVar').addEventListener('input', (e) => {
-                window.patternState.staple.scaleVariation = parseFloat(e.target.value);
-                genPositions(window.patternState.staple);
-                render();
-            });
             
-            document.getElementById('stapleShuffle').addEventListener('click', () => {
-                reseed(window.patternState.staple);
-            });
             
-            document.getElementById('stapleVisible').addEventListener('change', (e) => {
-                window.patternState.staple.visible = e.target.checked;
-                render();
-            });
-            
-            // 配菜控制
+            // 食材控制
             selectedIngredients.forEach((ingredient, index) => {
                 document.getElementById(`ingredient${index}Amt`).addEventListener('input', (e) => {
                     window.patternState.ingredients[index].amount = parseInt(e.target.value);
@@ -3866,7 +4135,7 @@
                     
                     patternDetails.innerHTML = `
                         <div style="margin-bottom: 8px;"><strong>主食:</strong> ${stapleName}</div>
-                        <div style="margin-bottom: 8px;"><strong>配菜:</strong> ${ingredientNames || '无'}</div>
+                        <div style="margin-bottom: 8px;"><strong>食材:</strong> ${ingredientNames || '无'}</div>
                         <div style="margin-bottom: 8px;"><strong>烹饪方式:</strong> ${methodName}</div>
                         <div><strong>产品:</strong> ${productName}</div>
                     `;
@@ -3925,7 +4194,7 @@
                 // 创建下载链接
                 const link = document.createElement('a');
                 const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-                link.download = `rice-pattern-${timestamp}.png`;
+                link.download = `mushroom-pattern-${timestamp}.png`;
                 
                 // 生成DataURL
                 const dataURL = downloadCanvas.toDataURL('image/png', 1.0);
@@ -3951,6 +4220,156 @@
                 console.error('Error details:', error.message);
                 alert(`Download failed: ${error.message}\n\nPlease ensure:\n1. Access via HTTP server (not directly opening file)\n2. Image resources loaded correctly\n3. Browser supports Canvas download functionality`);
             }
+        }
+        
+        // 显示支付页面
+        function showPaymentPage() {
+            console.log('Showing payment page');
+            
+            // 隐藏当前步骤
+            document.querySelectorAll('.step').forEach(step => {
+                step.style.display = 'none';
+            });
+            
+            // 显示支付页面
+            const paymentPage = document.getElementById('payment-page');
+            paymentPage.style.display = 'block';
+            
+            // 设置当前步骤为支付页面
+            currentStep = 6;
+            
+            // 更新底部导航
+            updateBottomNavigation();
+            
+            // 渲染图案到支付页面的canvas
+            renderPaymentPattern();
+            
+            // 添加表单验证和交互
+            setupPaymentForm();
+        }
+        
+        // 隐藏支付页面
+        function hidePaymentPage() {
+            console.log('Hiding payment page');
+            
+            // 隐藏支付页面
+            const paymentPage = document.getElementById('payment-page');
+            paymentPage.style.display = 'none';
+            
+            // 显示step5
+            document.getElementById('step5').style.display = 'block';
+            
+            // 设置当前步骤为5
+            currentStep = 5;
+            
+            // 更新底部导航
+            updateBottomNavigation();
+        }
+        
+        // 渲染支付页面的图案
+        function renderPaymentPattern() {
+            const canvas = document.getElementById('payment-pattern-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 清空canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 如果有图案状态，渲染图案
+            if (window.patternState) {
+                try {
+                    const base = renderBaseTile();
+                    const cooked = applyHeat(base);
+                    ctx.drawImage(cooked, 0, 0, canvas.width, canvas.height);
+                } catch (error) {
+                    console.error('Error rendering payment pattern:', error);
+                    // 显示默认图案
+                    ctx.fillStyle = '#F9F4E7';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#FE3474';
+                    ctx.font = '20px Helvetica';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Your Pattern Preview', canvas.width/2, canvas.height/2);
+                }
+            } else {
+                // 显示默认图案
+                ctx.fillStyle = '#F9F4E7';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#FE3474';
+                ctx.font = '20px Helvetica';
+                ctx.textAlign = 'center';
+                ctx.fillText('Your Pattern Preview', canvas.width/2, canvas.height/2);
+            }
+        }
+        
+        // 设置支付表单
+        function setupPaymentForm() {
+            const form = document.getElementById('payment-form');
+            const cardNumberInput = document.getElementById('card-number');
+            const expiryInput = document.getElementById('expiry');
+            
+            // 格式化卡号输入
+            cardNumberInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+            });
+            
+            // 格式化过期日期输入
+            expiryInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+            });
+            
+            // 表单提交处理
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                processPayment();
+            });
+        }
+        
+        // 处理支付
+        function processPayment() {
+            const form = document.getElementById('payment-form');
+            const formData = new FormData(form);
+            
+            // 获取表单数据
+            const cardholderName = document.getElementById('cardholder-name').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            
+            // 简单的表单验证
+            if (!cardholderName || !cardNumber || !expiry || !cvv) {
+                alert('请填写所有支付信息');
+                return;
+            }
+            
+            // 模拟支付处理
+            const purchaseBtn = document.querySelector('.purchase-btn');
+            purchaseBtn.textContent = '处理中...';
+            purchaseBtn.disabled = true;
+            
+            // 模拟支付延迟
+            setTimeout(() => {
+                // 支付成功动画
+                purchaseBtn.textContent = '支付成功！';
+                purchaseBtn.style.background = '#4CAF50';
+                
+                // 显示成功消息
+                setTimeout(() => {
+                    alert('支付成功！您的订单已确认。');
+                    // 可以在这里跳转到订单确认页面或返回主页
+                    hidePaymentPage();
+                    // 重置表单
+                    form.reset();
+                    purchaseBtn.textContent = 'Purchase';
+                    purchaseBtn.disabled = false;
+                    purchaseBtn.style.background = '';
+                }, 1500);
+            }, 2000);
         }
         
         // 分享作品
@@ -3989,8 +4408,8 @@
             // 重置选择限制显示
             const limit = document.getElementById('selection-limit');
             if (limit) {
-                limit.textContent = '已选择: 0/3';
-                limit.style.color = '#9F8A60';
+                limit.textContent = 'Selected: 0/3';
+                limit.style.color = 'white';
             }
             
             // 显示第一步
@@ -4048,33 +4467,18 @@
                     navHTML = `
                         <button class="btn btn-primary" id="step1-1-next-btn" disabled>Select Side Dishes</button>
                     `;
-                } else {
-                    // Step 1-2: Previous and next step buttons
-                    navHTML = `
-                        <button class="btn btn-secondary">← Previous</button>
-                        <button class="btn btn-primary" id="step1-2-next-btn" disabled>Next →</button>
-                    `;
                 }
             } else if (currentStep === 2) {
-                // Step 2: 检查当前显示的是step2-1还是step2-2
-                if (document.getElementById('step2-1').classList.contains('active')) {
-                    // Step 2-1: Previous and next step buttons
+                // Step 2: Previous and next step buttons
                     navHTML = `
                         <button class="btn btn-secondary">← Previous</button>
-                        <button class="btn btn-primary" id="step2-1-next-btn" disabled>Next →</button>
-                    `;
-                } else {
-                    // Step 2-2: Previous and next step buttons
-                    navHTML = `
-                        <button class="btn btn-secondary">← Previous</button>
-                        <button class="btn btn-primary" id="step2-2-next-btn" disabled>Next →</button>
-                    `;
-                }
+                    <button class="btn btn-primary" id="step2-next-btn" disabled>Next →</button>
+                `;
             } else if (currentStep === 3) {
-                // Step 3: Previous and start cooking buttons
+                // Step 3: Previous and next step buttons
                 navHTML = `
                     <button class="btn btn-secondary">← Previous</button>
-                    <button class="btn btn-primary">Start Cooking →</button>
+                    <button class="btn btn-primary" id="step3-next-btn" disabled>Start Cooking →</button>
                 `;
             } else if (currentStep === 4) {
                 // Step 4: Previous and complete creation buttons
@@ -4083,12 +4487,17 @@
                     <button class="btn btn-success">Complete Creation →</button>
                 `;
             } else if (currentStep === 5) {
-                // Step 5: Previous, download, share, restart buttons
+                // Step 5: Previous, payment, share, restart buttons
                 navHTML = `
                     <button class="btn btn-secondary">← Previous</button>
-                    <button class="btn btn-primary">Download Pattern</button>
+                    <button class="btn btn-primary">确认支付</button>
                     <button class="btn btn-secondary">Share Work</button>
                     <button class="btn btn-success">Restart</button>
+                `;
+            } else if (currentStep === 6) {
+                // Payment page: Only back to preview button
+                navHTML = `
+                    <button class="btn btn-secondary" id="back-to-preview-btn">← Back to Preview</button>
                 `;
             }
             
@@ -4146,16 +4555,12 @@
                         console.log('Step1-1 Next button clicked');
                         nextSubStep();
                         break;
-                    case 'step1-2-next-btn':
-                        console.log('Step1-2 Next button clicked');
-                        nextStep();
-                        break;
-                    case 'step2-1-next-btn':
-                        console.log('Step2-1 Next button clicked');
+                    case 'step2-next-btn':
+                        console.log('Step2 Next button clicked');
                         nextSubStep2();
                         break;
-                    case 'step2-2-next-btn':
-                        console.log('Step2-2 Next button clicked');
+                    case 'step3-next-btn':
+                        console.log('Step3 Next button clicked');
                         nextStep();
                         break;
                     default:
@@ -4172,15 +4577,18 @@
                         } else if (buttonText.includes('Complete Creation')) {
                             console.log('Complete Creation button clicked');
                             nextStep();
-                        } else if (buttonText.includes('Download Pattern')) {
-                            console.log('Download Pattern button clicked');
-                            downloadPattern();
+                        } else if (buttonText.includes('确认支付')) {
+                            console.log('Payment button clicked');
+                            showPaymentPage();
                         } else if (buttonText.includes('Share Work')) {
                             console.log('Share Work button clicked');
                             sharePattern();
                         } else if (buttonText.includes('Restart')) {
                             console.log('Restart button clicked');
                             restart();
+                        } else if (buttonText.includes('Back to Preview')) {
+                            console.log('Back to Preview button clicked');
+                            hidePaymentPage();
                         }
                         break;
                 }
@@ -4192,47 +4600,81 @@
             console.log('updateButtonStates called, currentStep:', currentStep);
             
             if (currentStep === 1) {
-                // 检查当前显示的是step1-1还是step1-2
-                if (document.getElementById('step1-1').classList.contains('active')) {
+                // Step1 button states
                     console.log('Updating step1-1 button states');
                     checkStep1Complete();
-                } else {
-                    console.log('Updating step1-2 button states');
-                    checkStep1IngredientComplete();
-                }
             } else if (currentStep === 2) {
-                // 检查当前显示的是step2-1还是step2-2
-                if (document.getElementById('step2-1').classList.contains('active')) {
-                    console.log('Updating step2-1 button states, selectedMethod:', selectedMethod);
-                    const btn = document.getElementById('step2-1-next-btn');
+                // Step 2 button states
+                console.log('Updating step2 button states, selectedMethod:', selectedMethod);
+                const btn = document.getElementById('step2-next-btn');
                     if (btn) {
                         btn.disabled = !selectedMethod;
                         if (selectedMethod) {
                             btn.classList.add('active');
-                            console.log('Step2-1 button enabled and active');
+                        console.log('Step2 button enabled and active');
                         } else {
                             btn.classList.remove('active');
-                            console.log('Step2-1 button disabled');
+                        console.log('Step2 button disabled');
                         }
                     } else {
-                        console.log('Step2-1 button not found');
-                    }
-                } else {
-                    console.log('Updating step2-2 button states, selectedProduct:', selectedProduct);
-                    updateStep2_2ButtonState();
+                    console.log('Step2 button not found');
                 }
             } else if (currentStep === 3) {
-                // Step 3 不需要按钮状态检查，直接启用
-                console.log('Step 3 - no button state check needed');
+                // Step 3 button states
+                console.log('Updating step3 button states, selectedProduct:', selectedProduct);
+                const btn = document.getElementById('step3-next-btn');
+                if (btn) {
+                    btn.disabled = !selectedProduct;
+                    if (selectedProduct) {
+                        btn.classList.add('active');
+                        console.log('Step3 button enabled and active');
+                } else {
+                        btn.classList.remove('active');
+                        console.log('Step3 button disabled');
+                    }
+                } else {
+                    console.log('Step3 button not found');
+                }
             } else if (currentStep === 4) {
                 // Step 4 不需要按钮状态检查，直接启用
                 console.log('Step 4 - no button state check needed');
+            } else if (currentStep === 5) {
+                // Step 5 不需要按钮状态检查，直接启用
+                console.log('Step 5 - no button state check needed');
             }
+        }
+        
+        // Clear any cached or default data
+        function clearAllSelections() {
+            console.log('Clearing all selections...');
+            selectedStaple = null;
+            selectedIngredients = [];
+            selectedMethod = null;
+            selectedProduct = null;
+            selectedMaterial = null;
+            
+            // Clear any UI selections
+            document.querySelectorAll('.ingredient-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Update selection limit display
+            const limit = document.getElementById('selection-limit');
+            if (limit) {
+                limit.textContent = 'Selected: 0/3';
+                limit.style.color = 'white';
+            }
+            
+            console.log('All selections cleared. selectedIngredients:', selectedIngredients);
         }
         
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // Clear any potential cached data first
+            clearAllSelections();
+            
             updateStepIndicator();
+            updateTopNavigation(currentStep);
             updateBottomNavigation();
             
             // 绑定底部导航事件
@@ -4243,4 +4685,5 @@
         });
     </script>
 </body>
+</html>
 </html>
