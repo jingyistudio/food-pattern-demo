@@ -2478,7 +2478,7 @@
                                     <img src="图片素材/洋葱.png" alt="Onion" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">洋葱</h3>
+                                    <h3 class="ingredient-name">Onion</h3>
                                 </div>
                             </div>
                             
@@ -2487,7 +2487,7 @@
                                     <img src="图片素材/番茄.png" alt="Tomato" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">番茄</h3>
+                                    <h3 class="ingredient-name">Tomato</h3>
                                 </div>
                             </div>
                             
@@ -2496,7 +2496,7 @@
                                     <img src="图片素材/白菜.png" alt="Cabbage" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">白菜</h3>
+                                    <h3 class="ingredient-name">Cabbage</h3>
                                 </div>
                             </div>
                             
@@ -2505,7 +2505,7 @@
                                     <img src="图片素材/西兰花.png" alt="Broccoli" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">西兰花</h3>
+                                    <h3 class="ingredient-name">Broccoli</h3>
                                 </div>
                             </div>
                             
@@ -2514,7 +2514,7 @@
                                     <img src="图片素材/辣椒.png" alt="Pepper" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">辣椒</h3>
+                                    <h3 class="ingredient-name">Pepper</h3>
                                 </div>
                             </div>
                             
@@ -2523,7 +2523,7 @@
                                     <img src="图片素材/蘑菇.png" alt="Mushroom" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">香菇</h3>
+                                    <h3 class="ingredient-name">Mushroom</h3>
                                 </div>
                             </div>
                         </div>
@@ -2641,7 +2641,7 @@
                                 </div>
                             </div>
 
-                            <h2>🥘 食材选择</h2>
+                            <h2>🥘 Ingredient Selection</h2>
 
                             <details class="layer" id="baseColorCard" open>
                                 <summary>🎨 Base Color</summary>
@@ -2658,10 +2658,10 @@
                             </details>
 
                             <div id="ingredientCards">
-                                <!-- 动态生成食材卡片 -->
+                                <!-- Dynamically generated ingredient cards -->
                             </div>
 
-                            <h2>🔥 Heat（火候）</h2>
+                            <h2>🔥 Heat</h2>
                             <div class="row">
                                 <div>
                                     <label>Heat Level <small class="cn">Heat Level</small></label>
@@ -2771,7 +2771,7 @@
                                     </div>
                         </div>
                         
-                            <!-- 操作区域 - 移除重复按钮，使用底部导航 -->
+                            <!-- Operation area - removed duplicate buttons, using bottom navigation -->
                         </div>
                                     </div>
                                 </div>
@@ -3413,7 +3413,7 @@
             
             // Reset cooking preview image tracking when entering step4
             usedCookingImages = {};
-            ingredientImageSequences = {}; // 重置图片序列
+            ingredientImageSequences = {}; // Reset image sequences
             console.log('Reset cooking preview image tracking and sequences for step4');
             
             // Debug: Log selected ingredients to ensure they're correct
@@ -3519,7 +3519,7 @@
         
         // Global tracking for used cooking preview images
         let usedCookingImages = {};
-        let ingredientImageSequences = {}; // 存储每种食材的图片序列
+        let ingredientImageSequences = {}; // Store image sequences for each ingredient
         
         // Function to get cooking preview image ensuring all variants are shown
         function getCookingPreviewImage(ingredient) {
@@ -3590,41 +3590,41 @@
                 'mushroom': ['图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇.png']
             };
             
-            // 重置序列
+            // Reset sequences
             ingredientImageSequences = {};
             
             ingredients.forEach(ingredient => {
                 const availableImages = cookingPreviewPaths[ingredient];
                 if (!availableImages) {
-                    // 如果没有烹饪预览图片，使用普通图片
+                    // If no cooking preview images, use regular images
                     ingredientImageSequences[ingredient] = [`图片素材/${ingredient === 'onion' ? '洋葱' : ingredient === 'tomato' ? '番茄' : ingredient === 'cabbage' ? '白菜' : ingredient === 'broccoli' ? '西兰花' : ingredient === 'pepper' ? '辣椒' : '蘑菇'}.png`];
                     return;
                 }
                 
-                // 计算每种食材应该显示的数量
+                // Calculate how many should be displayed for each ingredient
                 const countPerIngredient = Math.floor(totalCount / ingredients.length);
                 const remainder = totalCount % ingredients.length;
                 
-                // 为当前食材分配数量
+                // Allocate quantity for current ingredient
                 let countForThisIngredient = countPerIngredient;
                 if (ingredients.indexOf(ingredient) < remainder) {
                     countForThisIngredient += 1;
                 }
                 
-                // 生成图片序列
+                // Generate image sequence
                 const sequence = [];
                 const imageCount = availableImages.length;
                 
-                // 如果需要的数量小于等于可用图片数量，随机选择不重复的图片
+                // If needed quantity is less than or equal to available images, randomly select non-duplicate images
                 if (countForThisIngredient <= imageCount) {
                     const shuffledImages = [...availableImages].sort(() => Math.random() - 0.5);
                     sequence.push(...shuffledImages.slice(0, countForThisIngredient));
                 } else {
-                    // 如果需要的数量大于可用图片数量，循环使用所有图片
+                    // If needed quantity is greater than available images, cycle through all images
                     for (let i = 0; i < countForThisIngredient; i++) {
                         sequence.push(availableImages[i % imageCount]);
                     }
-                    // 随机打乱顺序
+                    // Randomly shuffle the order
                     sequence.sort(() => Math.random() - 0.5);
                 }
                 
@@ -3640,7 +3640,7 @@
             }
             
             const sequence = ingredientImageSequences[ingredient];
-            const image = sequence.shift(); // 取出第一个图片
+            const image = sequence.shift(); // Get the first image
             console.log(`Getting next image for ${ingredient}:`, image);
             return image;
         }
@@ -3669,7 +3669,7 @@
                 selectedIngredients = validIngredients;
             }
             
-            // 如果是step4，生成平衡的图片序列
+            // If it's step4, generate balanced image sequences
             if (isStep4) {
                 generateBalancedImageSequences(selectedIngredients, 12);
             }
@@ -3685,18 +3685,18 @@
             
             console.log('Setting ingredient images, final selected ingredients:', selectedIngredients);
             
-            // 创建所有ingredients的layers
+            // Create layers for all ingredients
             const allLayers = [];
             
             selectedIngredients.forEach((ingredient, index) => {
                 if (isStep4 && ingredientImageSequences[ingredient]) {
-                    // 在step4中，为每个食材创建多个layer来显示不同形态
+                    // In step4, create multiple layers for each ingredient to show different forms
                     const sequence = ingredientImageSequences[ingredient];
                     console.log(`setIngredientImages: Creating ${sequence.length} layers for ingredient ${index}: ${ingredient}`);
                     
                     sequence.forEach((imagePath, variantIndex) => {
                         const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}-${variantIndex + 1}`);
-                        // 调整每个layer的amount，让总数保持平衡
+                        // Adjust each layer's amount to keep the total balanced
                         layer.amount = Math.max(1, Math.floor(12 / sequence.length));
                         
                         const img = new Image();
@@ -3728,7 +3728,7 @@
                         allLayers.push(layer);
                     });
                 } else {
-                    // 非step4或没有烹饪预览图片的食材，使用原来的逻辑
+                    // For non-step4 or ingredients without cooking preview images, use original logic
                     console.log(`setIngredientImages: Creating single layer for ingredient ${index}: ${ingredient}`);
                 const layer = makeLayer(`Ingredient ${String.fromCharCode(65 + index)}`);
                 const img = new Image();
@@ -3782,12 +3782,12 @@
             selectedIngredients.forEach((ingredient, index) => {
                 console.log(`generateIngredientCards - Processing ingredient ${index}:`, ingredient);
                 const ingredientName = {
-                    'onion': '洋葱',
-                    'tomato': '番茄',
-                    'cabbage': '白菜',
-                    'broccoli': '西兰花',
-                    'pepper': '辣椒',
-                    'mushroom': '香菇'
+                    'onion': 'Onion',
+                    'tomato': 'Tomato',
+                    'cabbage': 'Cabbage',
+                    'broccoli': 'Broccoli',
+                    'pepper': 'Pepper',
+                    'mushroom': 'Mushroom'
                 }[ingredient];
                 
                 const ingredientImage = {
