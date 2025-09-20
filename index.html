@@ -27,6 +27,7 @@
             height: 100vh;
             margin: 0;
             padding: 0;
+            padding-bottom: 100px; /* Add bottom padding to ensure content doesn't overlap with bottom navigation */
             overflow-x: hidden;
         }
         
@@ -90,7 +91,7 @@
         
         .bottom-navigation {
             position: fixed;
-            bottom: 0;
+            bottom: 60px;
             left: 0;
             right: 0;
             background: transparent;
@@ -177,7 +178,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            height: calc(100vh - 80px);
+            height: calc(100vh - 60px);
             width: 100%;
             max-width: 100%;
             overflow-y: auto;
@@ -191,8 +192,8 @@
             width: 100%;
             box-shadow: none;
             text-align: center;
-            height: calc(100vh - 140px);
-            max-height: calc(100vh - 140px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -356,6 +357,7 @@
             background: rgba(254, 52, 116, 0.1);
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(254, 52, 116, 0.3);
+            z-index: 10;
         }
         
         .method-icon {
@@ -393,8 +395,8 @@
             gap: 24px;
             width: 100%;
             max-width: 100%;
-            height: calc(100vh - 140px);
-            max-height: calc(100vh - 140px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
         }
         
@@ -433,12 +435,15 @@
         
         .cooking-methods-container {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             gap: 22px;
             width: 100%;
             max-width: 1272px;
             margin: 0 auto;
+            overflow: visible;
+            position: relative;
+            padding: 20px;
         }
         
         .step2-1-card {
@@ -455,10 +460,13 @@
             gap: 12px;
             display: flex;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(30px) scale(0.9);
             animation: cardSlideIn 0.6s ease-out forwards;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
         }
         
         .step2-1-card:hover {
@@ -549,8 +557,8 @@
             gap: 24px;
             width: 100%;
             max-width: 100%;
-            height: calc(100vh - 140px);
-            max-height: calc(100vh - 140px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
         }
         
@@ -740,8 +748,8 @@
             gap: 24px;
             width: 100%;
             max-width: 100%;
-            height: calc(100vh - 140px);
-            max-height: calc(100vh - 140px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
         }
         
@@ -1219,13 +1227,13 @@
             
             .step2-1-panel, .step2-2-panel, .step3-panel {
                 padding: 20px;
-                height: calc(100vh - 120px);
-                max-height: calc(100vh - 120px);
+                height: calc(100vh - 100px);
+                max-height: calc(100vh - 100px);
             }
             
             .main-content-panel {
-                height: calc(100vh - 120px);
-                max-height: calc(100vh - 120px);
+                height: calc(100vh - 100px);
+                max-height: calc(100vh - 100px);
             }
         }
         
@@ -1532,8 +1540,8 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            height: calc(100vh - 140px);
-            max-height: calc(100vh - 140px);
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
             align-items: center;
             gap: 24px;
@@ -1761,6 +1769,7 @@
             max-width: 100%;
             max-height: 100%;
         }
+
         
         .ingredient-info {
             text-align: center;
@@ -1839,7 +1848,7 @@
             align-items: center;
             justify-content: flex-start;
             border: 2px solid #e0e0e0;
-            height: calc(100vh - 200px);
+            height: calc(100vh - 60px);
             position: sticky;
             top: 20px;
             overflow: hidden;
@@ -2218,8 +2227,8 @@
             padding: 20px;
             margin: 20px auto;
             max-width: 1200px;
-            height: calc(100vh - 200px);
-            max-height: calc(100vh - 200px);
+            height: calc(100vh - 60px);
+            max-height: calc(100vh - 60px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
             overflow-y: auto;
         }
@@ -2433,6 +2442,219 @@
                 gap: 0;
             }
         }
+        
+        /* Upload and Scene Preview Styles */
+        .upload-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #9F8A60;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .upload-placeholder.hidden {
+            display: none;
+        }
+        
+        #uploadedImage.hidden {
+            display: none;
+        }
+        
+        .scene-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #9F8A60;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .scene-placeholder.hidden {
+            display: none;
+        }
+        
+        #sceneEffectImage.hidden {
+            display: none;
+        }
+        
+        /* Step 5-2 Complete Styles */
+        .step5-2-panel {
+            background: linear-gradient(135deg, #FAA1BD 0%, #F2E8D9 100%);
+            border-radius: 20px;
+            padding: 40px 60px;
+            margin: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            position: relative;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: calc(100vh - 160px);
+            max-height: calc(100vh - 160px);
+            overflow: hidden;
+        }
+        
+        .step5-2-header {
+            text-align: center;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        
+        .step5-2-title {
+            font-family: "Cherry Bomb One", system-ui;
+            font-size: 36px;
+            font-weight: 400;
+            color: #FE3474;
+            margin: 0 0 8px 0;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(254, 52, 116, 0.1);
+            line-height: 1.2;
+        }
+        
+        .step5-2-subtitle {
+            font-size: 16px;
+            color: #FE3474;
+            margin: 0;
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+        
+        .upload-preview-container {
+            display: flex;
+            gap: 80px;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            flex: 1;
+            margin: 20px 0;
+        }
+        
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: 280px;
+            flex-shrink: 0;
+        }
+        
+        .section-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            text-align: center;
+            margin: 0;
+            align-self: flex-start;
+        }
+        
+        .pattern-preview-card {
+            width: 280px;
+            height: 300px;
+            background: white;
+            border-radius: 16px;
+            border: 2px dashed rgba(254, 52, 116, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upload-btn {
+            background: #FD97B5;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-family: 'Helvetica', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .upload-btn:hover {
+            background: #FE3474;
+            transform: translateY(-2px);
+        }
+        
+        .scene-preview-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: 400px;
+            flex-shrink: 0;
+        }
+        
+        .scene-preview-card {
+            width: 400px;
+            height: 400px;
+            background: white;
+            border-radius: 16px;
+            border: 2px dashed rgba(254, 52, 116, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Remove the ::before pseudo-elements since we're using dashed borders directly */
+        
+        .pattern-preview-card img,
+        .scene-preview-card img {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .upload-placeholder,
+        .scene-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .upload-placeholder::before,
+        .scene-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>') no-repeat center;
+            background-size: 80px 80px;
+            opacity: 0.6;
+        }
+        
+        .upload-placeholder p,
+        .scene-placeholder p {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -2473,12 +2695,12 @@
                         </div>
                         
                         <div class="ingredient-options">
-                            <div class="ingredient-card" onclick="selectIngredient('onion')">
+                            <div class="ingredient-card" onclick="selectIngredient('potato')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/洋葱.png" alt="Onion" />
+                                    <img src="图片素材/土豆.png" alt="Potato" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Onion</h3>
+                                    <h3 class="ingredient-name">Potato</h3>
                                 </div>
                             </div>
                             
@@ -2500,21 +2722,21 @@
                                 </div>
                             </div>
                             
-                            <div class="ingredient-card" onclick="selectIngredient('broccoli')">
+                            <div class="ingredient-card" onclick="selectIngredient('bellpepper')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/西兰花.png" alt="Broccoli" />
+                                    <img src="图片素材/彩椒.png" alt="Bell Pepper" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Broccoli</h3>
+                                    <h3 class="ingredient-name">Bell Pepper</h3>
                                 </div>
                             </div>
                             
                             <div class="ingredient-card" onclick="selectIngredient('pepper')">
                                 <div class="ingredient-image">
-                                    <img src="图片素材/辣椒.png" alt="Pepper" />
+                                    <img src="图片素材/辣椒.png" alt="Chili Pepper" />
                                 </div>
                                 <div class="ingredient-info">
-                                    <h3 class="ingredient-name">Pepper</h3>
+                                    <h3 class="ingredient-name">Chili Pepper</h3>
                                 </div>
                             </div>
                             
@@ -2549,21 +2771,21 @@
                     
                         <!-- Cooking method selection area -->
                         <div class="cooking-methods-container">
-                            <div class="method-card step2-1-card" onclick="selectMethod('boil')">
+                            <div class="method-card step2-1-card" onclick="selectMethod('boil')" onmouseover="console.log('Hovering over Boil card')" onmouseout="console.log('Left Boil card')">
                                 <div class="method-content">
                                     <div class="method-technique">Digital Printing/Knitting</div>
                                     <div class="method-name">Boil</div>
                                     <div class="method-description">Like putting ingredients in soup, let the color evenly penetrate the entire fabric.</div>
                             </div>
                             </div>
-                            <div class="method-card step2-1-card" onclick="selectMethod('stir-fry')">
+                            <div class="method-card step2-1-card" onclick="selectMethod('stir-fry')" onmouseover="console.log('Hovering over Stir-fry card')" onmouseout="console.log('Left Stir-fry card')">
                                 <div class="method-content">
                                     <div class="method-technique">Digital Printing+Embroidery</div>
                                     <div class="method-name">Stir-fry</div>
                                     <div class="method-description">Like quickly stir-frying in a hot pan, let the color form unique textures on the fabric.</div>
                                 </div>
                             </div>
-                            <div class="method-card step2-1-card" onclick="selectMethod('fry')">
+                            <div class="method-card step2-1-card" onclick="selectMethod('fry')" onmouseover="console.log('Hovering over Fry card')" onmouseout="console.log('Left Fry card')">
                                 <div class="method-content">
                                     <div class="method-technique">Screen Printing</div>
                                     <div class="method-name">Fry</div>
@@ -2683,6 +2905,48 @@
                     <div class="navigation">
                         <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
                         <button class="btn btn-success" onclick="nextStep()">Complete Creation →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 5-2: Upload Photo and Scene Preview -->
+            <div class="step" id="step5-2">
+                <div class="step-container">
+                    <div class="main-content-panel step5-2-panel">
+                        <!-- Title area -->
+                        <div class="step5-2-header">
+                            <h1 class="step5-2-title">Just like the final step before serving</h1>
+                            <p class="step5-2-subtitle">Bring the design into your home and see how it pairs with your space.</p>
+                        </div>
+                        
+                        <!-- Upload and preview area -->
+                        <div class="upload-preview-container">
+                            <!-- Left side: Pattern upload -->
+                            <div class="upload-section">
+                                <p class="section-label">Uploaded Image</p>
+                                <div class="pattern-preview-card">
+                                    <img id="uploadedImage" src="" alt="Uploaded Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                                    <div class="upload-placeholder" id="uploadPlaceholder">
+                                        <p>Click the button below to upload image</p>
+                                    </div>
+                                </div>
+                                <button class="upload-btn" onclick="triggerImageUpload()">
+                                    <span>upload your photo</span>
+                                </button>
+                                <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                            </div>
+                            
+                            <!-- Right side: Scene effect preview -->
+                            <div class="scene-preview-section">
+                                <p class="section-label">Scene Effect</p>
+                                <div class="scene-preview-card">
+                                    <img id="sceneEffectImage" src="" alt="Scene Effect" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                                    <div class="scene-placeholder" id="scenePlaceholder">
+                                        <p>Scene effect will be displayed after uploading photo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2909,20 +3173,47 @@
         
         // Cooking method selection
         function selectMethod(method) {
+            console.log('selectMethod called with:', method);
             selectedMethod = method;
             
-            // Update UI - remove selected from all cards
-            document.querySelectorAll('.step2-1-card, .method-card').forEach(card => {
+            // Update UI - remove selected from all cooking method cards
+            const cookingMethodCards = document.querySelectorAll('.cooking-methods-container .step2-1-card');
+            console.log('Found cooking method cards:', cookingMethodCards.length);
+            
+            // First, remove selected class from all cards
+            cookingMethodCards.forEach(card => {
                 card.classList.remove('selected');
+                console.log('Removed selected class from card:', card);
             });
             
-            // Find corresponding card and add selected state
-            const cards = document.querySelectorAll('.step2-1-card');
-            cards.forEach(card => {
-                const onclickStr = card.getAttribute('onclick');
-                if (onclickStr && onclickStr.includes(method)) {
-                    card.classList.add('selected');
-                }
+            // Use requestAnimationFrame to ensure DOM updates are processed
+            requestAnimationFrame(() => {
+                // Find corresponding card and add selected state
+                let selectedCard = null;
+                cookingMethodCards.forEach(card => {
+                    const onclickStr = card.getAttribute('onclick');
+                    if (onclickStr && onclickStr.includes(method)) {
+                        selectedCard = card;
+                        card.classList.add('selected');
+                        console.log('Added selected class to card:', card, 'for method:', method);
+                    }
+                });
+                
+                // Verify only one card is selected after a small delay
+                setTimeout(() => {
+                    const selectedCards = document.querySelectorAll('.cooking-methods-container .step2-1-card.selected');
+                    console.log('Total selected cards after selection:', selectedCards.length);
+                    if (selectedCards.length > 1) {
+                        console.error('Multiple cards selected! This should not happen.');
+                        // Force single selection - keep only the last one
+                        cookingMethodCards.forEach(card => {
+                            card.classList.remove('selected');
+                        });
+                        if (selectedCard) {
+                            selectedCard.classList.add('selected');
+                        }
+                    }
+                }, 50);
             });
             
             // Enable next step button
@@ -3169,6 +3460,15 @@
                 updateBottomNavigation();
                 updateButtonStates();
                 updateStepIndicator();
+            } else if (currentStep === 5) {
+                // Special case: from step5 to step5-2
+                console.log('Going from step5 to step5-2');
+                currentStep = 5.2;
+                showStep(5.2);
+                updateTopNavigation(5.2);
+                updateBottomNavigation();
+                updateButtonStates();
+                updateStepIndicator();
             }
         }
         
@@ -3191,6 +3491,15 @@
                 updateTopNavigation(1);
                 updateBottomNavigation();
                 updateButtonStates();
+                return;
+            }
+            
+            // Check if in Step 5-2 - should return to Step 5
+            if (document.getElementById('step5-2').classList.contains('active')) {
+                console.log('In step5-2, going to step5');
+                currentStep = 5;
+                showStep(5);
+                updateStepIndicator();
                 return;
             }
             
@@ -3260,6 +3569,12 @@
                 step5Element.classList.add('active');
                 step5Element.style.display = 'block';
                 currentStep = 5;
+            } else if (step === 5.2) {
+                // Step5-2 shows step5-2 (upload and scene preview)
+                const step5_2Element = document.getElementById('step5-2');
+                step5_2Element.classList.add('active');
+                step5_2Element.style.display = 'block';
+                currentStep = 5.2;
             }
             
             console.log('Current step set to:', currentStep);
@@ -3288,8 +3603,11 @@
             document.querySelectorAll('.nav-item').forEach((item, index) => {
                 item.classList.remove('active');
                 
+                // Handle step5.2 as step 5
+                const stepToCheck = currentStep === 5.2 ? 5 : currentStep;
+                
                 // Only highlight the current step
-                if (index === currentStep - 1) {
+                if (index === stepToCheck - 1) {
                     item.classList.add('active');
                 }
             });
@@ -3300,9 +3618,13 @@
         function updateStepIndicator() {
             document.querySelectorAll('.step-dot').forEach((dot, index) => {
                 dot.classList.remove('active', 'completed');
-                if (index + 1 === currentStep) {
+                
+                // Handle step5.2 as step 5
+                const stepToCheck = currentStep === 5.2 ? 5 : currentStep;
+                
+                if (index + 1 === stepToCheck) {
                     dot.classList.add('active');
-                } else if (index + 1 < currentStep) {
+                } else if (index + 1 < stepToCheck) {
                     dot.classList.add('completed');
                 }
             });
@@ -3317,11 +3639,11 @@
             };
             
             const ingredientNames = {
-                'onion': 'Onion',
+                'potato': 'Potato',
                 'tomato': 'Tomato',
                 'cabbage': 'Cabbage',
-                'broccoli': 'Broccoli',
-                'pepper': 'Pepper',
+                'bellpepper': 'Bell Pepper',
+                'pepper': 'Chili Pepper',
                 'mushroom': 'Mushroom'
             };
             
@@ -3348,10 +3670,10 @@
             };
             
             const ingredientImages = {
-                'onion': '图片素材/洋葱.png',
+                'potato': '图片素材/土豆.png',
                 'tomato': '图片素材/番茄.png',
                 'cabbage': '图片素材/白菜.png',
-                'broccoli': '图片素材/西兰花.png',
+                'bellpepper': '图片素材/彩椒.png',
                 'pepper': '图片素材/辣椒.png',
                 'mushroom': '图片素材/蘑菇.png'
             };
@@ -3524,6 +3846,9 @@
         // Function to get cooking preview image ensuring all variants are shown
         function getCookingPreviewImage(ingredient) {
             const cookingPreviewPaths = {
+                'potato': [
+                    '图片素材/烹饪预览/土豆-烹饪预览/土豆1.png'
+                ],
                 'tomato': [
                     '图片素材/烹饪预览/番茄-烹饪预览/番茄1.png',
                     '图片素材/烹饪预览/番茄-烹饪预览/番茄2.png',
@@ -3537,7 +3862,24 @@
                     '图片素材/烹饪预览/白菜-烹饪预览/白菜5.png',
                     '图片素材/烹饪预览/白菜-烹饪预览/白菜6.png'
                 ],
-                'mushroom': ['图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇.png']
+                'bellpepper': [
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒1.png',
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒2.png',
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒3.png'
+                ],
+                'pepper': [
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒1.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒2.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒3.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒4.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒5.png'
+                ],
+                'mushroom': [
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇1.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇2.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇3.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.jpg'
+                ]
             };
             
             if (!cookingPreviewPaths[ingredient]) {
@@ -3574,6 +3916,9 @@
         // Function to generate balanced image sequences for ingredients
         function generateBalancedImageSequences(ingredients, totalCount = 12) {
             const cookingPreviewPaths = {
+                'potato': [
+                    '图片素材/烹饪预览/土豆-烹饪预览/土豆1.png'
+                ],
                 'tomato': [
                     '图片素材/烹饪预览/番茄-烹饪预览/番茄1.png',
                     '图片素材/烹饪预览/番茄-烹饪预览/番茄2.png',
@@ -3587,7 +3932,24 @@
                     '图片素材/烹饪预览/白菜-烹饪预览/白菜5.png',
                     '图片素材/烹饪预览/白菜-烹饪预览/白菜6.png'
                 ],
-                'mushroom': ['图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇.png']
+                'bellpepper': [
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒1.png',
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒2.png',
+                    '图片素材/烹饪预览/彩椒-烹饪预览/彩椒3.png'
+                ],
+                'pepper': [
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒1.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒2.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒3.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒4.png',
+                    '图片素材/烹饪预览/辣椒-烹饪预览/辣椒5.png'
+                ],
+                'mushroom': [
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇1.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇2.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇3.png',
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.jpg'
+                ]
             };
             
             // Reset sequences
@@ -3595,15 +3957,18 @@
             
             ingredients.forEach(ingredient => {
                 const availableImages = cookingPreviewPaths[ingredient];
+                console.log(`Processing ingredient: ${ingredient}, available images:`, availableImages);
                 if (!availableImages) {
                     // If no cooking preview images, use regular images
-                    ingredientImageSequences[ingredient] = [`图片素材/${ingredient === 'onion' ? '洋葱' : ingredient === 'tomato' ? '番茄' : ingredient === 'cabbage' ? '白菜' : ingredient === 'broccoli' ? '西兰花' : ingredient === 'pepper' ? '辣椒' : '蘑菇'}.png`];
+                    ingredientImageSequences[ingredient] = [`图片素材/${ingredient === 'potato' ? '土豆' : ingredient === 'tomato' ? '番茄' : ingredient === 'cabbage' ? '白菜' : ingredient === 'bellpepper' ? '彩椒' : ingredient === 'pepper' ? '辣椒' : '蘑菇'}.png`];
+                    console.log(`No cooking preview for ${ingredient}, using regular image:`, ingredientImageSequences[ingredient]);
                     return;
                 }
                 
                 // Calculate how many should be displayed for each ingredient
                 const countPerIngredient = Math.floor(totalCount / ingredients.length);
                 const remainder = totalCount % ingredients.length;
+                console.log(`Ingredient ${ingredient}: countPerIngredient=${countPerIngredient}, remainder=${remainder}`);
                 
                 // Allocate quantity for current ingredient
                 let countForThisIngredient = countPerIngredient;
@@ -3661,7 +4026,7 @@
             
             // Filter out any invalid ingredients
             const validIngredients = selectedIngredients.filter(ing => 
-                ['onion', 'tomato', 'cabbage', 'broccoli', 'pepper', 'mushroom'].includes(ing)
+                ['potato', 'tomato', 'cabbage', 'bellpepper', 'pepper', 'mushroom'].includes(ing)
             );
             
             if (validIngredients.length !== selectedIngredients.length) {
@@ -3675,11 +4040,11 @@
             }
             
             const ingredientImages = {
-                'onion': '图片素材/洋葱.png',
+                'potato': isStep4 ? getNextImageFromSequence('potato') || '图片素材/土豆.png' : '图片素材/土豆.png',
                 'tomato': isStep4 ? getNextImageFromSequence('tomato') || '图片素材/番茄.png' : '图片素材/番茄.png',
                 'cabbage': isStep4 ? getNextImageFromSequence('cabbage') || '图片素材/白菜.png' : '图片素材/白菜.png',
-                'broccoli': '图片素材/西兰花.png', // No cooking preview available
-                'pepper': '图片素材/辣椒.png',
+                'bellpepper': isStep4 ? getNextImageFromSequence('bellpepper') || '图片素材/彩椒.png' : '图片素材/彩椒.png',
+                'pepper': isStep4 ? getNextImageFromSequence('pepper') || '图片素材/辣椒.png' : '图片素材/辣椒.png',
                 'mushroom': isStep4 ? getNextImageFromSequence('mushroom') || '图片素材/蘑菇.png' : '图片素材/蘑菇.png'
             };
             
@@ -3755,7 +4120,7 @@
                     genPositions(layer);
                     render();
                 };
-                img.src = ingredientImages[ingredient] || ingredientImages['onion'];
+                img.src = ingredientImages[ingredient] || ingredientImages['potato'];
                 console.log('Starting to load ingredient image:', img.src);
                     allLayers.push(layer);
                 }
@@ -3782,19 +4147,19 @@
             selectedIngredients.forEach((ingredient, index) => {
                 console.log(`generateIngredientCards - Processing ingredient ${index}:`, ingredient);
                 const ingredientName = {
-                    'onion': 'Onion',
+                    'potato': 'Potato',
                     'tomato': 'Tomato',
                     'cabbage': 'Cabbage',
-                    'broccoli': 'Broccoli',
-                    'pepper': 'Pepper',
+                    'bellpepper': 'Bell Pepper',
+                    'pepper': 'Chili Pepper',
                     'mushroom': 'Mushroom'
                 }[ingredient];
                 
                 const ingredientImage = {
-                    'onion': '图片素材/洋葱.png',
+                    'potato': '图片素材/土豆.png',
                     'tomato': '图片素材/番茄.png',
                     'cabbage': '图片素材/白菜.png',
-                    'broccoli': '图片素材/西兰花.png',
+                    'bellpepper': '图片素材/彩椒.png',
                     'pepper': '图片素材/辣椒.png',
                     'mushroom': '图片素材/蘑菇.png'
                 }[ingredient];
@@ -3803,7 +4168,7 @@
                     <details class="layer" id="ingredient${index}Card" open>
                         <summary>
                             <img src="${ingredientImage}" alt="${ingredientName}" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;" />
-                            ${ingredientName} <small class="cn">食材 ${index + 1}</small>
+                            ${ingredientName} <small class="cn">Ingredient ${index + 1}</small>
                         </summary>
                         <div class="row" style="margin-top:8px;">
                             <div>
@@ -4378,17 +4743,17 @@
                     const productName = productNames[selectedProduct] || selectedProduct;
                     
                     patternDetails.innerHTML = `
-                        <div style="margin-bottom: 8px;"><strong>主食:</strong> ${stapleName}</div>
-                        <div style="margin-bottom: 8px;"><strong>食材:</strong> ${ingredientNames || '无'}</div>
-                        <div style="margin-bottom: 8px;"><strong>烹饪方式:</strong> ${methodName}</div>
-                        <div><strong>产品:</strong> ${productName}</div>
+                        <div style="margin-bottom: 8px;"><strong>Staple:</strong> ${stapleName}</div>
+                        <div style="margin-bottom: 8px;"><strong>Ingredients:</strong> ${ingredientNames || 'None'}</div>
+                        <div style="margin-bottom: 8px;"><strong>Cooking Method:</strong> ${methodName}</div>
+                        <div><strong>Product:</strong> ${productName}</div>
                     `;
                 }
             } else {
                 // 如果没有图案状态，显示默认内容
                 finalPattern.innerHTML = '🍚 您的图案';
                 if (patternDetails) {
-                    patternDetails.innerHTML = '图案将根据您的选择生成';
+                    patternDetails.innerHTML = 'Pattern will be generated based on your selections';
                 }
             }
         }
@@ -4466,20 +4831,112 @@
             }
         }
         
-        // 显示支付页面
+        // Navigate to step5-2
+        function showStep5_2() {
+            currentStep = 5.2;
+            showStep(5.2);
+            updateNavigation();
+        }
+        
+        // Image upload functionality
+        function triggerImageUpload() {
+            document.getElementById('imageUpload').click();
+        }
+        
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            console.log('Uploaded file:', file.name);
+            
+            // Display uploaded image on the left
+            displayUploadedImage(file);
+            
+            // Display corresponding scene effect image based on filename
+            displaySceneEffect(file.name);
+        }
+        
+        function displayUploadedImage(file) {
+            const uploadedImage = document.getElementById('uploadedImage');
+            const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedImage.src = e.target.result;
+                uploadedImage.classList.remove('hidden');
+                uploadPlaceholder.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function displaySceneEffect(fileName) {
+            const sceneImage = document.getElementById('sceneEffectImage');
+            const placeholder = document.getElementById('scenePlaceholder');
+            
+            // 提取文件名中的数字
+            const match = fileName.match(/(\d+)/);
+            if (match) {
+                const number = match[1];
+                const sceneImagePath = `图片素材/场景效果图/${number}.jpg`;
+                
+                // 检查图片是否存在，如果不存在则尝试其他格式
+                const img = new Image();
+                img.onload = function() {
+                    sceneImage.src = sceneImagePath;
+                    sceneImage.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                    console.log('Scene effect image loaded:', sceneImagePath);
+                };
+                img.onerror = function() {
+                    // 尝试其他格式
+                    const altPaths = [
+                        `图片素材/场景效果图/${number}.png`,
+                        `图片素材/场景效果图/${number}.jpeg`,
+                        `图片素材/场景效果图/${number}.webp`
+                    ];
+                    
+                    let found = false;
+                    altPaths.forEach(altPath => {
+                        if (!found) {
+                            const altImg = new Image();
+                            altImg.onload = function() {
+                                sceneImage.src = altPath;
+                                sceneImage.classList.remove('hidden');
+                                placeholder.classList.add('hidden');
+                                found = true;
+                                console.log('Scene effect image loaded:', altPath);
+                            };
+                            altImg.src = altPath;
+                        }
+                    });
+                    
+                    if (!found) {
+                        // 如果都没有找到，显示默认图片或提示
+                        console.log('No scene effect image found for number:', number);
+                        placeholder.textContent = `Scene effect image ${number} not found`;
+                    }
+                };
+                img.src = sceneImagePath;
+            } else {
+                console.log('No number found in filename:', fileName);
+                placeholder.textContent = 'No number found in filename';
+            }
+        }
+        
+        // Show payment page
         function showPaymentPage() {
             console.log('Showing payment page');
             
-            // 隐藏当前步骤
+            // Hide current steps
             document.querySelectorAll('.step').forEach(step => {
                 step.style.display = 'none';
             });
             
-            // 显示支付页面
+            // Show payment page
             const paymentPage = document.getElementById('payment-page');
             paymentPage.style.display = 'block';
             
-            // 设置当前步骤为支付页面
+            // Set current step to payment page
             currentStep = 6;
             
             // 更新底部导航
@@ -4613,7 +5070,7 @@
                 
                 // 显示成功消息
                 setTimeout(() => {
-                    alert('支付成功！您的订单已确认。');
+                    alert('Payment successful! Your order has been confirmed.');
                     // 可以在这里跳转到订单确认页面或返回主页
                     hidePaymentPage();
                     // 重置表单
@@ -4763,11 +5220,17 @@
                     <button class="btn btn-success">Complete Creation →</button>
                 `;
             } else if (currentStep === 5) {
-                // Step 5: Previous, payment, share, restart buttons
+                // Step 5: Previous, Next to step5-2 buttons
                 navHTML = `
                     <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
-                    <button class="btn btn-primary">确认支付</button>
-                    <button class="btn btn-secondary">Share Work</button>
+                    <button class="btn btn-primary">Next →</button>
+                `;
+            } else if (currentStep === 5.2) {
+                // Step 5-2: Previous, purchase, share, restart buttons
+                navHTML = `
+                    <button class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                    <button class="btn btn-primary">Purchase</button>
+                    <button class="btn btn-secondary">Share</button>
                     <button class="btn btn-success">Restart</button>
                 `;
             } else if (currentStep === 6) {
@@ -4853,12 +5316,15 @@
                         } else if (buttonText.includes('Complete Creation')) {
                             console.log('Complete Creation button clicked');
                             nextStep();
-                        } else if (buttonText.includes('确认支付')) {
+                        } else if (buttonText.includes('Next →') && currentStep === 5) {
+                            console.log('Next button clicked from step5');
+                            showStep5_2();
+                        } else if (buttonText.includes('Confirm Payment') || buttonText.includes('Purchase')) {
                             console.log('Payment button clicked');
                             showPaymentPage();
-                        } else if (buttonText.includes('Share Work')) {
+                        } else if (buttonText.includes('Share Work') || buttonText.includes('Share')) {
                             console.log('Share Work button clicked');
-                            sharePattern();
+                            shareProduct();
                         } else if (buttonText.includes('Restart')) {
                             console.log('Restart button clicked');
                             restart();
