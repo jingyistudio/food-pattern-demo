@@ -1284,7 +1284,7 @@
         }
         
         .controls-panel {
-            background: #f8f9fa;
+            background: #f5f5f5;
             border-radius: 15px;
             padding: 20px;
             overflow-y: auto;
@@ -1437,6 +1437,98 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 0.9rem;
+        }
+        
+        /* Custom checkbox styling - replace blue with pink */
+        .controls-panel input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ddd;
+            border-radius: 3px;
+            background: white;
+            cursor: pointer;
+            position: relative;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .controls-panel input[type="checkbox"]:checked {
+            background: #FE3474;
+            border-color: #FE3474;
+        }
+        
+        .controls-panel input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Custom range slider styling - replace blue with pink */
+        .controls-panel input[type="range"] {
+            appearance: none;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            outline: none;
+            padding: 0;
+            position: relative;
+        }
+        
+        .controls-panel input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #FE3474;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            margin-top: -7px;
+        }
+        
+        .controls-panel input[type="range"]::-webkit-slider-track {
+            background: #ddd;
+            border-radius: 3px;
+            height: 6px;
+        }
+        
+        .controls-panel input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #FE3474 0%, #FE3474 var(--progress, 0%), #ddd var(--progress, 0%), #ddd 100%);
+            border-radius: 3px;
+            height: 6px;
+        }
+        
+        .controls-panel input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #FE3474;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            margin-top: -7px;
+        }
+        
+        .controls-panel input[type="range"]::-moz-range-track {
+            background: #ddd;
+            border-radius: 3px;
+            height: 6px;
+        }
+        
+        .controls-panel input[type="range"]::-moz-range-progress {
+            background: #FE3474;
+            border-radius: 3px;
+            height: 6px;
         }
         
         .layer {
@@ -2536,7 +2628,7 @@
             width: 100%;
             max-width: 1000px;
             flex: 1;
-            margin: 20px 0;
+            margin: 10px 0;
         }
         
         .upload-section {
@@ -2567,28 +2659,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 8px;
             position: relative;
             overflow: hidden;
         }
         
         .upload-btn {
-            background: #FD97B5;
+            background: #FE3474;
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-family: 'Helvetica', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            box-shadow: 0 4px 12px rgba(254, 52, 116, 0.3);
+            opacity: 1;
         }
         
         .upload-btn:hover {
-            background: #FE3474;
-            transform: translateY(-2px);
+            background: #E02D66;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(254, 52, 116, 0.4);
+        }
+        
+        .upload-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(254, 52, 116, 0.3);
         }
         
         .scene-preview-section {
@@ -2610,7 +2710,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 8px;
             position: relative;
             overflow: hidden;
         }
@@ -2923,11 +3023,9 @@
                         <div class="upload-preview-container">
                             <!-- Left side: Pattern upload -->
                             <div class="upload-section">
-                                <p class="section-label">Uploaded Image</p>
                                 <div class="pattern-preview-card">
-                                    <img id="uploadedImage" src="" alt="Uploaded Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                                    <img id="uploadedImage" src="" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" class="hidden">
                                     <div class="upload-placeholder" id="uploadPlaceholder">
-                                        <p>Click the button below to upload image</p>
                                     </div>
                                 </div>
                                 <button class="upload-btn" onclick="triggerImageUpload()">
@@ -2938,11 +3036,9 @@
                             
                             <!-- Right side: Scene effect preview -->
                             <div class="scene-preview-section">
-                                <p class="section-label">Scene Effect</p>
                                 <div class="scene-preview-card">
-                                    <img id="sceneEffectImage" src="" alt="Scene Effect" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                                    <img id="sceneEffectImage" src="" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" class="hidden">
                                     <div class="scene-placeholder" id="scenePlaceholder">
-                                        <p>Scene effect will be displayed after uploading photo</p>
                                     </div>
                                 </div>
                             </div>
@@ -3494,11 +3590,14 @@
                 return;
             }
             
-            // Check if in Step 5-2 - should return to Step 5
+            // Check if in Step 5-2 - should return to Step 5 (step5-1)
             if (document.getElementById('step5-2').classList.contains('active')) {
-                console.log('In step5-2, going to step5');
+                console.log('In step5-2, going to step5 (step5-1)');
                 currentStep = 5;
                 showStep(5);
+                updateTopNavigation(5);
+                updateBottomNavigation();
+                updateButtonStates();
                 updateStepIndicator();
                 return;
             }
@@ -3878,7 +3977,7 @@
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇1.png',
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇2.png',
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇3.png',
-                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.jpg'
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.png'
                 ]
             };
             
@@ -3948,7 +4047,7 @@
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇1.png',
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇2.png',
                     '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇3.png',
-                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.jpg'
+                    '图片素材/烹饪预览/蘑菇-烹饪预览/蘑菇4.png'
                 ]
             };
             
@@ -4173,52 +4272,52 @@
                         <div class="row" style="margin-top:8px;">
                             <div>
                                 <label>🔢 Amount <small class="cn">Quantity</small></label>
-                                <input type="range" id="ingredient${index}Amt" min="0" max="30" step="1" value="8" />
+                                <input type="range" id="ingredient${index}Amt" min="0" max="10" step="1" value="4" />
                             </div>
                         </div>
                         <div class="row3">
                             <div>
-                                <label>🎨 Colour <small class="cn">Color</small></label>
+                                <label>🎨 Color</label>
                                 <input type="color" id="ingredient${index}Color" value="#ffffff" />
                             </div>
                             <div>
-                                <label>💧 Opacity <small class="cn">Opacity</small></label>
+                                <label>💧 Opacity</label>
                                 <input type="range" id="ingredient${index}Opacity" min="0" max="1" step="0.01" value="0.8" />
                             </div>
                             <div>
-                                <label>🌫️ Blur (px) <small class="cn">Blur</small></label>
+                                <label>🌫️ Blur (px)</label>
                                 <input type="range" id="ingredient${index}Blur" min="0" max="12" step="1" value="0" />
                             </div>
                         </div>
                         <div class="row">
                             <div>
-                                <label>📏 Scale <small class="cn">Scale</small></label>
+                                <label>📏 Scale</label>
                                 <input type="range" id="ingredient${index}Scale" min="0.1" max="3" step="0.05" value="1" />
                             </div>
                             <div>
-                                <label>📊 Scale Variation <small class="cn">Scale Variation</small></label>
+                                <label>📊 Scale Variation</label>
                                 <input type="range" id="ingredient${index}ScaleVar" min="0" max="1" step="0.05" value="0.3" />
                             </div>
                         </div>
                         <div class="row">
                             <div>
-                                <label>↔️ Offset X <small class="cn">X偏移</small></label>
+                                <label>↔️ Offset X</label>
                                 <input type="range" id="ingredient${index}OffsetX" min="-50" max="50" step="1" value="0" />
                             </div>
                             <div>
-                                <label>↕️ Offset Y <small class="cn">Y偏移</small></label>
+                                <label>↕️ Offset Y</label>
                                 <input type="range" id="ingredient${index}OffsetY" min="-50" max="50" step="1" value="0" />
                             </div>
                         </div>
                         <div class="row">
                             <div>
-                                <label>🔄 Rotate <small class="cn">Rotation</small></label>
+                                <label>🔄 Rotate</label>
                                 <input type="range" id="ingredient${index}Rotate" min="-180" max="180" step="1" value="0" />
                             </div>
                         </div>
                         <div class="row">
-                            <button class="btn ghost" id="ingredient${index}Shuffle">🔄 Reseed <small class="cn">Reshuffle</small></button>
-                            <label><input type="checkbox" id="ingredient${index}Visible" checked/> 👁️ Visible <small class="cn">Visible</small></label>
+                            <button class="btn ghost" id="ingredient${index}Shuffle">🔄 Reseed</button>
+                            <label><input type="checkbox" id="ingredient${index}Visible" checked/> 👁️ Visible</label>
                         </div>
                     </details>
                 `;
@@ -4228,6 +4327,29 @@
         
         // 绑定所有控制事件（与page4.html完全一致）
         function bindAllControls() {
+            // 添加滑块进度更新功能
+            function updateSliderProgress(slider) {
+                const min = parseFloat(slider.min);
+                const max = parseFloat(slider.max);
+                const value = parseFloat(slider.value);
+                const progress = ((value - min) / (max - min)) * 100;
+                slider.style.setProperty('--progress', progress + '%');
+            }
+            
+            // 为所有滑块添加进度更新
+            function addSliderProgressListeners() {
+                const sliders = document.querySelectorAll('.controls-panel input[type="range"]');
+                sliders.forEach(slider => {
+                    // 初始化进度
+                    updateSliderProgress(slider);
+                    
+                    // 添加输入事件监听器
+                    slider.addEventListener('input', (e) => {
+                        updateSliderProgress(e.target);
+                    });
+                });
+            }
+            
             // 平铺设置
             document.getElementById('tileSize').addEventListener('input', (e) => {
                 window.patternState.W = parseInt(e.target.value);
@@ -4394,6 +4516,9 @@
                 window.patternState.heat = e.target.value;
                 render();
             });
+            
+            // 为所有滑块添加进度更新功能
+            addSliderProgressListeners();
         }
         
         // 随机数生成器
@@ -4465,17 +4590,33 @@
             g.imageSmoothingEnabled = true;
             g.imageSmoothingQuality = 'high';
             
-            // 简化版本：直接绘制图片
+            // 计算保持宽高比的绘制尺寸
+            const imgAspect = img.naturalWidth / img.naturalHeight;
+            const targetAspect = drawW / drawH;
+            
+            let finalW, finalH;
+            if (imgAspect > targetAspect) {
+                // 图片更宽，以宽度为准
+                finalW = drawW;
+                finalH = drawW / imgAspect;
+            } else {
+                // 图片更高，以高度为准
+                finalH = drawH;
+                finalW = drawH * imgAspect;
+            }
+            
+            // 绘制图片，保持原始宽高比
             g.globalAlpha = opacity;
             g.globalCompositeOperation = 'source-over';
-            g.drawImage(img, -drawW/2, -drawH/2, drawW, drawH);
+            g.drawImage(img, -finalW/2, -finalH/2, finalW, finalH);
             
-            // 如果颜色不是白色，应用颜色叠加
+            // 如果颜色不是白色，应用颜色叠加（只对非透明部分着色）
             if (color !== '#ffffff' && color !== '#FFFFFF') {
-            g.globalCompositeOperation = 'multiply';
-                g.fillStyle = color;
-                g.globalAlpha = 0.3;
-                g.fillRect(-drawW/2, -drawH/2, drawW, drawH);
+                // 使用着色遮罩方法，只对非透明部分进行着色
+                const tintedImg = getTintMask(img, color);
+                g.globalAlpha = opacity;
+                g.globalCompositeOperation = 'source-over';
+                g.drawImage(tintedImg, -finalW/2, -finalH/2, finalW, finalH);
             }
             
             g.globalAlpha = 1;
@@ -4957,14 +5098,14 @@
             const paymentPage = document.getElementById('payment-page');
             paymentPage.style.display = 'none';
             
-            // 设置当前步骤为5
-            currentStep = 5;
+            // 设置当前步骤为5.2，返回到step5-2
+            currentStep = 5.2;
             
-            // 使用showStep函数正确显示step5
-            showStep(5);
+            // 使用showStep函数正确显示step5-2
+            showStep(5.2);
             
             // 更新顶部导航
-            updateTopNavigation(5);
+            updateTopNavigation(5.2);
             
             // 更新底部导航
             updateBottomNavigation();
